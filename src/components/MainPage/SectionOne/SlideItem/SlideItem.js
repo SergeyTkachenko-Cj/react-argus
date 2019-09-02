@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import playarrow from '../../../img/play-arrow.svg';
+import playarrow from '../../../../img/play-arrow.svg';
 import axios from 'axios';
-import dontknow from '../../../img/90782.jpg';
 
 export class SlideItem extends Component {
     state = {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import playarrow from '../../img/play-arrow.svg';
 import BigServices from './BigServices/BigServices';
 import SmallService from './SmallService/SmallService';
 

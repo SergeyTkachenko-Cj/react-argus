@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import playarrow from '../../img/play-arrow.svg';
+import playarrow from '../../../img/play-arrow.svg';
 import SlideItem from './SlideItem/SlideItem';
 import axios from 'axios';
 

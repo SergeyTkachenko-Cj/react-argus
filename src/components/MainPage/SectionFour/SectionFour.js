@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import playarrow from '../../img/play-arrow.svg';
+import playarrow from '../../../img/play-arrow.svg';
 import ImageForFour from './ImageForFour/ImageForFour';
 
 export class SectionFour extends Component {

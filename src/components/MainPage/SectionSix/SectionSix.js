@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import playarrow from '../../img/play-arrow.svg';
 import axios from 'axios';
+import playarrow from '../../../img/play-arrow.svg';
+import SixChildTax from './SixChildTax/SixChildTax';
 
-export class SectionFive extends Component {
+export class SectionSix extends Component {
     state = {
-        service: [],
+        taxomomy: '',
         isLoaded: false
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services?services_cat=4')
+        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat/5')
             .then(res => this.setState({
-                service: res.data[0],
+                taxomomy: res.data,
                 isLoaded: true
             }))
             .catch(err => console.log(err))
@@ -24,8 +25,8 @@ export class SectionFive extends Component {
                         <div className="row-3x w-row">
                             <div className="col-3x left w-clearfix w-col w-col-6">
                                 <div className="small-h">услуги</div>
-                                <h2>{ this.state.service.title.rendered }</h2>
-                                <div className="pclass" dangerouslySetInnerHTML={{ __html: this.state.service.excerpt.rendered }}></div>
+                                <h2>{ this.state.taxomomy.name }</h2>
+                                <div className="pclass">{ this.state.taxomomy.description }</div>
                                 <a href="#" className="link w-inline-block" data-ix="line-arrow">
                                     <div>Узнать подробнее</div>
                                     <div className="before-txt-link">
@@ -37,9 +38,11 @@ export class SectionFive extends Component {
                                     </div>
                                 </a>
                             </div>
-                            <div className="col-3x left w-clearfix w-col w-col-6">
-                                <div className="small-h">услуги</div>
-                                <div className="pclass" dangerouslySetInnerHTML={{ __html: this.state.service.content.rendered }}></div>
+                            <div className="col-3x right w-clearfix w-col w-col-6">
+                                <div className="col-3x left _2">
+                                </div>
+                                <SixChildTax taxid="6" />
+                                <SixChildTax taxid="7" />
                             </div>
                         </div>
                         <div className="vertical-line">
@@ -48,8 +51,6 @@ export class SectionFive extends Component {
                         </div>
                     </div>
                     <div className="fon-greeer">
-                    </div>
-                    <div className="fon-green right">
                     </div>
                     <div className="vertical-line _50">
                     </div>
@@ -60,4 +61,4 @@ export class SectionFive extends Component {
     }
 }
 
-export default SectionFive
+export default SectionSix
