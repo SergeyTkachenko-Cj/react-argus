@@ -19,7 +19,6 @@ export class SectionTen extends Component {
 
     render() {
         const { sales, isLoaded } = this.state;
-        console.log(sales);
         if (isLoaded) {
             return (
                 <div className="section">
