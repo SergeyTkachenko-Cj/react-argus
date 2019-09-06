@@ -3,7 +3,6 @@ import React, { Component, Fragment } from 'react'
 export class LicensesSpecials extends Component {
     render() {
         const acf = this.props.acf;
-        console.log(acf);
         if (acf["tekst_spetspredlojenia"]) {
             return (
                 <Fragment>

@@ -5,6 +5,8 @@ import LicensesSpecials from './LicensesSpecials/LicensesSpecials';
 import LicensesContentBlocks from './LicensesContentBlocks/LicensesContentBlocks';
 import TableСontributions from './TableСontributions/TableСontributions';
 import TableDocuments from './TableDocuments/TableDocuments';
+import LicensesSamples from './LicensesSamples/LicensesSamples';
+import LIcensesBottomContent from './LIcensesBottomContent/LIcensesBottomContent';
 
 export class SingleLicenses extends Component {
     state = {
@@ -24,7 +26,6 @@ export class SingleLicenses extends Component {
     }
     render() {
         const { service, img, isLoaded } = this.state;
-        console.log(service);
         if (isLoaded) {
             return (
                 <Fragment>
@@ -88,101 +89,10 @@ export class SingleLicenses extends Component {
                     </div>
                     <LicensesSpecials acf={service.acf["special_offer"]}/>
                     <LicensesContentBlocks acf={service.acf["bloki_s_kontentom"]} />
-                    <TableСontributions />
-                    <TableDocuments />
-                    <div className="section">
-                        <div className="wrapper no-paddings">
-                            <div className="in-wrapper">
-                                <div className="small-h">документы</div>
-                                <h2 className="h2">Пакет документов необходимых для регистрации электролаборатории:</h2>
-                            </div>
-                            <div className="news page-news">
-                                <div className="div-in-otzivas">
-                                    <div className="col-otzivas _50-proc">
-                                        <a href="#" className="img-people-otzivas otzivas w-inline-block w-lightbox">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d3575f4166bd87616addca6_reg-elektro-mo.jpg" alt="" className="img-otziv" />
-                                            {/* <script type="application/json" className="w-json">
-                                                {{
-                                                    "items": [
-                                                        {
-                                                            "type": "image",
-                                                            "_id": "5d2dca9e99a69057953ef34d",
-                                                            "fileName": "5d2dca9e99a69057953ef34d_file.jpg",
-                                                            "origFileName": "file.jpg",
-                                                            "width": 509,
-                                                            "height": 700,
-                                                            "fileSize": 33408,
-                                                            "url": "https://uploads-ssl.webflow.com/5c80c10ea8bd4b71070c4957/5d2dca9e99a69057953ef34d_file.jpg"
-                                                        }
-                                                    ]
-                                                }}
-                                            </script> */}
-                                        </a>
-                                    </div>
-                                    <div className="col-otzivas _50-proc left">
-                                        <a href="#" className="img-people-otzivas otzivas w-inline-block w-lightbox">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d25e4190574ee83b775c01b_reg-elektro.jpg" alt="" className="img-otziv" />
-                                            {/* <script type="application/json" className="w-json">
-                                                {{
-                                                    "items": [
-                                                        {
-                                                            "type": "image",
-                                                            "_id": "5d2dca9e99a69057953ef34d",
-                                                            "fileName": "5d2dca9e99a69057953ef34d_file.jpg",
-                                                            "origFileName": "file.jpg",
-                                                            "width": 509,
-                                                            "height": 700,
-                                                            "fileSize": 33408,
-                                                            "url": "https://uploads-ssl.webflow.com/5c80c10ea8bd4b71070c4957/5d2dca9e99a69057953ef34d_file.jpg"
-                                                        }
-                                                    ]
-                                                }}
-                                            </script> */}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="vertical-line-25">
-                            </div>
-                            <div className="vertical-line">
-                            </div>
-                        </div>
-                        <div className="vertical-line _50">
-                        </div>
-                    </div>
-                    <div className="section">
-                        <div className="wrapper single ac w-clearfix">
-                            <div className="news page-news">
-                            </div>
-                            <div className="vertical-line-25">
-                            </div>
-                            <div className="vertical-line">
-                            </div>
-                            <h2 className="h2">Регистрация электролаборатории с Аргус- Эко</h2>
-                            <div className="p-class">
-                                <strong>Мы поможем Вашей компании зарегестрировать электролабораторию “под ключ”.</strong>
-                                <br />
-                                <br />Соберём, проверим и подготовим все нужные бумаги за Вас. Оперативно проконсультируем и предоставим любую информацию на всех этапах работы.Стоимость услуг -
-            <strong>25.000₽</strong>(35.000₽ если работы особо опасные, уникальные или технически-сложные).
-            <br />‍
-            <br />Позвоните в наш офис и мы подскажем как быстро, доступно и без бумажной волокиты вступить в СРО Проектировщиков:
-            <br />
-                                <a href="#">+7 (495) 585-09-82</a>
-                                <br />
-                                <a href="#">+7 (925) 506-38-27</a>
-                                <br />
-                                <a href="tel:+74955850982">
-                                    <br />
-                                </a>
-                            </div>
-                        </div>
-                        <div className="vertical-line _50">
-                        </div>
-                        <div className="fon-green">
-                        </div>
-                        <div className="fon-green right">
-                        </div>
-                    </div>
+                    <TableСontributions acf={service.acf["tablitsa_vznosov"]}/>
+                    <TableDocuments acf={service.acf["tablitsa_dokumentov"]}/>
+                    <LicensesSamples acf={service.acf["obraztsy_litsenziy"]}/>
+                    <LIcensesBottomContent acf={service.acf["kontent_v_podvale"]}/>
                 </Fragment>
             )
         }

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 
 export class TableСontributions extends Component {
     render() {
+        const acf = this.props.acf;
         return (
             <Fragment>
                 <div className="section">
@@ -44,57 +45,23 @@ export class TableСontributions extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="row-col">
+                                {acf.map(line => <div className="row-col">
                                     <div className="col-co">
-                                        <div>1</div>
+                                        <div>{line.number}</div>
                                     </div>
                                     <div className="col-co">
-                                        <div>Комплекс услуг по подготовке и сопровождению документов для регистрации электроизмерительной лаборатории:</div>
+                                        <div>{line["labolatoiya_napryajeniem_do"]}</div>
                                     </div>
                                     <div className="col-co">
-                                        <div>60 000₽</div>
+                                        <div>{line["do_1000v"]}</div>
                                     </div>
                                     <div className="col-co">
-                                        <div>65 000₽</div>
+                                        <div>{line["do_10_kv_do_20_kv_do_35_kv"]}</div>
                                     </div>
                                     <div className="col-co">
-                                        <div>120 000₽</div>
+                                        <div>{line["do_110_kv_do_220_kv_do_500_kv_do_750_kv"]}</div>
                                     </div>
-                                </div>
-                                <div className="row-col">
-                                    <div className="col-co">
-                                        <div>2</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>Обязательный платеж за проведение процедуры рассмотрения и экспертизы предоставляемых документов. (Выставляется счет службой Ростехнадзора после подачи комплекта документов.)</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>25 200₽</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>25 200₽</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>25 200₽</div>
-                                    </div>
-                                </div>
-                                <div className="row-col">
-                                    <div className="col-co">
-                                        <div>3</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>Обучение персонала электролаборатории (3 человека с допуском к испытаниям-измерениям в электроустановке и повышением квалификации)</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>15 600₽</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>29 700₽</div>
-                                    </div>
-                                    <div className="col-co">
-                                        <div>89 100₽</div>
-                                    </div>
-                                </div>
+                                </div>)}
                                 <div className="div-block-13">
                                 </div>
                             </div>
