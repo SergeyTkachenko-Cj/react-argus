@@ -4,187 +4,195 @@ import playarrow from '../../../img/play-arrow.svg';
 
 export class Seminars extends Component {
     state = {
-        cat: {},
-        services: [],
-        posts: [],
+        cat: [],
         isLoaded: false
     }
 
     componentDidMount() {
-        const getCat = axios.get()
+        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
+            .then(res => this.setState({
+                cat: res.data.filter(cat => { if (cat.slug === this.props.match.params.slug) return cat }).shift(),
+                isLoaded: true
+            }))
+            .catch(err => console.log(err))
     }
 
     render() {
-        return (
-            <Fragment>
-                <div class="paddinger">
-                </div>
-                <div class="section">
-                    <div class="wrapper paddings-all w-clearfix">
-                        <div class="top-for-brads">
-                            <div class="small-h">Обучение в АРГУС-ЭКО</div>
-                            <div class="brads">
-                                <div class="small-h brads">главная</div>
-                                <img src={playarrow} alt="" class="brads-arrow" />
-                                <div class="small-h brads">Обучение и семинары</div>
-                                <img src={playarrow} alt="" class="brads-arrow" />
-                                <div class="small-h brads">семинары</div>
+        const { cat, isLoaded } = this.state;
+        console.log(this.state);
+        if (isLoaded) {
+            return (
+                <Fragment>
+                    <div className="paddinger">
+                    </div>
+                    <div className="section">
+                        <div className="wrapper paddings-all w-clearfix">
+                            <div className="top-for-brads">
+                                <div className="small-h">Обучение в АРГУС-ЭКО</div>
+                                <div className="brads">
+                                    <div className="small-h brads">главная</div>
+                                    <img src={playarrow} alt="" className="brads-arrow" />
+                                    <div className="small-h brads">Обучение и семинары</div>
+                                    <img src={playarrow} alt="" className="brads-arrow" />
+                                    <div className="small-h brads">{cat.name}</div>
+                                </div>
+                            </div>
+                            <h1>{cat.name}</h1>
+                            <div className="p-class head">{cat.description}</div>
+                            <div className="vertical-line">
+                            </div>
+                            <div className="vertical-line-25">
                             </div>
                         </div>
-                        <h1>Семинары</h1>
-                        <div class="p-class head">Обучим персонал ЭТЛ. Поможем получить удостоверение 3, 4, 5 группы (с правом проведения испытаний и допуском) за 10 дней дистанционно или в нашем собственном учебном центре.</div>
-                        <div class="vertical-line">
+                        <div className="fon-greeer">
                         </div>
-                        <div class="vertical-line-25">
+                        <div className="vertical-line _50">
                         </div>
                     </div>
-                    <div class="fon-greeer">
-                    </div>
-                    <div class="vertical-line _50">
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="wrapper">
-                        <div class="news page-news w-clearfix">
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">СЕМИНАР - 15 декабря 2019</div>
-                                <h3>Налоговые проверки и финмониторинг банков. Практические вопросы и современные требования к бизнесу</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="/single" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>подробнее</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
+                    <div className="section">
+                        <div className="wrapper">
+                            <div className="news page-news w-clearfix">
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">СЕМИНАР - 15 декабря 2019</div>
+                                    <h3>Налоговые проверки и финмониторинг банков. Практические вопросы и современные требования к бизнесу</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="/single" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>подробнее</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
                                             </div>
                                         </div>
+                                    </a>
+                                    <div className="img-in-news">
                                     </div>
-                                </a>
-                                <div class="img-in-news">
+                                </div>
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">СЕМИНАР - 15 декабря 2019</div>
+                                    <h3>Формирование стоимости строительства в условиях современного правового и методического обеспечения градостроительной деятельности</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>подробнее</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div className="img-in-news">
+                                    </div>
+                                </div>
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">СЕМИНАР - 15 декабря 2019</div>
+                                    <h3>Современные направления строительного контроля на объектах капитального строительства. Обследование строительных конструкций, зданий и сооружений</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>подробнее</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div className="img-in-news">
+                                    </div>
+                                </div>
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">новость - 20 июля 2019</div>
+                                    <h3>Стандарты Национального объединения строителей (НОСТРОЙ) на процессы выполнения работ, обязательные к применению с 01.06.2019 г., вопросы внедрения и актуализации</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>читать полностью</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div className="img-in-news">
+                                    </div>
+                                </div>
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">новость - 20 июля 2019</div>
+                                    <h3>Налоговые проверки и финмониторинг банков. Практические вопросы и современные требования к бизнесу</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>читать полностью</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div className="img-in-news">
+                                    </div>
+                                </div>
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">новость - 20 июля 2019</div>
+                                    <h3>Стандарты Национального объединения строителей (НОСТРОЙ) на процессы выполнения работ, обязательные к применению с 01.06.2019 г., вопросы внедрения и актуализации</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>читать полностью</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div className="img-in-news">
+                                    </div>
+                                </div>
+                                <div className="card-obuchenie w-clearfix">
+                                    <div className="small-h">новость - 20 июля 2019</div>
+                                    <h3>Стандарты Национального объединения строителей (НОСТРОЙ) на процессы выполнения работ, обязательные к применению с 01.06.2019 г., вопросы внедрения и актуализации</h3>
+                                    <div className="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
+                                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                        <div>читать полностью</div>
+                                        <div className="before-txt-link">
+                                            <div className="fon-arrow">
+                                                <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" className="arrow-line" />
+                                                <div className="line-arrow">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div className="img-in-news newser">
+                                        <div className="_4-imgis">
+                                            <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" className="glitch__img" />
+                                            <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" className="glitch__img" />
+                                            <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" className="glitch__img" />
+                                            <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" className="glitch__img" />
+                                            <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" className="glitch__img" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">СЕМИНАР - 15 декабря 2019</div>
-                                <h3>Формирование стоимости строительства в условиях современного правового и методического обеспечения градостроительной деятельности</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="#" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>подробнее</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="img-in-news">
-                                </div>
+                            <div className="vertical-line-25">
                             </div>
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">СЕМИНАР - 15 декабря 2019</div>
-                                <h3>Современные направления строительного контроля на объектах капитального строительства. Обследование строительных конструкций, зданий и сооружений</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="#" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>подробнее</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="img-in-news">
-                                </div>
-                            </div>
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">новость - 20 июля 2019</div>
-                                <h3>Стандарты Национального объединения строителей (НОСТРОЙ) на процессы выполнения работ, обязательные к применению с 01.06.2019 г., вопросы внедрения и актуализации</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="#" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>читать полностью</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="img-in-news">
-                                </div>
-                            </div>
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">новость - 20 июля 2019</div>
-                                <h3>Налоговые проверки и финмониторинг банков. Практические вопросы и современные требования к бизнесу</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="#" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>читать полностью</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="img-in-news">
-                                </div>
-                            </div>
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">новость - 20 июля 2019</div>
-                                <h3>Стандарты Национального объединения строителей (НОСТРОЙ) на процессы выполнения работ, обязательные к применению с 01.06.2019 г., вопросы внедрения и актуализации</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="#" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>читать полностью</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="img-in-news">
-                                </div>
-                            </div>
-                            <div class="card-obuchenie w-clearfix">
-                                <div class="small-h">новость - 20 июля 2019</div>
-                                <h3>Стандарты Национального объединения строителей (НОСТРОЙ) на процессы выполнения работ, обязательные к применению с 01.06.2019 г., вопросы внедрения и актуализации</h3>
-                                <div class="p-class">На семинаре рассмотрят оказание методической помощи членам Ассоциации по исполнению требований...</div>
-                                <a href="#" class="link w-inline-block" data-ix="line-arrow">
-                                    <div>читать полностью</div>
-                                    <div class="before-txt-link">
-                                        <div class="fon-arrow">
-                                            <img src="<?php bloginfo('template_url'); ?>/images/5d245acd1a0023001b7a6139_play-arrow.svg" alt="" class="arrow-line" />
-                                            <div class="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="img-in-news newser">
-                                    <div class="_4-imgis">
-                                        <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" class="glitch__img" />
-                                        <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" class="glitch__img" />
-                                        <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" class="glitch__img" />
-                                        <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" class="glitch__img" />
-                                        <img src="<?php bloginfo('template_url'); ?>/images/5d2de0b099a6904df03fa26f_fotolia_45348884_subscription_monthly_m.jpg" alt="" class="glitch__img" />
-                                    </div>
-                                </div>
+                            <div className="vertical-line">
                             </div>
                         </div>
-                        <div class="vertical-line-25">
+                        <div className="vertical-line _50">
                         </div>
-                        <div class="vertical-line">
+                        <div className="fon-greeer">
                         </div>
                     </div>
-                    <div class="vertical-line _50">
-                    </div>
-                    <div class="fon-greeer">
-                    </div>
-                </div>
-            </Fragment>
-        )
+                </Fragment>
+            )
+        }
+        return null;
     }
 }
 
