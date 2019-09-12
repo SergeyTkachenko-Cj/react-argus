@@ -83,10 +83,10 @@ export class SingleSro extends Component {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    <SroContent acf={service.acf.blok_kontenta_1} />
-                    <SroСontributions acf={service.acf.tablica_vznosov} />
+                    <SroContent acf={service.acf["blok_kontenta_1"]} />
+                    <SroСontributions acf={service.acf["tablica_vznosov"]} />
                     <SroQuote title={service.title} acf={service.acf.tsitata} />
-                    <SroContent acf={service.acf.blok_kontenta_2} />
+                    <SroContent acf={service.acf["blok_kontenta_2"]} />
                 </Fragment>
             )
         }

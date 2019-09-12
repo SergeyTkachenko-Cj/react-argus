@@ -41,7 +41,7 @@ export class MainPage extends Component {
                     <div className="vertical-line _50">
                     </div>
                 </div>
-                <SectionEight/>
+                <SectionEight />
                 <SectionNine />
                 <div className="section">
                     <div className="wrapper no-bottom-padding">

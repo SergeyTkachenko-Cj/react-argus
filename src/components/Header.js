@@ -19,11 +19,16 @@ export class Header extends Component {
         tel: res[1].data,
         isLoaded: true
       }))
-      .catch()
+      .catch();
+
+    const script = document.createElement("script");
+    script.src = "https://thevogne.ru/wp-content/themes/newvogne/js/webflow.js";
+    document.body.appendChild(script);
   }
 
   render() {
     const { urls, tel, isLoaded } = this.state;
+    console.log(urls);
     const mojno = urls.filter(gavno => {
       if (gavno.menu_item_parent === "0") return gavno;
     });
@@ -84,7 +89,7 @@ export class Header extends Component {
                   .filter(dropdown => {
                     if (dropdown.menu_item_parent === "0") return dropdown;
                   })
-                  .map(dropdown => <DropdownMenu key={dropdown.ID} parenttitle={dropdown.title} slug={dropdown.slug} parentid={dropdown.ID} items={urls}/> )}
+                  .map(dropdown => <DropdownMenu key={dropdown.ID} parenttitle={dropdown.title} slug={dropdown.slug} parentid={dropdown.ID} items={urls} />)}
                 <a href={'tel:' + tel.acf.telefon} className="link phone">{tel.acf.telefon}</a>
               </nav>
             </div>

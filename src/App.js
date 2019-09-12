@@ -7,6 +7,8 @@ import MainPage from './components/MainPage/MainPage';
 import SingleSro from './components/SRO/SingleSro';
 import SingleLicenses from './components/Licenses/SingleLicenses';
 import Seminars from './components/Studing/Seminars/Seminars';
+import SinglePage from './components/SinglePage/SinglePage';
+import Sro from './components/SRO/Sro';
 
 export class App extends Component {
   state = {
@@ -44,9 +46,11 @@ export class App extends Component {
         <div>
           <Header/>
           <Route exact path="/" component={MainPage} />
+          <Route exact path="/:slug" component={Sro} />
           <Route exact path="/sro/:slug" component={SingleSro} />
           <Route exact path="/licenses/:slug" component={SingleLicenses} />
           <Route exact path="/studing/:slug" component={Seminars} />
+          <Route exact path="/studing/seminars/:slug" component={SinglePage} />
           <footer className="fotter">
             <div className="wrapper fotter">
               <div className="vertical-line-25">
