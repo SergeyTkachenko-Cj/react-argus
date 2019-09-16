@@ -18,7 +18,6 @@ export class SroServices extends Component {
         .catch(err => console.log(err))
     }
     render() {
-        console.log(this.state);
         const { services, isLoaded } = this.state;
         if (isLoaded) {
             return (

@@ -8,7 +8,6 @@ export class DropdownMenu extends Component {
         if (slug == 'a0325522.xsph.ru') {
             link = '';
         }
-        console.log(this.props);
         return (
             <div data-hover="1" data-delay="0" className="d-down w-dropdown">
                 <div className="dropdown-toggle w-dropdown-toggle">

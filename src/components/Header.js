@@ -28,10 +28,6 @@ export class Header extends Component {
 
   render() {
     const { urls, tel, isLoaded } = this.state;
-    console.log(urls);
-    const mojno = urls.filter(gavno => {
-      if (gavno.menu_item_parent === "0") return gavno;
-    });
     if (isLoaded) {
       return (
         <Fragment>

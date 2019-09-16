@@ -9,6 +9,7 @@ import SingleLicenses from './components/Licenses/SingleLicenses';
 import Seminars from './components/Studing/Seminars/Seminars';
 import SinglePage from './components/SinglePage/SinglePage';
 import Sro from './components/SRO/Sro';
+import About from './components/About/About';
 
 export class App extends Component {
   state = {
@@ -46,7 +47,8 @@ export class App extends Component {
         <div>
           <Header/>
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/:slug" component={Sro} />
+          <Route exact path="/o-kompanii" component={About} />
+          <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
           <Route exact path="/sro/:slug" component={SingleSro} />
           <Route exact path="/licenses/:slug" component={SingleLicenses} />
           <Route exact path="/studing/:slug" component={Seminars} />
