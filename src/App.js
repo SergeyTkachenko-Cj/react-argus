@@ -10,6 +10,9 @@ import Seminars from './components/Studing/Seminars/Seminars';
 import SinglePage from './components/SinglePage/SinglePage';
 import Sro from './components/SRO/Sro';
 import About from './components/About/About';
+import Blog from './components/Blog/Blog';
+import Sales from './components/Sales/Sales';
+import Reviews from './components/Reviews/Reviews';
 
 export class App extends Component {
   state = {
@@ -48,6 +51,9 @@ export class App extends Component {
           <Header/>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/o-kompanii" component={About} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/aktsii" component={Sales} />
+          <Route exact path="/otzyvy" component={Reviews} />
           <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
           <Route exact path="/sro/:slug" component={SingleSro} />
           <Route exact path="/licenses/:slug" component={SingleLicenses} />

@@ -50,7 +50,6 @@ export class About extends Component {
                         </div>
                     </div>
                     {page.acf.sektsii.map(item => <AboutSection img={item.kartinka} text={item["tekstoviy_blok"]}/>)}
-                    <AboutSection />
                     <div class="section">
                         <div class="wrapper no-paddings">
                             <div class="left-div">
