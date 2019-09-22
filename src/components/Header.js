@@ -10,16 +10,12 @@ export class Header extends Component {
   }
 
   componentDidMount() {
-    const getUrl = axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/menus/glavnoe-menyu');
-    const getTel = axios.get('http://a0325522.xsph.ru/wp-json/acf/v3/options/options');
-
-    Promise.all([getUrl, getTel])
+    axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/menus/glavnoe-menyu')
       .then(res => this.setState({
-        urls: res[0].data,
-        tel: res[1].data,
+        urls: res.data,
         isLoaded: true
       }))
-      .catch();
+      .catch(err => console.log(err));
 
     const script = document.createElement("script");
     script.src = "https://thevogne.ru/wp-content/themes/newvogne/js/webflow.js";
@@ -27,8 +23,9 @@ export class Header extends Component {
   }
 
   render() {
-    const { urls, tel, isLoaded } = this.state;
-    if (isLoaded) {
+    const { urls, isLoaded } = this.state;
+    const { tel } = this.props;
+    if (isLoaded && tel) {
       return (
         <Fragment>
           <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 w-nav">
@@ -86,7 +83,7 @@ export class Header extends Component {
                     if (dropdown.menu_item_parent === "0") return dropdown;
                   })
                   .map(dropdown => <DropdownMenu key={dropdown.ID} parenttitle={dropdown.title} slug={dropdown.slug} parentid={dropdown.ID} items={urls} />)}
-                <a href={'tel:' + tel.acf.telefon} className="link phone">{tel.acf.telefon}</a>
+                <a href={`tel:${tel.telefon}`} className="link phone">{tel.telefon}</a>
               </nav>
             </div>
             <div className="menu-button-3 w-nav-button" data-ix="menu">

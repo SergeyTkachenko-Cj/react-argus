@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import playarrow from '../../../img/play-arrow.svg';
 import SroServiceItem from './SroServiceItem';
 
 export class SroServices extends Component {

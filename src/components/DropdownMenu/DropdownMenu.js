@@ -5,7 +5,7 @@ export class DropdownMenu extends Component {
     render() {
         let slug = this.props.slug;
         let link = `/${slug}`;
-        if (slug == 'a0325522.xsph.ru') {
+        if (slug === 'a0325522.xsph.ru') {
             link = '';
         }
         return (
@@ -17,7 +17,7 @@ export class DropdownMenu extends Component {
                 <nav className="dropdown-list w-dropdown-list">
                     {this.props.items
                         .filter(item => {
-                            if (item.menu_item_parent == this.props.parentid) return item;
+                            if (item.menu_item_parent === this.props.parentid) return item;
                         })
                         .map(item => {
                             if (item.url === 'http://el.argus-eko.ru/') {

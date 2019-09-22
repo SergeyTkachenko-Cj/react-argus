@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReSectionOne from './SectionOne/ReSectionOne';
-import SectionTwo from '../SectionTwo';
+import SectionTwo from './SectionTwo/SectionTwo';
 import SectionThree from './SectionThree/SectionThree';
 import SectionFour from './SectionFour/SectionFour';
 import SectionFive from './SectionFive/SectionFive';
