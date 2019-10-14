@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import playarrow from '../../../img/play-arrow.svg';
 import SlideItem from './SlideItem/SlideItem';
@@ -10,12 +11,17 @@ class ReSectionOne extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services')
+        axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services?per_page=50')
             .then(res => this.setState({
-                services: res.data,
+                services: res.data.filter(item => item.acf ? item.acf["dovavit_v_karusel"] : null),
                 isLoaded: true
             }))
             .catch(err => console.log(err))
+    }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
 
     render() {
@@ -23,9 +29,9 @@ class ReSectionOne extends Component {
         if (isLoaded) {
             return (
                 <div className="section">
-                    <div data-animation="slide" data-duration="500" data-infinite="1" className="slider w-slider">
+                    <div data-delay="4000" data-autoplay="1" data-animation="slide" data-duration="500" data-infinite="1" className="slider w-slider">
                         <div className="w-slider-mask">
-                            {services.map(slide => <SlideItem key={slide.id} title={slide.title.rendered} desc={slide.excerpt.rendered} image={slide.featured_media} />)}
+                            {services.map(slide => <SlideItem key={slide.id} title={slide.title} desc={slide.excerpt} image={slide.media} term={slide.terms[0].slug} slug={slide.slug} />)}
                         </div>
                         <div className="left-arrow w-slider-arrow-left" data-ix="line-arrow">
                             <div className="before-txt-link revers">
@@ -61,7 +67,7 @@ class ReSectionOne extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

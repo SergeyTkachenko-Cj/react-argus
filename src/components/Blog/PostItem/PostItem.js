@@ -1,5 +1,7 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import playarrow from '../../../img/play-arrow.svg';
 
 export class PostItem extends Component {
@@ -8,45 +10,38 @@ export class PostItem extends Component {
         isLoaded: false
     }
 
-    componentDidMount() {
-        if (this.props.img) {
-            axios.get(`http://a0325522.xsph.ru/wp-json/wp/v2/media/${this.props.img}`)
-                .then(res => this.setState({
-                    img: res.data,
-                    isLoaded: true
-                }))
-                .catch(err => console.log(err))
-        }
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
+    
     render() {
-        const { title, excerpt, date } = this.props;
-        const { img, isLoaded } = this.state;
-        let newdate = `${date}Z`;
-        let normalDate = new Date(newdate).toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' });
-        if (isLoaded && img) {
+        const { img, title, excerpt, date, slug, cat } = this.props;
+        let normalDate = new Date(date).toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' });
+        if (img) {
             return (
                 <Fragment>
-                    <div class="card-news w-clearfix">
-                        <div class="small-h">статья - {normalDate}</div>
+                    <div className="card-news w-clearfix">
+                        <div className="small-h">{cat[0]} - {normalDate}</div>
                         <h3>{title}</h3>
-                        <div class="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
-                        <a href="#" class="link w-inline-block" data-ix="line-arrow">
+                        <div className="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
+                        <Link to={`/blog/${slug}`} className="link w-inline-block" data-ix="line-arrow">
                             <div>читать полностью</div>
-                            <div class="before-txt-link">
-                                <div class="fon-arrow">
-                                    <img src={playarrow} alt="" class="arrow-line" />
-                                    <div class="line-arrow">
+                            <div className="before-txt-link">
+                                <div className="fon-arrow">
+                                    <img src={playarrow} alt="" className="arrow-line" />
+                                    <div className="line-arrow">
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <div class="img-in-news newser">
-                            <div class="_4-imgis">
-                                <img src={img.source_url} alt="" class="glitch__img" />
-                                <img src={img.source_url} alt="" class="glitch__img" />
-                                <img src={img.source_url} alt="" class="glitch__img" />
-                                <img src={img.source_url} alt="" class="glitch__img" />
-                                <img src={img.source_url} alt="" class="glitch__img" />
+                        </Link>
+                        <div className="img-in-news newser">
+                            <div className="_4-imgis">
+                                <img src={img} alt={title} className="glitch__img" />
+                                <img src={img} alt={title} className="glitch__img" />
+                                <img src={img} alt={title} className="glitch__img" />
+                                <img src={img} alt={title} className="glitch__img" />
+                                <img src={img} alt={title} className="glitch__img" />
                             </div>
                         </div>
                     </div>
@@ -55,20 +50,20 @@ export class PostItem extends Component {
         }
         return (
             <Fragment>
-                <div class="card-news w-clearfix">
-                    <div class="small-h">статья - {normalDate}</div>
+                <div className="card-news w-clearfix">
+                    <div className="small-h">{cat[0]} - {normalDate}</div>
                     <h3>{title}</h3>
-                    <div class="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
-                    <a href="#" class="link w-inline-block" data-ix="line-arrow">
+                    <div className="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
+                    <Link to={`/blog/${slug}`} className="link w-inline-block" data-ix="line-arrow">
                         <div>читать полностью</div>
-                        <div class="before-txt-link">
-                            <div class="fon-arrow">
-                                <img src={playarrow} alt="" class="arrow-line" />
-                                <div class="line-arrow">
+                        <div className="before-txt-link">
+                            <div className="fon-arrow">
+                                <img src={playarrow} alt="" className="arrow-line" />
+                                <div className="line-arrow">
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             </Fragment>
         )

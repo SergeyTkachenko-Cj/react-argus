@@ -1,6 +1,13 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class SampleLightbox extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+        Webflow.require('ix2').init();
+    }
+
     render() {
         const { url, type, filesize, id, width, height, filename } = this.props.img;
         let data = {
@@ -23,7 +30,8 @@ export class SampleLightbox extends Component {
                     <a href="#" className="img-people-otzivas otzivas w-inline-block w-lightbox">
                         <img src={url} alt="" className="img-otziv" />
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{
-                __html: JSON.stringify(data)}}></script> 
+                            __html: JSON.stringify(data)
+                        }}></script>
                     </a>
                 </div>
             </Fragment>

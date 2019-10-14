@@ -1,12 +1,14 @@
-import React, { Component, Fragment } from 'react';
+/* eslint-disable */
+import React, { Component, Fragment, Loader } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import playarrow from '../../img/play-arrow.svg';
 import LicensesSpecials from './LicensesSpecials/LicensesSpecials';
 import LicensesContentBlocks from './LicensesContentBlocks/LicensesContentBlocks';
-import TableСontributions from './TableСontributions/TableСontributions';
-import TableDocuments from './TableDocuments/TableDocuments';
+import TableBlock from './TableBlock/TableBlock';
 import LicensesSamples from './LicensesSamples/LicensesSamples';
 import LIcensesBottomContent from './LIcensesBottomContent/LIcensesBottomContent';
+import NotFound from '../Error/NotFound'
 
 export class SingleLicenses extends Component {
     state = {
@@ -16,6 +18,7 @@ export class SingleLicenses extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
             .then(res => this.setState({
                 service: res.data,
@@ -24,6 +27,33 @@ export class SingleLicenses extends Component {
             }))
             .catch(err => console.log(err))
     }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.match.params.slug !== prevState.service.slug) {
+            const newSlug = nextProps.match.params.slug;
+            return { newSlug: newSlug };
+        } else {
+            return null;
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.params.slug != this.state.newSlug) {
+            window.scrollTo(0, 0);
+            axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
+            .then(res => this.setState({
+                service: res.data,
+                img: res.data.media.large,
+                isLoaded: true
+            }))
+            .catch(err => console.log(err))
+        }
+        setTimeout(function() {
+            Webflow.destroy();
+            Webflow.ready();
+        }, 500)
+    }
+
     render() {
         const { service, img, isLoaded } = this.state;
         if (isLoaded) {
@@ -36,7 +66,7 @@ export class SingleLicenses extends Component {
                             <div className="row-3x w-row">
                                 <div className="col-3x left w-clearfix w-col w-col-6">
                                     <div className="top-for-brads">
-                                        <a href="/sro" className="link w-inline-block" data-ix="line-arrow">
+                                        <Link to="/licenses" className="link w-inline-block" data-ix="line-arrow">
                                             <div className="before-txt-link revers">
                                                 <div className="fon-arrow">
                                                     <img src={playarrow} alt="" className="arrow-line" />
@@ -45,10 +75,10 @@ export class SingleLicenses extends Component {
                                                 </div>
                                             </div>
                                             <div>назад</div>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <h1>{service.title}</h1>
-                                    <div className="p-class exc" dangerouslySetInnerHTML={{ __html: service.content }}></div>
+                                    <div className="p-class exc" dangerouslySetInnerHTML={{__html: service.content}}></div>
                                 </div>
                                 <div className="col-3x right _4-img-right w-col w-col-6">
                                     <div className="top-for-brads lefts">
@@ -60,12 +90,8 @@ export class SingleLicenses extends Component {
                                             <div className="small-h brads">{service.title}</div>
                                         </div>
                                     </div>
-                                    <div className="_4-imgis">
-                                        <img src={service.media["post-thumbnail"]} alt="" className="glitch__img" />
-                                        <img src={service.media["post-thumbnail"]} alt="" className="glitch__img" />
-                                        <img src={service.media["post-thumbnail"]} alt="" className="glitch__img" />
-                                        <img src={service.media["post-thumbnail"]} alt="" className="glitch__img" />
-                                        <img src={service.media["post-thumbnail"]} alt="" className="glitch__img" />
+                                    <div className="_4-imgis margin-images">
+                                        <img src={img} alt="" className="glitch__img" />
                                     </div>
                                     <div className="line-gens">
                                         <div className="green-line">
@@ -87,16 +113,15 @@ export class SingleLicenses extends Component {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    <LicensesSpecials acf={service.acf["special_offer"]}/>
-                    <LicensesContentBlocks acf={service.acf["bloki_s_kontentom"]} />
-                    <TableСontributions acf={service.acf["tablitsa_vznosov"]}/>
-                    <TableDocuments acf={service.acf["tablitsa_dokumentov"]}/>
-                    <LicensesSamples acf={service.acf["obraztsy_litsenziy"]}/>
-                    <LIcensesBottomContent acf={service.acf["kontent_v_podvale"]}/>
+                    {service.acf["special_offer"] ? <LicensesSpecials acf={service.acf["special_offer"]}/> : null}
+                    {service.acf["bloki_s_kontentom"] ? <LicensesContentBlocks acf={service.acf["bloki_s_kontentom"]} /> : null}
+                    {service.acf["bloki_s_tablitsami"] ? <TableBlock acf={service.acf["bloki_s_tablitsami"]}/> : null}
+                    {service.acf["obraztsy_litsenziy"] ? <LicensesSamples acf={service.acf["obraztsy_litsenziy"]}/> : null}
+                    {service.acf["kontent_v_podvale"] ?  <LIcensesBottomContent acf={service.acf["kontent_v_podvale"]}/> : null}
                 </Fragment>
             )
-        }
-        return null;
+        } 
+        return <NotFound />;
     }
 }
 

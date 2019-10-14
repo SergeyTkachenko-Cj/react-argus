@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 import playarrow from '../../../img/play-arrow.svg';
@@ -10,13 +11,24 @@ export class SectionSix extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat/5')
+        const getParent = axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat/5');
+        const getChilds = axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat');
+
+        Promise.all([getParent, getChilds])
             .then(res => this.setState({
-                taxomomy: res.data,
+                taxomomy: res[0].data,
+                childs: res[1].data.filter(item => item.parent === 5),
                 isLoaded: true
             }))
             .catch(err => console.log(err))
     }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+        Webflow.require('ix2').init();
+    }
+
     render() {
         if (this.state.isLoaded) {
             return (
@@ -26,23 +38,12 @@ export class SectionSix extends Component {
                             <div className="col-3x left w-clearfix w-col w-col-6">
                                 <div className="small-h">услуги</div>
                                 <h2>{ this.state.taxomomy.name }</h2>
-                                <div className="pclass">{ this.state.taxomomy.description }</div>
-                                <a href="#" className="link w-inline-block" data-ix="line-arrow">
-                                    <div>Узнать подробнее</div>
-                                    <div className="before-txt-link">
-                                        <div className="fon-arrow">
-                                            <img src={playarrow} alt="" className="arrow-line" />
-                                            <div className="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                <div className="p-class">{ this.state.taxomomy.description }</div>
                             </div>
                             <div className="col-3x right w-clearfix w-col w-col-6">
                                 <div className="col-3x left _2">
                                 </div>
-                                <SixChildTax taxid="6" />
-                                <SixChildTax taxid="7" />
+                                {this.state.childs.map(child => <SixChildTax key={child.id} tax={child} />)}
                             </div>
                         </div>
                         <div className="vertical-line">
@@ -57,7 +58,7 @@ export class SectionSix extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 import playarrow from '../../../img/play-arrow.svg';
@@ -10,12 +11,17 @@ export class SectionNine extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/samples')
+        axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/samples')
             .then(res => this.setState({
-                samples: res.data,
+                samples: res.data.filter(item => item.acf),
                 isLoaded: true
             }))
             .catch(err => console.log(err))
+    }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
 
     render() {
@@ -28,21 +34,11 @@ export class SectionNine extends Component {
                             <div className="col-3x left w-col w-col-6">
                                 <div className="small-h">образцы</div>
                                 <h2>Образцы лицензий и сертификатов</h2>
-                                <a href="#" className="link w-inline-block" data-ix="line-arrow">
-                                    <div>все образцы</div>
-                                    <div className="before-txt-link">
-                                        <div className="fon-arrow">
-                                            <img src={playarrow} alt="" className="arrow-line" />
-                                            <div className="line-arrow">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
                             <div className="col-3x left w-col w-col-6">
                                 <div data-animation="slide" data-duration="500" data-infinite="1" className="slider-primers w-slider">
                                     <div className="w-slider-mask">
-                                        { samples.map(slide => <SampleSlide key={slide.id} image={slide.featured_media} title={slide.title.rendered} />) }
+                                        { samples.map(slide => <SampleSlide key={slide.id} sample={slide} />) }
                                     </div>
                                     <div className="left-arrow w-slider-arrow-left" data-ix="line-arrow">
                                         <div className="before-txt-link revers">
@@ -81,7 +77,7 @@ export class SectionNine extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

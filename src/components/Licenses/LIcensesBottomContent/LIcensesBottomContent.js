@@ -1,13 +1,19 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class LIcensesBottomContent extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+
     render() {
         const acf = this.props.acf;
         if (acf) {
             return (
                 <Fragment>
                     <div className="section">
-                        <div className="wrapper single ac w-clearfix" dangerouslySetInnerHTML={{ __html: this.props.acf}}>
+                        <div className="wrapper no-wrappers-padding single ac w-clearfix" dangerouslySetInnerHTML={{ __html: this.props.acf }}>
                         </div>
                         <div className="vertical-line _50">
                         </div>

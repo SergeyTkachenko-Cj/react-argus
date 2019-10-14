@@ -1,6 +1,13 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class SalesItem extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+        Webflow.require('ix2').init();
+    }
+
     render() {
         const { image, content } = this.props;
         return (
@@ -13,7 +20,7 @@ export class SalesItem extends Component {
                             </div>
                         </div>
                         <div className="col-otzivas _50-proc left w-clearfix">
-                            <div className="p-class" dangerouslySetInnerHTML={{__html: content}}>
+                            <div className="p-class" dangerouslySetInnerHTML={{ __html: content }}>
                             </div>
                         </div>
                     </div>

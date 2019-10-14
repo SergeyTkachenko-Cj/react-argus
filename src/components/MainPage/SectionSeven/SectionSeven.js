@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 import ClientCard from './ClientCard/ClientCard';
@@ -16,6 +17,13 @@ export class SectionSeven extends Component {
             }))
             .catch(err => console.log(err))
     }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+        Webflow.require('ix2').init();
+    }
+
     render() {
         if (this.state.isLoaded) {
             return (
@@ -26,7 +34,7 @@ export class SectionSeven extends Component {
                             <h2>Нам доверяют:</h2>
                         </div>
                         <div className="logos-clients w-clearfix">
-                            { this.state.clients.map(client => <ClientCard key={client.id} image={client.featured_media} title={client.title.rendered} />)}
+                            {this.state.clients.map(client => <ClientCard key={client.id} image={client.featured_media} title={client.title.rendered} link={client.content.rendered} />)}
                         </div>
                         <div className="vertical-line-25">
                         </div>
@@ -40,7 +48,7 @@ export class SectionSeven extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

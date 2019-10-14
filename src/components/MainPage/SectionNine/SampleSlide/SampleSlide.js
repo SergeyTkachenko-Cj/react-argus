@@ -1,37 +1,46 @@
+/* eslint-disable */
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export class SampleSlide extends Component {
-    state = {
-        img: '',
-        isLoaded: false
-    }
-
-    componentDidMount() {
-        axios.get(`http://a0325522.xsph.ru/wp-json/wp/v2/media/${this.props.image}`)
-            .then(res => this.setState({
-                img: res.data.source_url,
-                isLoaded: true
-            }))
-            .catch(err => console.log(err))
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
 
     render() {
-        const { img, isLoaded } = this.state;
-        if (isLoaded) {
+        const { sample } = this.props;
+        const imageData = sample.acf.obrazets;
+        const data = {
+            "items": [
+                {
+                    "type": imageData.type,
+                    "_id": imageData.id,
+                    "fileName": imageData.filename,
+                    "origFileName": imageData.filename,
+                    "width": imageData.width,
+                    "height": imageData.height,
+                    "fileSize": imageData.filesize,
+                    "url": imageData.url
+                }
+            ]
+        }
+        if (this.props.sample) {
             return (
                 <div className="w-slide">
                     <div className="div-in-slide-primeras">
                         <div className="col-in-slider primeras">
-                            <div className="mama-obrazci">
-                                <img src={ img } alt={ this.props.title } className="image-16" />
+                            <div className="mama-obrazci new-mama">
+                                <a href="#" className="_4-imgis pops no-shadows w-inline-block w-lightbox">
+                                    <img src={imageData.url} alt={this.props.sample.title} className="image-16 extra" />
+                                    <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}></script>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             )
         }
-        return <h3>Образцов не найдено</h3>
+        return null;
     }
 }
 

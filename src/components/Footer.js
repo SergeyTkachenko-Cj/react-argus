@@ -1,6 +1,13 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class Footer extends Component {
+    // componentDidUpdate() {
+    //     Webflow.destroy();
+    //     Webflow.ready();
+    //     Webflow.require('ix2').init();
+    // }
+
     render() {
         const { options } = this.props;
         if (options.acf) {
@@ -32,7 +39,7 @@ export class Footer extends Component {
                                 </div>
                                 <div className="fotter-clos w-clearfix w-col w-col-3 w-col-medium-6">
                                     <div className="p-class fotter-links">{options.acf.kopirajt}
-                                    <br />{options.acf.adres}</div>
+                                        <br />{options.acf.adres}</div>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,9 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 import playarrow from '../../../img/play-arrow.svg';
 import ImageForFour from './ImageForFour/ImageForFour';
+import { Link } from 'react-router-dom';
 
 export class SectionFour extends Component {
     state = {
@@ -12,24 +14,26 @@ export class SectionFour extends Component {
     componentDidMount() {
         axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services?services_cat=3')
             .then(res => this.setState({
-                service: res.data,
+                service: res.data.filter(item => item.acf["dovavit_v_karusel"] == false),
                 isLoaded: true
             }))
             .catch(err => console.log(err))
     }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+    
     render() {
         const { service, isLoaded } = this.state;
-        if (isLoaded) {
+        if (service[this.props.postid] && isLoaded) {
             return (
                 <div className="section">
                     <div className="wrapper">
                         <div className="row-3x w-row">
                             <div data-w-id="1c787311-19c1-b63f-a17d-e59fbdcbfb8e" className="col-3x left _4-img w-col w-col-6">
                                 <div data-w-id="e6fd66f0-e564-714d-18de-531c8d39e954" className="_4-imgis">
-                                    <ImageForFour image={ service[this.props.postid].featured_media } />
-                                    <ImageForFour image={ service[this.props.postid].featured_media } />
-                                    <ImageForFour image={ service[this.props.postid].featured_media } />
-                                    <ImageForFour image={ service[this.props.postid].featured_media } />
                                     <ImageForFour image={ service[this.props.postid].featured_media } />
                                 </div>
                                 <div className="line-gens">
@@ -44,8 +48,8 @@ export class SectionFour extends Component {
                             <div className="col-3x left w-clearfix w-col w-col-6">
                                 <div className="small-h">услуги</div>
                                 <h2>{ service[this.props.postid].title.rendered }</h2>
-                                <div className="pclass" dangerouslySetInnerHTML={{ __html: service[this.props.postid].content.rendered }}></div>
-                                <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                <div className="p-class" dangerouslySetInnerHTML={{ __html: service[this.props.postid].content.rendered }}></div>
+                                <Link to={`/licenses/${service[this.props.postid].slug}`} className="link w-inline-block" data-ix="line-arrow">
                                     <div>Узнать подробнее</div>
                                     <div className="before-txt-link">
                                         <div className="fon-arrow">
@@ -54,7 +58,7 @@ export class SectionFour extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="vertical-line">
@@ -69,7 +73,7 @@ export class SectionFour extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

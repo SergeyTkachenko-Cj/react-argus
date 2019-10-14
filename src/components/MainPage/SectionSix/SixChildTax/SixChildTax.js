@@ -1,33 +1,26 @@
+/* eslint-disable */
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import playarrow from '../../../../img/play-arrow.svg';
 
 export class SixChildTax extends Component {
-    state = {
-        taxomomy: '',
-        isLoaded: false
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
-
-    componentDidMount() {
-        axios.get(`http://a0325522.xsph.ru/wp-json/wp/v2/services_cat/${this.props.taxid}`)
-            .then(res => this.setState({
-                taxomomy: res.data,
-                isLoaded: true
-            }))
-            .catch(err => console.log(err))
-    }
-
+    
     render() {
-        if(this.state.isLoaded) {
+        const { tax } = this.props;
+        if (tax) {
             return (
                 <div className="card w-clearfix">
                     <div className="card-ico">
-                        <div className="ico-in-card training" style={{ backgroundImage: `url(${this.state.taxomomy.acf.icon})` }}>
+                        <div className="ico-in-card training" style={{ backgroundImage: `url(${tax.acf.icon.url})` }}>
                         </div>
                     </div>
-                    <h3>{ this.state.taxomomy.name }</h3>
-                    <div className="pclass">{ this.state.taxomomy.description }</div>
-                    <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                    <h3>{ tax.name }</h3>
+                    <div className="p-class">{ tax.description }</div>
+                    <Link to={`/training-and-seminars/${tax.slug}`} className="link w-inline-block" data-ix="line-arrow">
                         <div>Показать программы</div>
                         <div className="before-txt-link">
                             <div className="fon-arrow">
@@ -36,7 +29,7 @@ export class SixChildTax extends Component {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             )
         }

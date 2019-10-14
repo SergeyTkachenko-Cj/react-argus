@@ -1,4 +1,6 @@
+/* eslint-disable */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import playarrow from '../../../img/play-arrow.svg';
 import axios from 'axios';
 
@@ -11,13 +13,20 @@ export class SectionFive extends Component {
     componentDidMount() {
         axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services?services_cat=4')
             .then(res => this.setState({
-                service: res.data[0],
+                service: res.data.filter(item => item.acf["dovavit_v_karusel"] == false)[0],
                 isLoaded: true
             }))
             .catch(err => console.log(err))
     }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+    
     render() {
-        if (this.state.isLoaded) {
+        const { service, isLoaded } = this.state;
+        if (service && isLoaded) {
             return (
                 <div className="section">
                     <div className="wrapper">
@@ -25,8 +34,8 @@ export class SectionFive extends Component {
                             <div className="col-3x left w-clearfix w-col w-col-6">
                                 <div className="small-h">услуги</div>
                                 <h2>{ this.state.service.title.rendered }</h2>
-                                <div className="pclass" dangerouslySetInnerHTML={{ __html: this.state.service.excerpt.rendered }}></div>
-                                <a href="#" className="link w-inline-block" data-ix="line-arrow">
+                                <div className="p-class" dangerouslySetInnerHTML={{ __html: this.state.service.excerpt.rendered }}></div>
+                                <Link to={`/certifications/${this.state.service.slug}`} className="link w-inline-block" data-ix="line-arrow">
                                     <div>Узнать подробнее</div>
                                     <div className="before-txt-link">
                                         <div className="fon-arrow">
@@ -35,11 +44,10 @@ export class SectionFive extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                             <div className="col-3x left w-clearfix w-col w-col-6">
-                                <div className="small-h">услуги</div>
-                                <div className="pclass" dangerouslySetInnerHTML={{ __html: this.state.service.content.rendered }}></div>
+                                <div className="p-class" dangerouslySetInnerHTML={{ __html: this.state.service.content.rendered }}></div>
                             </div>
                         </div>
                         <div className="vertical-line">
@@ -56,7 +64,7 @@ export class SectionFive extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

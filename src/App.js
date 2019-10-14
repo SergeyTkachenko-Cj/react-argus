@@ -1,7 +1,7 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
 import Header from './components/Header';
 import MainPage from './components/MainPage/MainPage';
 import SingleSro from './components/SRO/SingleSro';
@@ -14,16 +14,13 @@ import Blog from './components/Blog/Blog';
 import Sales from './components/Sales/Sales';
 import Reviews from './components/Reviews/Reviews';
 import Contacts from './components/Contacts/Contacts';
+import NotFound from './components/Error/NotFound';
 import Footer from './components/Footer';
+import Studing from './components/Studing/Studing';
 
 export class App extends Component {
   state = {
     options: [],
-    servises: [],
-    clients: [],
-    reviews: [],
-    samples: [],
-    posts: [],
     isLoaded: false
   }
 
@@ -36,25 +33,34 @@ export class App extends Component {
       .catch(err => console.log(err));
   }
 
+  componentDidUpdate() {
+    Webflow.destroy();
+    Webflow.ready();
+  }
+
   render() {
     const { options } = this.state;
     return (
       <Router>
-        <div>
-          <Header tel={options.acf}/>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/o-kompanii" component={About} />
-          <Route exact path="/blog" component={Blog} />
-          <Route exact path="/aktsii" component={Sales} />
-          <Route exact path="/otzyvy" component={Reviews} />
-          <Route exact path="/kontakty" component={Contacts} />
-          <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
-          <Route exact path="/sro/:slug" component={SingleSro} />
-          <Route exact path="/licenses/:slug" component={SingleLicenses} />
-          <Route exact path="/studing/:slug" component={Seminars} />
-          <Route exact path="/studing/seminars/:slug" component={SinglePage} />
-          <Footer options={options}/>
-        </div>
+        <Fragment>
+          <Header tel={options.acf} />
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/o-kompanii" component={About} />
+            <Route exact path="/blog" component={Blog} />
+            <Route exact path="/aktsii" component={Sales} />
+            <Route exact path="/otzyvy" component={Reviews} />
+            <Route exact path="/kontakty" component={Contacts} />
+            <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
+            <Route exact path="/training-and-seminars" component={Studing} />
+            <Route exact path={["/sro/:slug", "/certifications/:slug", "/legal-services/:slug", "/work-safety/:slug"]} component={SingleSro} />
+            <Route exact path="/licenses/:slug" component={SingleLicenses} />
+            <Route exact path="/training-and-seminars/:slug" component={Seminars} />
+            <Route exact path={["/training-and-seminars/seminars/:slug", "/training-and-seminars/learning-programs/:slug", "/blog/:slug"]} component={SinglePage} />
+            <Route component={NotFound} />
+          </Switch>
+          <Footer options={options} />
+        </Fragment>
       </Router>
     )
   }

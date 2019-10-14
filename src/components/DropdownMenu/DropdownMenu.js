@@ -1,29 +1,32 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export class DropdownMenu extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+
     render() {
-        let slug = this.props.slug;
-        let link = `/${slug}`;
-        if (slug === 'a0325522.xsph.ru') {
+        let link = `/${this.props.slug}`;
+        if (this.props.slug === 'a0325522.xsph.ru' || this.props.slug === 'o-kompanii') {
             link = '';
         }
         return (
-            <div data-hover="1" data-delay="0" className="d-down w-dropdown">
-                <div className="dropdown-toggle w-dropdown-toggle">
+            <div tabIndex="0" className="d-down">
+                <div className="dropdown-toggle">
+                    {link ? <Link to={link}>{this.props.parenttitle}</Link> : <a href="#">{this.props.parenttitle}</a>}
                     <div className="ico w-icon-dropdown-toggle"></div>
-                    <div>{this.props.parenttitle}</div>
                 </div>
-                <nav className="dropdown-list w-dropdown-list">
+                <nav className="dropdown-list">
                     {this.props.items
-                        .filter(item => {
-                            if (item.menu_item_parent === this.props.parentid) return item;
-                        })
+                        .filter(item => item.menu_item_parent == this.props.parentid)
                         .map(item => {
                             if (item.url === 'http://el.argus-eko.ru/') {
-                                return <a key={item.ID} href={item.url} target="_blank" className="link drop-link w-dropdown-link" data-ix="dop-navy" >{item.title}</a>
+                                return <a key={item.ID} href={item.url} target="_blank" className="link drop-link">{item.title}</a>
                             } else {
-                                return <Link key={item.ID} to={`${link}/${item.slug}`} className="link drop-link w-dropdown-link" data-ix="dop-navy" >{item.title}</Link>
+                                return <Link key={item.ID} to={`${link}/${item.slug}`} className="link drop-link">{item.title}</Link>
                             }
                         })}
                 </nav>

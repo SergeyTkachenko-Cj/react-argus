@@ -1,30 +1,54 @@
-import React, { Component, Fragment } from 'react';
+/* eslint-disable */
+import React, { Component, Fragment, PureComponent } from 'react';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';
 import SroServices from './SroPageItems/SroServices';
 import SroPageContent from './SroPageContent/SroPageContent';
 import SroPageTable from './SroPageTable/SroPageTable';
 import SroFooter from './SroFooter/SroFooter';
+import NotFoundPosts from '../Error/NotFoundPosts';
+import NotFound from '../Error/NotFound';
 
-export class Sro extends Component {
+export class Sro extends PureComponent {
     state = {
         cat: [],
         isLoaded: false
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
         axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
-                cat: res.data.filter(cat => { if (cat.slug === getSlug) return cat }).shift(),
+                cat: res.data.filter(cat => cat.slug === getSlug).shift(),
                 isLoaded: true
             }))
             .catch(err => console.log(err))
     }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.match.url.substring(1) !== prevState.cat.slug) {
+            const newSlug = nextProps.match.url.substring(1);
+            return { newSlug: newSlug };
+        } else {
+            return null;
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.url.substring(1) !== this.state.newSlug) {
+            window.scrollTo(0, 0);
+            axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
+                .then(res => this.setState({
+                    cat: res.data.filter(cat => cat.slug === this.state.newSlug).shift(),
+                    isLoaded: true
+                }))
+                .catch(err => console.log(err))
+        }
+    }
+
     render() {
         const { cat, isLoaded } = this.state;
-        console.log(cat);
         if (isLoaded) {
             return (
                 <Fragment>
@@ -51,14 +75,14 @@ export class Sro extends Component {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    <SroServices catid={cat.id} />
-                    <SroPageContent acf={cat.acf["bloki_s_kontentom"]}/>
-                    <SroPageTable acf={cat.acf["blok_s_tablitsey"]}/>
-                    <SroFooter acf={cat.acf["blok_v_podvale"]} />
+                    <SroServices key={cat.id} catid={cat.id} catslug={cat.slug} />
+                    {(cat.acf && cat.acf["bloki_s_kontentom"]) ? <SroPageContent acf={cat.acf["bloki_s_kontentom"]} /> : null}
+                    {(cat.acf && cat.acf["bloki_s_tablitsey"]) ? <SroPageTable acf={cat.acf["bloki_s_tablitsey"]} /> : null}
+                    {(cat.acf && cat.acf["blok_v_podvale"]) ? <SroFooter acf={cat.acf["blok_v_podvale"]} /> : null}
                 </Fragment>
             )
         }
-        return null;
+        return <NotFound />;
     }
 }
 

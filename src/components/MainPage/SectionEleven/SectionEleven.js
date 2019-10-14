@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import NewsCart from './NewsCart/NewsCart';
+import PostItem from '../../Blog/PostItem/PostItem';
 
 
 export class SectionEleven extends Component {
@@ -10,12 +12,17 @@ export class SectionEleven extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/posts')
+        axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/posts')
             .then(res => this.setState({
-                news: res.data,
+                news: res.data.slice(0, 4),
                 isLoaded: true
             }))
             .catch(err => console.log(err))
+    }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
 
     render() {
@@ -29,20 +36,20 @@ export class SectionEleven extends Component {
                             <h2>Делимся опытом и новостями</h2>
                         </div>
                         <div className="news w-clearfix">
-                            { news.map(neww => <NewsCart date={neww.date} title={neww.title.rendered} excerpt={neww.excerpt.rendered} /> ) }
+                            {news.map(neww => <PostItem key={neww.id} cat={neww["category_names"]} title={neww.title} excerpt={neww.excerpt} date={neww.date} slug={neww.slug} />)}
                         </div>
                         <div className="vertical-line-25">
                         </div>
                         <div className="vertical-line">
                         </div>
                         <div className="in-wrapper entres">
-                            <a href="/news" className="link-menu w-inline-block" data-ix="link-hover">
+                            <Link to="/blog" className="link-menu w-inline-block" data-ix="link-hover">
                                 <div>Читать весь блог</div>
                                 <div className="left-link-line">
                                 </div>
                                 <div className="right-link-line">
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="vertical-line _50">
@@ -52,7 +59,7 @@ export class SectionEleven extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

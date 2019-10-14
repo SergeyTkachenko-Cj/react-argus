@@ -1,33 +1,37 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';
 import ReviewItem from '../MainPage/SectionEight/ReviewItem/ReviewItem';
 import ReviewOneItem from './ReviewItem/ReviewOneItem';
+import NotFound from '../Error/NotFound';
+import ReviewItemContainer from './ReviewItemContainer/ReviewItemContainer';
 
 export class Reviews extends Component {
     state = {
         page: {},
-        reviews: [],
         isLoaded: false
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
-        const getPage = axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`);
-        const getReviews = axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/reviews');
-        Promise.all([getPage, getReviews])
+        axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`)
             .then(res => this.setState({
-                page: res[0].data,
-                reviews: res[1].data,
+                page: res.data,
                 isLoaded: true
             }))
             .catch(err => console.log(err))
     }
 
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+
     render() {
-        console.log(this.state);
-        const { page, reviews, isLoaded } = this.state;
-        if (isLoaded && reviews) {
+        const { page, isLoaded } = this.state;
+        if (isLoaded) {
             return (
                 <Fragment>
                     <div className="paddinger">
@@ -62,31 +66,11 @@ export class Reviews extends Component {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    <div className="section">
-                        <div className="wrapper no-paddings">
-                            <div className="news page-news">
-                                {reviews.map(item => {
-                                    if (item.acf["id_video"]) {
-                                        return <ReviewOneItem key={item.id} image={item.acf.kartinka} video={item.acf["id_video"]} title={item.title} content={item.content}/>
-                                    } else {
-                                        return <ReviewOneItem key={item.id} image={item.acf.kartinka} title={item.title} content={item.content}/>
-                                    }
-                                })}
-                            </div>
-                            <div className="vertical-line-25">
-                            </div>
-                            <div className="vertical-line">
-                            </div>
-                        </div>
-                        <div className="vertical-line _50">
-                        </div>
-                        <div className="fon-greeer">
-                        </div>
-                    </div>
+                    <ReviewItemContainer />
                 </Fragment>
             )
         }
-        return null;
+        return <NotFound />;
     }
 }
 

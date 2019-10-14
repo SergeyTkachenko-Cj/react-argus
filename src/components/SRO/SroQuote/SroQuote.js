@@ -1,17 +1,26 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 
 export class SroQuote extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
     render() {
-        return (
-            <div className="section">
-                <div className="wrapper paddings">
-                    <div className="small-h">Вступление в {this.props.title} с Аргус - Эко</div>
-                    <blockquote>{this.props.acf}</blockquote>
+        const acf = this.props.acf;
+        if (acf && acf.zagolovok !== '') {
+            return (
+                <div className="section">
+                    <div className="wrapper paddings">
+                        <div className="small-h">{acf.zagolovok}</div>
+                        <blockquote>{acf.tsitata}</blockquote>
+                    </div>
+                    <div className="fon-green right">
+                    </div>
                 </div>
-                <div className="fon-green right">
-                </div>
-            </div>
-        )
+            )
+        }
+        return null;
     }
 }
 

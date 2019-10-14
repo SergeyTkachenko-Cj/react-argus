@@ -1,6 +1,11 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class SroFooter extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
     render() {
         const acf = this.props.acf;
         if (acf) {
@@ -14,7 +19,7 @@ export class SroFooter extends Component {
                             </div>
                             <div className="vertical-line">
                             </div>
-                            <div dangerouslySetInnerHTML={{__html: acf}}></div>
+                            <div dangerouslySetInnerHTML={{ __html: acf }}></div>
                         </div>
                         <div className="vertical-line _50">
                         </div>

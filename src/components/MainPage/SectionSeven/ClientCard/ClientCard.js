@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -16,22 +17,27 @@ export class ClientCard extends Component {
             .catch(err => console.log(err))
     }
 
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+
     render() {
         const { img, isLoaded } = this.state;
         if (isLoaded) {
             return (
-                <a href="#" className="card logos-clients w-inline-block">
+                <div className="card logos-clients w-inline-block">
                     <div className="img-client">
                         <img src={img} alt="" />
                     </div>
-                    <div className="small-h">{ this.props.title }</div>
-                </a>
+                    <div className="small-h font-size-ten">{this.props.title}</div>
+                </div>
             )
         }
         return (
-            <a href="#" className="card logos-clients w-inline-block">
-                <div className="small-h">{ this.props.title }</div>
-            </a>
+            <div className="card logos-clients w-inline-block">
+                <div className="small-h">{this.props.title}</div>
+            </div>
         )
     }
 }

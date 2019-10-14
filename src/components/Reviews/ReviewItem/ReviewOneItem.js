@@ -1,9 +1,14 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class ReviewOneItem extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+
     render() {
         const video = this.props.video;
-        console.log(this.props);
         const { url, type, filesize, id, width, height, filename } = this.props.image;
         let data = {
             "items": [
@@ -26,14 +31,14 @@ export class ReviewOneItem extends Component {
                         <div className="col-otzivas _50-proc">
                             <div className="img-people-otzivas otzivas">
                                 <div style={{ paddingTop: '56.17021276595745%' }} id="w-node-2b06150b0dbb-264ea538" className="w-video w-embed">
-                                    <iframe className="embedly-embed" src={`https://www.youtube.com/embed/${video}`} scrolling="no" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="true">
+                                    <iframe className="embedly-embed" src={`https://www.youtube.com/embed/${video}`} scrolling="no" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen={true}>
                                     </iframe>
                                 </div>
                             </div>
                         </div>
                         <div className="col-otzivas _50-proc left">
                             <div className="small-h">{this.props.title}</div>
-                            <blockquote className="itatas" dangerouslySetInnerHTML={{__html: this.props.content}}></blockquote>
+                            <blockquote className="itatas" dangerouslySetInnerHTML={{ __html: this.props.content }}></blockquote>
                         </div>
                     </div>
                 </Fragment>
@@ -50,7 +55,7 @@ export class ReviewOneItem extends Component {
                     </div>
                     <div className="col-otzivas _50-proc left">
                         <div className="small-h">{this.props.title}</div>
-                        <blockquote className="itatas" dangerouslySetInnerHTML={{__html: this.props.content}}></blockquote>
+                        <blockquote className="itatas" dangerouslySetInnerHTML={{ __html: this.props.content }}></blockquote>
                     </div>
                 </div>
             </Fragment>

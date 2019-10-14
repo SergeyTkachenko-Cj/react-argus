@@ -1,8 +1,12 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
 export class SroPageContent extends Component {
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
     render() {
-        console.log(this.props);
         const acf = this.props.acf;
         if (acf) {
             return (
@@ -14,7 +18,7 @@ export class SroPageContent extends Component {
                             <div className="vertical-line-25">
                             </div>
                             <div className="row-3x w-row">
-                                { acf.map(block => <div className="col-3x left w-clearfix w-col w-col-6" dangerouslySetInnerHTML={{__html: block["blok_kontenta"]}}></div>) }
+                                {acf.map((block, index) => <div key={index} className="col-3x left w-clearfix w-col w-col-6" dangerouslySetInnerHTML={{ __html: block["blok_kontenta"] }}></div>)}
                             </div>
                         </div>
                         <div className="fon-greeer">

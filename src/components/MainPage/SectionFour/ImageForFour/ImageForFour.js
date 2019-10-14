@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -16,6 +17,11 @@ export class ImageForFour extends Component {
             .catch(err => console.log(err))
     }
  
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+    
     render() {
         if (this.state.isLoaded) {
             return (

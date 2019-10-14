@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -16,6 +17,12 @@ export class SectionTwo extends Component {
             .catch(err => console.log(err))
     }
 
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+        Webflow.require('ix2').init();
+      }
+
     render() {
         if (this.state.isLoaded) {
             return (
@@ -33,7 +40,7 @@ export class SectionTwo extends Component {
                 </div>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 

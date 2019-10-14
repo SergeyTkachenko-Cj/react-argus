@@ -1,4 +1,7 @@
-import React, { Component, Fragment } from 'react'
+/* eslint-disable */
+import React, { Component, Fragment } from 'react';
+import $ from 'jquery';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DropdownMenu from '../components/DropdownMenu/DropdownMenu'
 
@@ -16,10 +19,11 @@ export class Header extends Component {
         isLoaded: true
       }))
       .catch(err => console.log(err));
-
-    const script = document.createElement("script");
-    script.src = "https://thevogne.ru/wp-content/themes/newvogne/js/webflow.js";
-    document.body.appendChild(script);
+  }
+  
+  componentDidUpdate() {
+    Webflow.destroy();
+    Webflow.ready();
   }
 
   render() {
@@ -31,7 +35,7 @@ export class Header extends Component {
           <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 w-nav">
             <div className="wrapper-in-head">
               <div className="top-menu">
-                <a href="/" className="brand-3 w-nav-brand w--current"></a>
+                <Link to="/" className="brand-3 w-nav-brand w--current"></Link>
                 <div data-delay="1500" data-animation="outin" data-autoplay="1" data-duration="500" data-infinite="1" className="txt-slider w-slider">
                   <div className="w-slider-mask">
                     <div className="slide w-slide">
@@ -79,10 +83,8 @@ export class Header extends Component {
               </div>
               <nav role="navigation" className="nav-menu-block w-nav-menu">
                 {urls
-                  .filter(dropdown => {
-                    if (dropdown.menu_item_parent === "0") return dropdown;
-                  })
-                  .map(dropdown => <DropdownMenu key={dropdown.ID} parenttitle={dropdown.title} slug={dropdown.slug} parentid={dropdown.ID} items={urls} />)}
+                  .filter(dropdown => dropdown.menu_item_parent === "0")
+                  .map((dropdown, index) => <DropdownMenu key={dropdown.ID} parenttitle={dropdown.title} slug={dropdown.slug} parentid={dropdown.ID} items={urls} />)}
                 <a href={`tel:${tel.telefon}`} className="link phone">{tel.telefon}</a>
               </nav>
             </div>
@@ -100,7 +102,71 @@ export class Header extends Component {
         </Fragment>
       )
     }
-    return <h3>Loading...</h3>
+    return (
+      <Fragment>
+        <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 w-nav">
+          <div className="wrapper-in-head">
+            <div className="top-menu">
+              <Link to="/" className="brand-3 w-nav-brand w--current"></Link>
+              <div data-delay="1500" data-animation="outin" data-autoplay="1" data-duration="500" data-infinite="1" className="txt-slider w-slider">
+                <div className="w-slider-mask">
+                  <div className="slide w-slide">
+                    <div className="div-block-34">
+                      <div>ЛИЦЕНЗИРОВАНИЕ</div>
+                    </div>
+                  </div>
+                  <div className="slide w-slide">
+                    <div className="div-block-34">
+                      <div>СЕРТИФИКАЦИЯ</div>
+                    </div>
+                  </div>
+                  <div className="slide w-slide">
+                    <div className="div-block-34">
+                      <div>Регистрация лаборатории</div>
+                    </div>
+                  </div>
+                  <div className="slide w-slide">
+                    <div className="div-block-34">
+                      <div>обследование электроустановок</div>
+                    </div>
+                  </div>
+                  <div className="slide w-slide">
+                    <div className="div-block-34">
+                      <div>аккредитация</div>
+                    </div>
+                  </div>
+                  <div className="slide w-slide">
+                    <div className="div-block-34">
+                      <div>аттестация</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="left-arrow-2 w-slider-arrow-left">
+                  <div className="w-icon-slider-left">
+                  </div>
+                </div>
+                <div className="right-arrow-2 w-slider-arrow-right">
+                  <div className="w-icon-slider-right">
+                  </div>
+                </div>
+                <div className="slide-nav-2 w-slider-nav w-round">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="menu-button-3 w-nav-button" data-ix="menu">
+            <div className="div-block-33">
+              <div className="line-burger-4">
+              </div>
+              <div className="line-burger-2 _2">
+              </div>
+              <div className="line-burger-3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    )
   }
 }
 

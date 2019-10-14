@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';
+import NotFound from '../Error/NotFound';
 
 export class Contacts extends Component {
     state = {
@@ -10,6 +12,7 @@ export class Contacts extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
         const getPage = axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`);
         const getOptions = axios.get('http://a0325522.xsph.ru/wp-json/acf/v3/options/options');
@@ -21,6 +24,11 @@ export class Contacts extends Component {
                 isLoaded: true
             }))
             .catch(err => console.log(err))
+    }
+
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
     }
 
     render() {
@@ -87,7 +95,7 @@ export class Contacts extends Component {
                 </Fragment>
             )
         }
-        return null;
+        return <NotFound />;
     }
 }
 

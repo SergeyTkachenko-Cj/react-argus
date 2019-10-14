@@ -1,51 +1,75 @@
-import React, { Component } from 'react';
+/* eslint-disable */
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import ImgSecTen from './ImgSecTen/ImgSecTen';
 
 export class SectionTen extends Component {
     state = {
-        sales: '',
+        title: '',
+        sales: [],
         isLoaded: false
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/sales')
+        const getTitle = axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/aktsii');
+        const getSales = axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/sales');
+
+        Promise.all([getTitle, getSales])
             .then(res => this.setState({
-                sales: res.data,
+                title: res[0].data.title,
+                sales: res[1].data,
                 isLoaded: true
             }))
             .catch(err => console.log(err))
     }
 
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
+
     render() {
-        const { sales, isLoaded } = this.state;
+        const { title, sales, isLoaded } = this.state;
         if (isLoaded) {
             return (
-                <div className="section">
-                    <div className="wrapper no-paddings">
-                        <div className="news page-news">
-                            <div className="div-in-otzivas">
-                                <div className="col-otzivas _50-proc">
-                                    <div className="img-people-otzivas otzivas">
-                                        <ImgSecTen image={sales[0].featured_media} altt={sales[0].title.rendered} />
+                <Fragment>
+                    <div className="section">
+                        <div className="wrapper no-bottom-padding">
+                            <div className="in-wrapper">
+                                <div className="small-h">акции</div>
+                                <h2>{title}</h2>
+                            </div>
+                            <div className="vertical-line-25"></div>
+                            <div className="vertical-line"></div>
+                        </div>
+                        <div className="vertical-line _50"></div>
+                        <div className="fon-greeer"></div>
+                    </div>
+                    <div className="section">
+                        <div className="wrapper no-paddings">
+                            <div className="news page-news">
+                                <div className="div-in-otzivas" style={{background: 'none'}}>
+                                    <div className="col-otzivas _50-proc">
+                                        <div className="img-people-otzivas otzivas">
+                                            <img src={sales[0].media["post-thumbnail"]} alt={sales[0].title} className="img-aciya" />
+                                        </div>
+                                    </div>
+                                    <div className="col-otzivas _50-proc left w-clearfix">
+                                        <div className="p-class" dangerouslySetInnerHTML={{ __html: sales[0].content }}></div>
                                     </div>
                                 </div>
-                                <div className="col-otzivas _50-proc left w-clearfix">
-                                    <div className="pclass" dangerouslySetInnerHTML={{__html: sales[0].content.rendered}}></div>
-                                </div>
+                            </div>
+                            <div className="vertical-line-25">
+                            </div>
+                            <div className="vertical-line">
                             </div>
                         </div>
-                        <div className="vertical-line-25">
-                        </div>
-                        <div className="vertical-line">
+                        <div className="vertical-line _50">
                         </div>
                     </div>
-                    <div className="vertical-line _50">
-                    </div>
-                </div>
+                </Fragment>
             )
         }
-        return <h3>Loading...</h3>
+        return null;
     }
 }
 
