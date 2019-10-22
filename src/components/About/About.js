@@ -15,7 +15,7 @@ export class About extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
-        axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`)
+        axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`)
             .then(res => this.setState({
                 page: res.data,
                 isLoaded: true

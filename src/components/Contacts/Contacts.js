@@ -14,8 +14,8 @@ export class Contacts extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
-        const getPage = axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`);
-        const getOptions = axios.get('http://a0325522.xsph.ru/wp-json/acf/v3/options/options');
+        const getPage = axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`);
+        const getOptions = axios.get('http://admin.argus-eko.ru/wp-json/acf/v3/options/options');
 
         Promise.all([getPage, getOptions])
             .then(res => this.setState({

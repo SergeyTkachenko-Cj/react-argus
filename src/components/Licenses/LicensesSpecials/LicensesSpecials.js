@@ -9,7 +9,7 @@ export class LicensesSpecials extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/acf/v3/options/options')
+        axios.get('http://admin.argus-eko.ru/wp-json/acf/v3/options/options')
             .then(res => this.setState({
                 tel: res.data.acf.telefon,
                 isLoaded: true

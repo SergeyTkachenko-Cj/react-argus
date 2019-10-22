@@ -9,7 +9,7 @@ export class ClientCard extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://a0325522.xsph.ru/wp-json/wp/v2/media/${this.props.image}`)
+        axios.get(`http://admin.argus-eko.ru/wp-json/wp/v2/media/${this.props.image}`)
             .then(res => this.setState({
                 img: res.data.source_url,
                 isLoaded: true

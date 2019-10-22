@@ -11,7 +11,7 @@ export class StudingChild extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
+        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
                 cats: res.data.filter(item => item.parent === this.props.catid),
                 isLoaded: true

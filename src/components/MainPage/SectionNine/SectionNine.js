@@ -11,7 +11,7 @@ export class SectionNine extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/samples')
+        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/samples')
             .then(res => this.setState({
                 samples: res.data.filter(item => item.acf),
                 isLoaded: true
@@ -29,7 +29,7 @@ export class SectionNine extends Component {
         if (isLoaded) {
             return (
                 <div className="section">
-                    <div className="wrapper">
+                    <div id="service09" className="wrapper">
                         <div className="row-3x w-row">
                             <div className="col-3x left w-col w-col-6">
                                 <div className="small-h">образцы</div>

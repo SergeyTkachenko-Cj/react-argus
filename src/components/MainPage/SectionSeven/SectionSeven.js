@@ -10,7 +10,7 @@ export class SectionSeven extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/clients?per_page=11')
+        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/clients?per_page=11')
             .then(res => this.setState({
                 clients: res.data,
                 isLoaded: true

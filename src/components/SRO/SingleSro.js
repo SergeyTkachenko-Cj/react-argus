@@ -17,7 +17,7 @@ export class SingleSro extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
+        axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
             .then(res => this.setState({
                 service: res.data,
                 acf: res.data.acf,

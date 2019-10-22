@@ -10,8 +10,8 @@ export class SectionTen extends Component {
     }
 
     componentDidMount() {
-        const getTitle = axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/page/aktsii');
-        const getSales = axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/sales');
+        const getTitle = axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/aktsii');
+        const getSales = axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales');
 
         Promise.all([getTitle, getSales])
             .then(res => this.setState({
@@ -33,7 +33,7 @@ export class SectionTen extends Component {
             return (
                 <Fragment>
                     <div className="section">
-                        <div className="wrapper no-bottom-padding">
+                        <div id="service10" className="wrapper no-bottom-padding">
                             <div className="in-wrapper">
                                 <div className="small-h">акции</div>
                                 <h2>{title}</h2>

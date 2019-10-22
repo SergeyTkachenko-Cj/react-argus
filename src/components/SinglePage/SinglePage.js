@@ -16,7 +16,7 @@ export class SinglePage extends Component {
         window.scrollTo(0, 0);
         let str = this.props.match.url.match(/(\/.*\/)/);
         if (str[0] != '/blog/') {
-            axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
+            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
                 .then(res => this.setState({
                     service: res.data,
                     cat: res.data.terms[0].name,
@@ -24,7 +24,7 @@ export class SinglePage extends Component {
                 }))
                 .catch(err => console.log(err))
         } else {
-            axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/post/${this.props.match.params.slug}`)
+            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/post/${this.props.match.params.slug}`)
                 .then(res => this.setState({
                     service: res.data,
                     cat: res.data["category_names"][0],
@@ -75,7 +75,7 @@ export class SinglePage extends Component {
                     </div>
                     <div className="section">
                         <div className="wrapper single w-clearfix">
-                            <div className="news page-news"></div>
+                            <div> className="news page-news"></div>
                             <div className="vertical-line-25"></div>
                             <div className="vertical-line"></div>
                             <div className="p-class" dangerouslySetInnerHTML={{ __html: service.content }}></div>

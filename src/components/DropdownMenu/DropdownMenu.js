@@ -10,7 +10,7 @@ export class DropdownMenu extends Component {
 
     render() {
         let link = `/${this.props.slug}`;
-        if (this.props.slug === 'a0325522.xsph.ru' || this.props.slug === 'o-kompanii') {
+        if (this.props.slug === 'http://admin.argus-eko.ru/' || this.props.slug === 'o-kompanii') {
             link = '';
         }
         return (

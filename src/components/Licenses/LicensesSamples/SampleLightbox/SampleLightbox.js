@@ -5,7 +5,6 @@ export class SampleLightbox extends Component {
     componentDidUpdate() {
         Webflow.destroy();
         Webflow.ready();
-        Webflow.require('ix2').init();
     }
 
     render() {

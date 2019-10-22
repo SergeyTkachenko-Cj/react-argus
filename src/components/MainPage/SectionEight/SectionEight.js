@@ -12,7 +12,7 @@ export class SectionEight extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/reviews')
+        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/reviews')
             .then(res => this.setState({
                 reviews: res.data.filter(item => item.acf.kartinka),
                 isLoaded: true

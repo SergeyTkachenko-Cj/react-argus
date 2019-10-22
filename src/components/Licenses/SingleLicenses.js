@@ -19,7 +19,7 @@ export class SingleLicenses extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
+        axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
             .then(res => this.setState({
                 service: res.data,
                 img: res.data.media.large,
@@ -81,7 +81,7 @@ export class SingleLicenses extends Component {
                                     <div className="p-class exc" dangerouslySetInnerHTML={{__html: service.content}}></div>
                                 </div>
                                 <div className="col-3x right _4-img-right w-col w-col-6">
-                                    <div className="top-for-brads lefts">
+                                    <div id={`service${service.id}`} className="top-for-brads lefts">
                                         <div className="brads">
                                             <div className="small-h brads">главная</div>
                                             <img src={playarrow} alt="" className="brads-arrow" />

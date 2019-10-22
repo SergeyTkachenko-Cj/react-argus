@@ -11,8 +11,8 @@ export class SectionSix extends Component {
     }
 
     componentDidMount() {
-        const getParent = axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat/5');
-        const getChilds = axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat');
+        const getParent = axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat/5');
+        const getChilds = axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat');
 
         Promise.all([getParent, getChilds])
             .then(res => this.setState({

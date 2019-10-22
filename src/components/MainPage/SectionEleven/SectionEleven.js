@@ -12,7 +12,7 @@ export class SectionEleven extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/posts')
+        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/posts')
             .then(res => this.setState({
                 news: res.data.slice(0, 4),
                 isLoaded: true

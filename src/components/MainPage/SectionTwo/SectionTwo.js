@@ -9,7 +9,7 @@ export class SectionTwo extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/pages/2')
+        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/pages/2')
             .then(res => this.setState({
                 content: res.data.content.rendered,
                 isLoaded: true
@@ -20,7 +20,6 @@ export class SectionTwo extends Component {
     componentDidUpdate() {
         Webflow.destroy();
         Webflow.ready();
-        Webflow.require('ix2').init();
       }
 
     render() {

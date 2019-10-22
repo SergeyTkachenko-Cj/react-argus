@@ -384,6 +384,22 @@ h3 {
   line-height: normal;
 }
 
+#service14, #service347 {
+  display: none;
+}
+
+#service09 {
+  padding-bottom: 0;
+}
+
+.in-wrapper.entres {
+  padding-top: 0;
+}
+
+.news {
+  padding-top: 20px;
+}
+
 .card:hover {
   background: transparent linear-gradient(rgba(246, 252, 252, 0) 50%, #f6fcfc 0) 50%/100% 4px;
   background-color: white;

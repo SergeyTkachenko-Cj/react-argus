@@ -11,7 +11,7 @@ export class SectionFive extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services?services_cat=4')
+        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=4')
             .then(res => this.setState({
                 service: res.data.filter(item => item.acf["dovavit_v_karusel"] == false)[0],
                 isLoaded: true

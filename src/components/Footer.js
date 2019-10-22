@@ -2,11 +2,10 @@
 import React, { Component, Fragment } from 'react'
 
 export class Footer extends Component {
-    // componentDidUpdate() {
-    //     Webflow.destroy();
-    //     Webflow.ready();
-    //     Webflow.require('ix2').init();
-    // }
+    componentDidUpdate() {
+        Webflow.destroy();
+        Webflow.ready();
+    }
 
     render() {
         const { options } = this.props;

@@ -18,7 +18,7 @@ export class Sro extends PureComponent {
     componentDidMount() {
         window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
-        axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
+        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
                 cat: res.data.filter(cat => cat.slug === getSlug).shift(),
                 isLoaded: true

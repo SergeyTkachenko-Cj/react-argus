@@ -11,7 +11,7 @@ export class SroServiceItem extends Component {
     render() {
         return (
             <Fragment>
-                <div id={this.props.id} className="card-news">
+                <div id={`service${this.props.id}`} className="card-news">
                     <h3>{this.props.title}</h3>
                     <div className="p-class" dangerouslySetInnerHTML={{ __html: this.props.excerpt }}></div>
                     <Link to={`/${this.props.catslug}/${this.props.slug}`} className="link w-inline-block" data-ix="line-arrow" >
