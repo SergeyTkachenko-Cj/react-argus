@@ -29,7 +29,7 @@ class ReSectionOne extends Component {
         if (isLoaded) {
             return (
                 <div className="section">
-                    <div data-delay="4000" data-autoplay="1" data-animation="slide" data-duration="500" data-infinite="1" className="slider w-slider">
+                    <div data-delay="10000" data-autoplay="1" data-animation="slide" data-duration="500" data-infinite="1" className="slider w-slider">
                         <div className="w-slider-mask">
                             {services.map(slide => <SlideItem key={slide.id} title={slide.title} desc={slide.excerpt} image={slide.media} term={slide.terms[0].slug} slug={slide.slug} />)}
                         </div>

@@ -35,8 +35,8 @@ export class SectionNine extends Component {
                                 <div className="small-h">образцы</div>
                                 <h2>Образцы лицензий и сертификатов</h2>
                             </div>
-                            <div className="col-3x left w-col w-col-6">
-                                <div data-animation="slide" data-duration="500" data-infinite="1" className="slider-primers w-slider">
+                            <div className="col-3x left w-col w-col-6 sm-pic-marg">
+                                <div data-animation="slide" data-duration="500" data-infinite="1" className="slider-primers w-slider sm-pic-blck">
                                     <div className="w-slider-mask">
                                         { samples.map(slide => <SampleSlide key={slide.id} sample={slide} />) }
                                     </div>

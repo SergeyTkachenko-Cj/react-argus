@@ -31,7 +31,7 @@ export class SampleSlide extends Component {
                         <div className="col-in-slider primeras">
                             <div className="mama-obrazci new-mama">
                                 <a href="#" className="_4-imgis pops no-shadows w-inline-block w-lightbox">
-                                    <img src={imageData.url} alt={this.props.sample.title} className="image-16 extra" />
+                                    <img src={imageData.url} alt={this.props.sample.title} className="image-16 extra sm-pic" />
                                     <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}></script>
                                 </a>
                             </div>

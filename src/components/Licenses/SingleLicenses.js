@@ -40,7 +40,7 @@ export class SingleLicenses extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.slug != this.state.newSlug) {
             window.scrollTo(0, 0);
-            axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
+            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
             .then(res => this.setState({
                 service: res.data,
                 img: res.data.media.large,

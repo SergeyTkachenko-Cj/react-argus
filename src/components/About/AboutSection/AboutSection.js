@@ -8,13 +8,13 @@ export class AboutSection extends Component {
     }
     
     render() {
-        const { img, text } = this.props;
+        const { keyId, img, text } = this.props;
         return (
             <Fragment>
                 <div className="section">
                     <div className="wrapper">
                         <div className="row-3x w-row">
-                            <div data-w-id="1138766e-dc1a-b71e-9c8f-f4555f73015b" className="col-3x left _4-img w-col w-col-6">
+                            <div id={`aboutColI${keyId}`} data-w-id="1138766e-dc1a-b71e-9c8f-f4555f73015b" className="col-3x left _4-img w-col w-col-6">
                                 <div className="_4-imgis">
                                     <img src={img} alt="" className="glitch__img" />
                                     <img src={img} alt="" className="glitch__img" />
@@ -31,7 +31,7 @@ export class AboutSection extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3x left w-clearfix w-col w-col-6">
+                            <div id={`aboutColII${keyId}`} className="col-3x left w-clearfix w-col w-col-6">
                                 <div className="p-class" dangerouslySetInnerHTML={{ __html: text }}></div>
                             </div>
                         </div>

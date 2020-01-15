@@ -43,7 +43,7 @@ export class SectionEight extends Component {
                         <div className="fon-green"></div>
                         <div className="vertical-line _50"></div>
                     </div>
-                    <div className="section">
+                    <div className="section otzvs">
                         <div className="wrapper no-paddings">
                             <div data-animation="slide" data-duration="500" data-infinite="1" className="slider-otzivi w-slider">
                                 <div className="w-slider-mask">
@@ -74,7 +74,7 @@ export class SectionEight extends Component {
                             </div>
                             <div className="vertical-line">
                             </div>
-                            <div className="in-wrapper entres reviews_padding">
+                            <div className="in-wrapper entres reviews_padding border-no">
                                 <Link to="/otzyvy" className="link-menu w-inline-block" data-ix="link-hover">
                                     <div>Посмотреть все отзывы</div>
                                     <div className="left-link-line">

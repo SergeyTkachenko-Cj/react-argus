@@ -58,7 +58,7 @@ export class About extends Component {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    {page.acf.sektsii.map((item, index) => <AboutSection key={index} img={item.kartinka} text={item["tekstoviy_blok"]} />)}
+                    {page.acf.sektsii.map((item, index) => <AboutSection key={index} keyId={index} img={item.kartinka} text={item["tekstoviy_blok"]} />)}
                     <SectionEight />
                 </Fragment>
             )

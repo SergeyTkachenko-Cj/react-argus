@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import playarrow from '../../../img/play-arrow.svg';
 import SeminarsContent from './SeminarsContent/SeminarsContent';
+import SroPageContent from '../../SRO/SroPageContent/SroPageContent';
+import SroPageTable from '../../SRO/SroPageTable/SroPageTable';
+import SroFooter from '../../SRO/SroFooter/SroFooter';
 import NotFound from '../../Error/NotFound';
 
 export class Seminars extends Component {
@@ -43,13 +46,13 @@ export class Seminars extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.slug != this.state.newSlug) {
             window.scrollTo(0, 0);
-            axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
+            axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
                 .then(res => this.setState({
                     cat: res.data.filter(cat => cat.slug === this.state.newSlug).shift(),
                     isLoaded: true
                 }))
                 .catch(err => console.log(err))
-            axios.get('http://a0325522.xsph.ru/wp-json/wp/v2/services_cat')
+            axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
                 .then(res => this.setState({
                     parentSlug: res.data.filter(parent => parent.id == this.state.parent).shift().slug,
                     isLoaded: true
@@ -101,6 +104,9 @@ export class Seminars extends Component {
                         </div>
                     </div>
                     <SeminarsContent key={cat.id} catid={cat.id} catslug={cat.slug}/>
+                    {(cat.acf && cat.acf["bloki_s_kontentom"]) ? <SroPageContent acf={cat.acf["bloki_s_kontentom"]} /> : null}
+                    {(cat.acf && cat.acf["bloki_s_tablitsey"]) ? <SroPageTable acf={cats.acf["bloki_s_tablitsey"]} /> : null}
+                    {(cat.acf && cat.acf["blok_v_podvale"]) ? <SroFooter acf={cat.acf["blok_v_podvale"]} /> : null}
                 </Fragment>
             )
         }

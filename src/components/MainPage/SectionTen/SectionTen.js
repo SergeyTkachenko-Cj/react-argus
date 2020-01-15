@@ -48,7 +48,7 @@ export class SectionTen extends Component {
                         <div className="wrapper no-paddings">
                             <div className="news page-news">
                                 <div className="div-in-otzivas" style={{background: 'none'}}>
-                                    <div className="col-otzivas _50-proc">
+                                    <div className="col-otzivas _50-proc aktcii">
                                         <div className="img-people-otzivas otzivas">
                                             <img src={sales[0].media["post-thumbnail"]} alt={sales[0].title} className="img-aciya" />
                                         </div>

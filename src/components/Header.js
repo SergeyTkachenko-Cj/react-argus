@@ -29,6 +29,7 @@ export class Header extends Component {
   render() {
     const { urls, isLoaded } = this.state;
     const { tel } = this.props;
+
     if (isLoaded && tel) {
       return (
         <Fragment>

@@ -28,7 +28,7 @@ export class ReviewItem extends Component {
         if (review.acf) {
             return (
                 <div className="w-slide">
-                    <div className="div-in-otzivas" style={{background : 'none'}}>
+                    <div className="div-in-otzivas no-border" style={{background : 'none'}}>
                         <div className="col-otzivas">
                             <div className="img-people-otzivas in-home">
                                 <a href="#" className="_4-imgis pops w-inline-block w-lightbox">
@@ -37,7 +37,7 @@ export class ReviewItem extends Component {
                                 </a>
                             </div>
                         </div>
-                        <div className="col-otzivas _50-proc">
+                        <div className="col-otzivas _50-proc paper-otzvs">
                             <div className="small-h">{review.title}</div>
                             <blockquote className="itatas" dangerouslySetInnerHTML={{ __html: review.content }}></blockquote>
                         </div>

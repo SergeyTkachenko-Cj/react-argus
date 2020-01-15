@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react'
 
-export class SalesItem extends Component {
+export class LitsaItem extends Component {
     componentDidUpdate() {
         Webflow.destroy();
         Webflow.ready();
@@ -14,9 +14,9 @@ export class SalesItem extends Component {
             <Fragment>
                 <div className="news page-news">
                     <div className="div-in-otzivas">
-                        <div className="col-otzivas _50-proc aciya-page">
-                            <div className="img-people-otzivas otzivas">
-                                <img src={image} alt="" className="img-aciya" />
+                        <div className="col-otzivas _50-proc col-face">
+                            <div className="img-people-otzivas otzivas img-face">
+                                <img src={image} alt="" className="img-faces" />
                             </div>
                         </div>
                         <div className="col-otzivas _50-proc left w-clearfix">
@@ -30,4 +30,4 @@ export class SalesItem extends Component {
     }
 }
 
-export default SalesItem
+export default LitsaItem

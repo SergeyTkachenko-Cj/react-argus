@@ -75,7 +75,7 @@ export class SinglePage extends Component {
                     </div>
                     <div className="section">
                         <div className="wrapper single w-clearfix">
-                            <div> className="news page-news"></div>
+                            <div className="news page-news"></div>
                             <div className="vertical-line-25"></div>
                             <div className="vertical-line"></div>
                             <div className="p-class" dangerouslySetInnerHTML={{ __html: service.content }}></div>

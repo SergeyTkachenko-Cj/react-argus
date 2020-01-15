@@ -12,7 +12,7 @@ export class PostSection extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/posts')
+        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/posts?per_page=20')
             .then(res => this.setState({
                 posts: res.data,
                 isLoaded: true
@@ -33,9 +33,7 @@ export class PostSection extends Component {
                     <div className="section">
                         <div className="wrapper no-paddings">
                             <div className="news page-news w-clearfix">
-                                {posts.map((item, i) => i === 2 
-                                ? <PostItem key={item.id} title={item.title} cat={item["category_names"]} excerpt={item.excerpt} date={item.date} img={item.media["post-thumbnail"]} slug={item.slug} /> 
-                                : <PostItem key={item.id} title={item.title} cat={item["category_names"]} excerpt={item.excerpt} date={item.date} slug={item.slug} />)}
+                                {posts.map(item => <PostItem key={item.id} title={item.title} cat={item["category_names"]} excerpt={item.excerpt} date={item.date} slug={item.slug} />)}
                             </div>
                             <div className="vertical-line-25">
                             </div>

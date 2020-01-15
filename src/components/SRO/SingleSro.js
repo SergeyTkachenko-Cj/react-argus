@@ -38,7 +38,7 @@ export class SingleSro extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.slug != this.state.newSlug) {
-            axios.get(`http://a0325522.xsph.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
+            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
                 .then(res => this.setState({
                     service: res.data,
                     acf: res.data.acf,

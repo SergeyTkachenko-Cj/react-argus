@@ -16,42 +16,17 @@ export class PostItem extends Component {
     }
     
     render() {
-        const { img, title, excerpt, date, slug, cat } = this.props;
-        let normalDate = new Date(date).toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' });
-        if (img) {
-            return (
-                <Fragment>
-                    <div className="card-news w-clearfix">
-                        <div className="small-h">{cat[0]} - {normalDate}</div>
-                        <h3>{title}</h3>
-                        <div className="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
-                        <Link to={`/blog/${slug}`} className="link w-inline-block" data-ix="line-arrow">
-                            <div>читать полностью</div>
-                            <div className="before-txt-link">
-                                <div className="fon-arrow">
-                                    <img src={playarrow} alt="" className="arrow-line" />
-                                    <div className="line-arrow">
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                        <div className="img-in-news newser">
-                            <div className="_4-imgis">
-                                <img src={img} alt={title} className="glitch__img" />
-                                <img src={img} alt={title} className="glitch__img" />
-                                <img src={img} alt={title} className="glitch__img" />
-                                <img src={img} alt={title} className="glitch__img" />
-                                <img src={img} alt={title} className="glitch__img" />
-                            </div>
-                        </div>
-                    </div>
-                </Fragment>
-            )
-        }
+        const { title, excerpt, date, slug, cat } = this.props;
+        const dateExtraZero = dt => dt < 10 ? '0' + dt : dt;
+
+        const normalDateDay = dateExtraZero(new Date(date).getDate());
+        const normalDateMonth = dateExtraZero(new Date(date).getMonth());
+        const normalDateYear = new Date(date).getFullYear();
+
         return (
             <Fragment>
                 <div className="card-news w-clearfix">
-                    <div className="small-h">{cat[0]} - {normalDate}</div>
+                    <div className="small-h">{cat[0]} - {normalDateDay}/{normalDateMonth}/{normalDateYear}</div>
                     <h3>{title}</h3>
                     <div className="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
                     <Link to={`/blog/${slug}`} className="link w-inline-block" data-ix="line-arrow">

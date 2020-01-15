@@ -12,6 +12,7 @@ import Sro from './components/SRO/Sro';
 import About from './components/About/About';
 import Blog from './components/Blog/Blog';
 import Sales from './components/Sales/Sales';
+import Litsa from './components/Litsa/Litsa';
 import Reviews from './components/Reviews/Reviews';
 import Contacts from './components/Contacts/Contacts';
 import NotFound from './components/Error/NotFound';
@@ -25,7 +26,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://a0325522.xsph.ru/wp-json/acf/v3/options/options')
+    axios.get('http://admin.argus-eko.ru/wp-json/acf/v3/options/options')
       .then(res => this.setState({
         options: res.data,
         isLoaded: true
@@ -49,6 +50,7 @@ export class App extends Component {
             <Route exact path="/o-kompanii" component={About} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/aktsii" component={Sales} />
+            <Route exact path="/litsa" component={Litsa} />
             <Route exact path="/otzyvy" component={Reviews} />
             <Route exact path="/kontakty" component={Contacts} />
             <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />

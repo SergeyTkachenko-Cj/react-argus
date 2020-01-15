@@ -41,7 +41,7 @@ export class SectionThree extends Component {
               <div className="vertical-line"></div>
               <div className="vertical-line-25"></div>
               <div className="news w-clearfix">
-                {services.map(service => <SmallService key={service.id} title={service.title.rendered} excerpt={service.excerpt.rendered} slug={service.slug} />)}
+                {services.map(service => <SmallService key={service.id} id={service.id} title={service.title.rendered} excerpt={service.excerpt.rendered} slug={service.slug} />)}
               </div>
             </div>
             <div className="fon-greeer"></div>

@@ -24,8 +24,12 @@ export class DropdownMenu extends Component {
                         .filter(item => item.menu_item_parent == this.props.parentid)
                         .map(item => {
                             if (item.url === 'http://el.argus-eko.ru/') {
-                                return <a key={item.ID} href={item.url} target="_blank" className="link drop-link">{item.title}</a>
-                            } else {
+                                return <a key={item.ID} href='https://el.argus-eko.ru/' target="_blank" className="link drop-link">{item.title}</a>
+                            } 
+                            else if (item.url === 'http://admin.argus-eko.ru/') {
+                                return <Link key={item.ID} to={`/blog`} className="link drop-link">{item.title}</Link>
+                            }
+                            else {
                                 return <Link key={item.ID} to={`${link}/${item.slug}`} className="link drop-link">{item.title}</Link>
                             }
                         })}

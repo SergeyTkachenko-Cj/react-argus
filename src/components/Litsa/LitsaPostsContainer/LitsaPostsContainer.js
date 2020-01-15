@@ -1,17 +1,17 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import SalesItem from '../SalesItem/SalesItem'
+import LitsaItem from '../LitsaItem/LitsaItem'
 import NotFoundPosts from '../../Error/NotFoundPosts';
 
-export class SalesPostsContainer extends Component {
+export class LitsaPostsContainer extends Component {
     state = {
         services: [],
         isLoaded: false
     }
 
     componentDidMount() {
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales')
+        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/faces')
             .then(res => this.setState({
                 services: res.data,
                 isLoaded: true
@@ -29,9 +29,9 @@ export class SalesPostsContainer extends Component {
         if (isLoaded) {
             return (
                 <Fragment>
-                    <div className="section action">
+                    <div className="section faces">
                         <div className="wrapper no-paddings">
-                            {services.map(item => <SalesItem key={item.id} image={item.media["post-thumbnail"]} content={item.content} />)}
+                            {services.map(item => <LitsaItem key={item.id} image={item.media["post-thumbnail"]} content={item.content} />)}
                             <div className="vertical-line-25">
                             </div>
                             <div className="vertical-line">
@@ -47,4 +47,4 @@ export class SalesPostsContainer extends Component {
     }
 }
 
-export default SalesPostsContainer
+export default LitsaPostsContainer

@@ -1581,7 +1581,7 @@ blockquote {
   display: -ms-flexbox;
   display: flex;
   width: 50%;
-  padding: 60px 25px 60px 40px;
+  /* padding: 60px 25px 60px 100px; */
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -1597,13 +1597,17 @@ blockquote {
   align-items: flex-start;
 }
 
+.col-otzivas._50-proc.paper-otzvs {
+  width: 55%;
+}
+
 .col-otzivas._50-proc.left {
   padding-right: 60px;
   padding-left: 60px;
 }
 
 .img-people-otzivas {
-  height: 100%;
+  height: 500px;
   background-image: url("/img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg");
   background-position: 50% 50%;
   background-size: cover;
@@ -2444,7 +2448,7 @@ html.w-mod-js *[data-ix="dop-navy"] {
   }
 
   .col-otzivas._50-proc {
-    width: 50%;
+    width: 55%;
   }
 
   .col-otzivas._50-proc.left {

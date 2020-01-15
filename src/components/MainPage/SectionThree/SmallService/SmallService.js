@@ -12,7 +12,7 @@ export class SmallService extends Component {
   render() {
     return (
       <Fragment>
-        <div className="card-news w-clearfix">
+        <div id={`sro${this.props.id}`} className="card-news w-clearfix">
           <h3>{this.props.title}</h3>
           <div className="p-class" dangerouslySetInnerHTML={{ __html: this.props.excerpt }}></div>
           <Link to={`/sro/${this.props.slug}`} className="link w-inline-block" data-ix="line-arrow">
