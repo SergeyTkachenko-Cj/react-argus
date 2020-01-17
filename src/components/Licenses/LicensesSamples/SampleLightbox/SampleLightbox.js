@@ -23,16 +23,15 @@ export class SampleLightbox extends Component {
                 }
             ]
         }
+
         return (
             <Fragment>
-                <div className="col-otzivas _50-proc">
                     <a href="#" className="img-people-otzivas otzivas w-inline-block w-lightbox">
                         <img src={url} alt="" className="img-otziv" />
                         <script type="application/json" className="w-json" dangerouslySetInnerHTML={{
                             __html: JSON.stringify(data)
                         }}></script>
                     </a>
-                </div>
             </Fragment>
         )
     }

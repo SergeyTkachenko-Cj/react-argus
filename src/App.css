@@ -701,6 +701,10 @@ div.action {
   padding: 60px 25px 60px 40px
 }
 
+.div-in-otzivas>.col-otzivas._50-proc.single-license {
+  width: 100%;
+}
+
 @media (min-width: 1000px) {
 
   .d-down>.dropdown-list {

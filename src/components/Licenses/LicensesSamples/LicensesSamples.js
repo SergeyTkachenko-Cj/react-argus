@@ -11,6 +11,8 @@ export class LicensesSamples extends Component {
     render() {
         const acf = this.props.acf;
         if (acf.obraztsi) {
+            const smpls = acf.obraztsi.map((sample, index) => <SampleLightbox key={index} img={sample.obrazets}/>);
+            // console.log(smpls);
             return (
                 <Fragment>
                     <div className="section">
@@ -21,7 +23,10 @@ export class LicensesSamples extends Component {
                             </div>
                             <div className="news page-news">
                                 <div className="div-in-otzivas">
-                                    {acf.obraztsi.map((sample, index) => <SampleLightbox key={index} img={sample.obrazets} />)}
+                                {/* <div className="col-otzivas _50-proc"> */}
+                                    {/* {acf.obraztsi.map((sample, index) => <SampleLightbox key={index} img={sample.obrazets} />)} */}
+                                    {smpls.length > 1 ? smpls.map((i, ind) => <div className="col-otzivas _50-proc" key={ind}>{i}</div>) : <div className="col-otzivas _50-proc single-license">{smpls}</div>}
+                                {/* </div> */}
                                 </div>
                             </div>
                             <div className="vertical-line-25">
