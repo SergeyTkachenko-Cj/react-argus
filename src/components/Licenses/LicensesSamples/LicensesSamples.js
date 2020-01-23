@@ -12,11 +12,10 @@ export class LicensesSamples extends Component {
         const acf = this.props.acf;
         if (acf.obraztsi) {
             const smpls = acf.obraztsi.map((sample, index) => <SampleLightbox key={index} img={sample.obrazets}/>);
-            // console.log(smpls);
             return (
                 <Fragment>
                     <div className="section">
-                        <div className="wrapper no-wrappers-padding">
+                        <div className="wrapper no-wrappers-padding lic-wrap">
                             <div className="in-wrapper">
                                 <div className="small-h">документы</div>
                                 <h2 className="h2">{acf["zagolovok_bloka"]}</h2>
