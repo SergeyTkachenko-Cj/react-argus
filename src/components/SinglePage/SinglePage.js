@@ -43,6 +43,7 @@ export class SinglePage extends Component {
     render() {
         const { service, cat, isLoaded } = this.state;
         const back = this.props.location.pathname.match(/(\/.*\/)/)[0];
+
         if (isLoaded && service.length != 0) {
             return (
                 <Fragment>
@@ -74,7 +75,7 @@ export class SinglePage extends Component {
                         <div className="vertical-line _50"></div>
                     </div>
                     <div className="section">
-                        <div className="wrapper single w-clearfix">
+                        <div className={`wrapper single w-clearfix ${service.title === "Рабочие специальности" ? 'extra-class' : ''}`}>
                             <div className="news page-news"></div>
                             <div className="vertical-line-25"></div>
                             <div className="vertical-line"></div>

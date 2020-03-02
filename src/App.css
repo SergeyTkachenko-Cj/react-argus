@@ -715,6 +715,11 @@ div.action {
   padding: 60px 150px 60px 150px;
 }
 
+.wp-block-table-cvr {
+  width: 100%;
+  overflow-x: auto;
+}
+
 @media (min-width: 1000px) {
 
   .d-down>.dropdown-list {
@@ -1267,6 +1272,13 @@ div.action {
 @media (max-width: 726px) {
   .dop_head {
     height: 3.5rem;
+  }
+}
+
+@media (max-width: 697px) {
+  .wrapper.single.w-clearfix.extra-class {
+    padding-left: 5%;
+    padding-right: 5%;
   }
 }
 
