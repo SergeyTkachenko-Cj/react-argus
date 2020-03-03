@@ -19,7 +19,7 @@ export class SingleLicenses extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
+        axios.get(`https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
             .then(res => this.setState({
                 service: res.data,
                 img: res.data.media.large,
@@ -40,7 +40,7 @@ export class SingleLicenses extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.slug != this.state.newSlug) {
             window.scrollTo(0, 0);
-            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
+            axios.get(`https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.state.newSlug}`)
             .then(res => this.setState({
                 service: res.data,
                 img: res.data.media.large,

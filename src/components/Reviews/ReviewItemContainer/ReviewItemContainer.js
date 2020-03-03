@@ -11,7 +11,7 @@ export class ReviewItemContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/reviews')
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/reviews')
             .then(res => this.setState({
                 reviews: res.data,
                 isLoaded: true

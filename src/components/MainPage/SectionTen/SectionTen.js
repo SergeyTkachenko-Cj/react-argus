@@ -10,8 +10,8 @@ export class SectionTen extends Component {
     }
 
     componentDidMount() {
-        const getTitle = axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/aktsii');
-        const getSales = axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales');
+        const getTitle = axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/aktsii');
+        const getSales = axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales');
 
         Promise.all([getTitle, getSales])
             .then(res => this.setState({

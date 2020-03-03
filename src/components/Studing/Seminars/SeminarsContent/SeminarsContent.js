@@ -11,7 +11,7 @@ export class SeminarsContent extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=${this.props.catid}`)
+        axios.get(`https://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=${this.props.catid}`)
             .then(res => this.setState({
                 services: res.data,
                 isLoaded: true

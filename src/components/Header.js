@@ -13,7 +13,7 @@ export class Header extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/menus/glavnoe-menyu')
+    axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/menus/glavnoe-menyu')
       .then(res => this.setState({
         urls: res.data,
         isLoaded: true

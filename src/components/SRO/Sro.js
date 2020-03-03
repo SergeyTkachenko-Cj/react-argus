@@ -18,7 +18,7 @@ export class Sro extends PureComponent {
     componentDidMount() {
         window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
-        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+        axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
                 cat: res.data.filter(cat => cat.slug === getSlug).shift(),
                 isLoaded: true
@@ -38,7 +38,7 @@ export class Sro extends PureComponent {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.url.substring(1) !== this.state.newSlug) {
             window.scrollTo(0, 0);
-            axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+            axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
                 .then(res => this.setState({
                     cat: res.data.filter(cat => cat.slug === this.state.newSlug).shift(),
                     isLoaded: true

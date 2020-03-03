@@ -18,7 +18,7 @@ export class Seminars extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+        axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
                 cat: res.data.filter(cat => cat.slug === this.props.match.params.slug).shift()
             }))
@@ -26,7 +26,7 @@ export class Seminars extends Component {
                 parent: this.state.cat.parent
             }))
             .catch(err => console.log(err));
-        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+        axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
                 parentSlug: res.data.filter(parent => parent.id == this.state.parent).shift().slug,
                 isLoaded: true
@@ -46,13 +46,13 @@ export class Seminars extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.slug != this.state.newSlug) {
             window.scrollTo(0, 0);
-            axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+            axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
                 .then(res => this.setState({
                     cat: res.data.filter(cat => cat.slug === this.state.newSlug).shift(),
                     isLoaded: true
                 }))
                 .catch(err => console.log(err))
-            axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+            axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
                 .then(res => this.setState({
                     parentSlug: res.data.filter(parent => parent.id == this.state.parent).shift().slug,
                     isLoaded: true

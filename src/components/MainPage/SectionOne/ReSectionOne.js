@@ -11,7 +11,7 @@ class ReSectionOne extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services?per_page=50')
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services?per_page=50')
             .then(res => this.setState({
                 services: res.data.filter(item => item.acf ? item.acf["dovavit_v_karusel"] : null),
                 isLoaded: true

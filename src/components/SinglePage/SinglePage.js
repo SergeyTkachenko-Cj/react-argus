@@ -16,7 +16,7 @@ export class SinglePage extends Component {
         window.scrollTo(0, 0);
         let str = this.props.match.url.match(/(\/.*\/)/);
         if (str[0] != '/blog/') {
-            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
+            axios.get(`https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services/${this.props.match.params.slug}`)
                 .then(res => this.setState({
                     service: res.data,
                     cat: res.data.terms[0].name,
@@ -24,7 +24,7 @@ export class SinglePage extends Component {
                 }))
                 .catch(err => console.log(err))
         } else {
-            axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/post/${this.props.match.params.slug}`)
+            axios.get(`https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/post/${this.props.match.params.slug}`)
                 .then(res => this.setState({
                     service: res.data,
                     cat: res.data["category_names"][0],

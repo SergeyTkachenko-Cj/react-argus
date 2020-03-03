@@ -26,7 +26,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://admin.argus-eko.ru/wp-json/acf/v3/options/options')
+    axios.get('https://admin.argus-eko.ru/wp-json/acf/v3/options/options')
       .then(res => this.setState({
         options: res.data,
         isLoaded: true

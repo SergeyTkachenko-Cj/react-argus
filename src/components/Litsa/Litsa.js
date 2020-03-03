@@ -14,7 +14,7 @@ export class Litsa extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         let getSlug = this.props.location.pathname.replace('/', '');
-        axios.get(`http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`)
+        axios.get(`https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`)
             .then(res => this.setState({
                 page: res.data,
                 isLoaded: true

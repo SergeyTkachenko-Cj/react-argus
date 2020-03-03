@@ -12,8 +12,8 @@ export class SectionThree extends Component {
   }
 
   componentDidMount() {
-    const getTaxonomy = axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat/2');
-    const getServices = axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=2');
+    const getTaxonomy = axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat/2');
+    const getServices = axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=2');
 
     Promise.all([getTaxonomy, getServices])
       .then(res => this.setState({

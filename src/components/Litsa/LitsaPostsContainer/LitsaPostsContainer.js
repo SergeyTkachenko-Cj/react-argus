@@ -11,7 +11,7 @@ export class LitsaPostsContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/faces')
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/faces')
             .then(res => this.setState({
                 services: res.data,
                 isLoaded: true

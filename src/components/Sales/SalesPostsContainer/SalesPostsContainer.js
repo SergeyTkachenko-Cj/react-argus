@@ -11,7 +11,7 @@ export class SalesPostsContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales')
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales')
             .then(res => this.setState({
                 services: res.data,
                 isLoaded: true

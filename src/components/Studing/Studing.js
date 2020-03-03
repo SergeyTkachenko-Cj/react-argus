@@ -14,7 +14,7 @@ export class Studing extends Component {
     }
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get('http://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
+        axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')
             .then(res => this.setState({
                 cat: res.data.filter(item => item.slug === 'training-and-seminars').shift(),
                 isLoaded: true

@@ -11,7 +11,7 @@ export class SectionNine extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/samples')
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/samples')
             .then(res => this.setState({
                 samples: res.data.filter(item => item.acf),
                 isLoaded: true
