@@ -15,7 +15,7 @@ export class SeminarsSmallServices extends Component {
         const dateExtraZero = dt => dt < 10 ? '0' + dt : dt;
 
         const normalDateDay = dateExtraZero(new Date(date).getDate());
-        const normalDateMonth = dateExtraZero(new Date(date).getMonth());
+        const normalDateMonth = dateExtraZero(new Date(date).getMonth() + 1);
         const normalDateYear = new Date(date).getFullYear();
 
         const titleDate = this.props.catslug === 'learning-programs' ? 'ОБУЧЕНИЕ В АРГУС' : `СЕМИНАР - ${normalDateDay}/${normalDateMonth}/${normalDateYear}`;
