@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import StudingChildItem from './StudingChildItem'
+import StudingChildItem from './StudingChildItem';
 import NotFoundPosts from '../../../Error/NotFoundPosts';
 
 export class StudingChild extends Component {

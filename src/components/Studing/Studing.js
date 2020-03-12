@@ -21,10 +21,12 @@ export class Studing extends Component {
             }))
             .catch(err => console.log(err))
     }
+
     componentDidUpdate() {
         Webflow.destroy();
         Webflow.ready();
     }
+
     render() {
         const { cat, isLoaded } = this.state;
         if (isLoaded) {
@@ -60,6 +62,7 @@ export class Studing extends Component {
                 </Fragment>
             )
         }
+
         return null;
     }
 }

@@ -105,7 +105,7 @@ export class Seminars extends Component {
                     </div>
                     <SeminarsContent key={cat.id} catid={cat.id} catslug={cat.slug}/>
                     {(cat.acf && cat.acf["bloki_s_kontentom"]) ? <SroPageContent acf={cat.acf["bloki_s_kontentom"]} /> : null}
-                    {(cat.acf && cat.acf["bloki_s_tablitsey"]) ? <SroPageTable acf={cats.acf["bloki_s_tablitsey"]} /> : null}
+                    {(cat.acf && cat.acf["bloki_s_tablitsey"]) ? <SroPageTable acf={cat.acf["bloki_s_tablitsey"]} /> : null}
                     {(cat.acf && cat.acf["blok_v_podvale"]) ? <SroFooter acf={cat.acf["blok_v_podvale"]} /> : null}
                 </Fragment>
             )
