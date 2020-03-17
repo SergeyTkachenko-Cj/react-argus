@@ -720,6 +720,18 @@ div.action {
   overflow-x: auto;
 }
 
+/* .wrapper.no-wrappers-padding {
+  padding: 85px 0 0;
+} */
+
+.table_class .logos-clients table {
+  margin-bottom: 0;
+}
+
+.table_class {
+  padding: 85px 0 0;
+}
+
 @media (min-width: 1000px) {
 
   .d-down>.dropdown-list {
@@ -1317,6 +1329,10 @@ div.action {
   .div-in-otzivas>.col-otzivas._50-proc.video-feedback {
     width: 100%
   }
+  
+  .table_class {
+    padding: 0;
+  }
 }
 
 @media (max-width: 479px) {
@@ -1413,6 +1429,10 @@ div.action {
   .card-news {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+
+  .table_class .logos-clients table {
+    margin-bottom: 60px;
   }
 
   td,

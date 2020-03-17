@@ -110,7 +110,7 @@ export class SingleSro extends Component {
                         </div>
                     </div>
                     {(acf && acf["blok_kontenta_1"]) ? <SroContent acf={acf["blok_kontenta_1"]} /> : null}
-                    {(acf && acf["bloki_s_tablitsamy"]) ? <SroСontributions acf={service.acf["bloki_s_tablitsamy"]} /> : null}
+                    {(acf && acf["bloki_s_tablitsamy"]) ? <SroСontributions quote={acf && acf["blok_s_tsitatoy"]} acf={service.acf["bloki_s_tablitsamy"]} /> : null}
                     {(acf && acf["blok_s_tsitatoy"]) ? <SroQuote acf={acf["blok_s_tsitatoy"]} /> : null}
                     {(acf && acf["blok_kontenta_2"]) ? <SroContent acf={acf["blok_kontenta_2"]} /> : null}
                 </Fragment>

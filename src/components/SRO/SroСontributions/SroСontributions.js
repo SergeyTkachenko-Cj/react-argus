@@ -7,12 +7,12 @@ export class SroСontributions extends Component {
         Webflow.ready();
     }
     render() {
-        const { acf } = this.props;
+        const { acf, quote } = this.props;
         if (acf) {
             return (
                 <Fragment>
                     {acf.map((block, index) => <div key={index} className="section">
-                        <div className="wrapper no-wrappers-padding">
+                        <div className={`wrapper no-wrappers-padding ${quote.zagolovok ? 'table_class' : null}`}>
                         <div className="in-wrapper">
                             <div className="small-h">{block["blok_s_tablitsey"]["melkiy_zagolovok"]}</div>
                             <h2 className="h2">{block["blok_s_tablitsey"]["zagolovok_bloka"]}</h2>
