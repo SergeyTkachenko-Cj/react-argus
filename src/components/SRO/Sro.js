@@ -35,7 +35,7 @@ export class Sro extends PureComponent {
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.match.url.substring(1) !== this.state.newSlug) {
             window.scrollTo(0, 0);
             axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat')

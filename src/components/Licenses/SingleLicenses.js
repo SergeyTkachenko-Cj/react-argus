@@ -56,6 +56,7 @@ export class SingleLicenses extends Component {
 
     render() {
         const { service, img, isLoaded } = this.state;
+        // console.log(service);
         if (isLoaded) {
             return (
                 <Fragment>

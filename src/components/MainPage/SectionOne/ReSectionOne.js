@@ -11,8 +11,9 @@ class ReSectionOne extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services?per_page=50')
-            .then(res => this.setState({
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services?per_page=150')
+            .then(res => 
+                this.setState({
                 services: res.data.filter(item => item.acf ? item.acf["dovavit_v_karusel"] : null),
                 isLoaded: true
             }))
@@ -27,11 +28,16 @@ class ReSectionOne extends Component {
     render() {
         const { services, isLoaded } = this.state;
         if (isLoaded) {
+            const order = (a, b) => {
+                if (a.date < b.date) return 1
+                if (a.date > b.date) return -1
+                return 0
+            }
             return (
                 <div className="section">
                     <div data-delay="10000" data-autoplay="1" data-animation="slide" data-duration="500" data-infinite="1" className="slider w-slider">
                         <div className="w-slider-mask">
-                            {services.map(slide => <SlideItem key={slide.id} title={slide.title} desc={slide.excerpt} image={slide.media} term={slide.terms[0].slug} slug={slide.slug} />)}
+                            {services.sort((a, b) => order(a, b)).map(slide => <SlideItem key={slide.id} title={slide.title} desc={slide.excerpt} image={slide.media} term={slide.terms[0].slug} slug={slide.slug} />)}
                         </div>
                         <div className="left-arrow w-slider-arrow-left" data-ix="line-arrow">
                             <div className="before-txt-link revers">

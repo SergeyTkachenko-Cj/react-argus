@@ -30,6 +30,9 @@ export class SlideItem extends PureComponent {
             case 'stat-chlenom-sro-proektirovshhikov-za-7-dnej-na-vygodnyh-usloviyah':
                 newLink = 'sro-proektirovshhikov';
             break;
+            case 'poluchit-lyuboj-sertifikat-iso-vsego-za-18-000-rub':
+                newLink = 'sertifikaty-iso';
+            break;
         }
 
         if (service) {

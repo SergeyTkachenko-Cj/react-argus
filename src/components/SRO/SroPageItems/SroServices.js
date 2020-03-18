@@ -25,12 +25,17 @@ export class SroServices extends Component {
     render() {
         const { services, isLoaded } = this.state;
         if (isLoaded && this.state.services.length != 0) {
+            const order = (a, b) => {
+                if (a.date < b.date) return 1
+                if (a.date > b.date) return -1
+                return 0
+            }
             return (
                 <Fragment>
                     <div className="section">
                         <div className="wrapper no-paddings">
                             <div className="news w-clearfix">
-                                { services.filter(service => service.acf['dovavit_v_karusel'] == false).map(service => <SroServiceItem key={service.id} id={service.id} title={service.title.rendered} excerpt={service.excerpt.rendered} catslug={this.props.catslug} slug={service.slug}/>)}
+                                { services.filter(service => service.acf['dovavit_v_karusel'] == false).sort((a, b) => order(a, b)).map(service => <SroServiceItem key={service.id} id={service.id} title={service.title.rendered} excerpt={service.excerpt.rendered} catslug={this.props.catslug} slug={service.slug}/>)}
                             </div>
                             <div className="vertical-line">
                             </div>

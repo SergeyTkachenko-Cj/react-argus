@@ -33,6 +33,11 @@ export class SectionThree extends Component {
   render() {
     const { taxonomy, services, isLoaded } = this.state;
     if (isLoaded) {
+      const order = (a, b) => {
+        if (a.date < b.date) return 1
+        if (a.date > b.date) return -1
+        return 0
+      }
       return (
         <Fragment>
           <div className="section">
@@ -41,7 +46,7 @@ export class SectionThree extends Component {
               <div className="vertical-line"></div>
               <div className="vertical-line-25"></div>
               <div className="news w-clearfix">
-                {services.map(service => <SmallService key={service.id} id={service.id} title={service.title.rendered} excerpt={service.excerpt.rendered} slug={service.slug} />)}
+                {services.filter(service => service.acf['dovavit_v_karusel'] == false).sort((a, b) => order(a, b)).filter((item, index) => index < 4).map(service => <SmallService key={service.id} id={service.id} title={service.title.rendered} excerpt={service.excerpt.rendered} slug={service.slug} />)}
               </div>
             </div>
             <div className="fon-greeer"></div>
