@@ -732,6 +732,78 @@ div.action {
   padding: 85px 0 0;
 }
 
+/* SRO Form */
+
+.form-style-9 {
+	max-width: 650px;
+	padding: 30px;
+	margin: 50px auto;
+  border: 1px solid #1d8a5b;
+}
+
+.form-style-9 ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.form-style-9 ul li {
+	display: block;
+	margin-bottom: 10px;
+	min-height: 35px;
+}
+
+.form-style-9 ul li .field-style {
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	padding: 8px;
+	outline: none;
+  border: none;
+  border-bottom: 1px solid #9CB0A4;
+}
+
+.form-style-9 ul li .field-style:focus,
+.form-style-9 ul li .field-style:-webkit-autofill,
+.form-style-9 ul li .field-style:-webkit-autofill:focus {
+  border-bottom: 1px solid #9CB0A4;
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 50px #fff inset;
+  -webkit-text-fill-color: #333;
+}
+
+.form-style-9 ul li .field-split {
+	width: 49%;
+}
+
+.form-style-9 ul li .field-full {
+	width: 100%;
+}
+
+.form-style-9 ul li input.align-left {
+	float:left;
+}
+
+.form-style-9 ul li input.align-right {
+	float:right;
+}
+
+.form-style-9 ul li textarea {
+	width: 100%;
+	height: 100px;
+}
+
+.form-style-9 ul li input[type="button"], 
+.form-style-9 ul li input[type="submit"] {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid #1d8a5b;
+	cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
 @media (min-width: 1000px) {
 
   .d-down>.dropdown-list {
