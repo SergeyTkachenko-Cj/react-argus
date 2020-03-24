@@ -1,8 +1,32 @@
 import React from 'react';
+import SroCopies from './SroCopies';
+import sro from './SroItems';
 
 class SroForm extends React.Component {
 
-  handleSubmit(event) {
+  state = {
+    allSros: sro
+  }
+
+  handlePlusMinusButtons = (eve, prp) => {
+    eve.persist();
+    const sroDuplicate = [...this.state.allSros];
+
+      const minusPlus = param => {
+        const sign = eve.target.innerHTML;
+        if (sign === '+' && param.copy < 100) return param.copy + 1
+        if (sign === '-' && param.copy > 0) return param.copy - 1
+        return param.copy
+      }
+
+    sroDuplicate.forEach(i => {
+      i.copy = i.name === prp.name ? minusPlus(i) : i.copy;
+    });
+
+    this.setState({allSros: sroDuplicate});
+  }
+
+  handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.target);
     
@@ -13,39 +37,27 @@ class SroForm extends React.Component {
   }
 
   render() {
-    // return (
-    //   <form onSubmit={this.handleSubmit}>
-    //     <label htmlFor="username">Enter username</label>
-    //     <input id="username" name="username" type="text" />
+    const copyArr = this.state.allSros.map((item, index) => <SroCopies 
+                                                          key={index} 
+                                                          name={item.name} 
+                                                          copy={item.copy} 
+                                                          handle={this.handlePlusMinusButtons}
+                                                        />)
 
-    //     <label htmlFor="email">Enter your email</label>
-    //     <input id="email" name="email" type="email" />
-
-    //     <label htmlFor="birthdate">Enter your birth date</label>
-    //     <input id="birthdate" name="birthdate" type="text" />
-
-    //     <button>Send data!</button>
-    //   </form>
-    // );
     return (
-    <form className="form-style-9">
-      <h3 className='h2'>Получите выписку из СРО</h3>
-      <ul>
-      <li>
-          <input type="email" name="field1" className="field-style field-split align-left" placeholder="Email" />
-          <input type="phone" name="field2" className="field-style field-split align-right" placeholder="INN" />
-
-      </li>
-      <li>
-          <input type="number" name="field3" className="field-style field-split align-left" placeholder="Proektir" />
-          <input type="number" name="field4" className="field-style field-split align-center" placeholder="Stroit" />
-          <input type="number" name="field4" className="field-style field-split align-right" placeholder="Iziskat" />
-      </li>
-      <li>
-      <input type="submit" value="Send Message" />
-      </li>
-      </ul>
-    </form>
+      <form className="form-style-9" onSubmit={this.handleSubmit}>
+        <h3 className='h2'>Получите выписку из СРО</h3>
+        <div className="mail_phone">
+            <input type="email" name="email" className="field-style field-split" placeholder="Email" />
+            <input type="tel" name="inn" className="field-style field-split" placeholder="ИНН" />
+        </div>
+        <div className="sros">
+          {copyArr}
+        </div>
+        <div className="submt">
+          <input type="submit" value="Заказать" />
+        </div>
+      </form>
     );
   }
 }

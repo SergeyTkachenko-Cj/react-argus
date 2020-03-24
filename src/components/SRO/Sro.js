@@ -1,4 +1,4 @@
-/* eslint-disable */
+// eslint-disable
 import React, { Component, Fragment, PureComponent } from 'react';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';

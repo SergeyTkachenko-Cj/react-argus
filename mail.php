@@ -2,11 +2,13 @@
 header('Access-Control-Allow-Origin: *');
 
 $mail_head = 'argus.group';
-$name = $_POST['username'];
 $email = $_POST['email'];
-$message = $_POST['birthdate'];
+$inn = $_POST['inn'];
+$stroy = $_POST['СРО Строителей'];
+$proekt = $_POST['СРО Проектировщиков'];
+$izisk = $_POST['СРО Изыскателей'];
 
-$formcontent=" От: $name \n\n Email: $email \n\n Сообщение: $message";
+$formcontent=" Email: $email \n\n ИНН: $inn \n\n СРО Строителей: $stroy \n\n СРО Проектировщиков: $proekt \n\n СРО Изыскателей: $izisk";
 // $recipient = "vkirillov.online@yandex.ru";
 $recipient = "tka4inni@gmail.com";
 $subject = "Контактная форма";

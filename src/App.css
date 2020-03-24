@@ -735,25 +735,19 @@ div.action {
 /* SRO Form */
 
 .form-style-9 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 	max-width: 650px;
 	padding: 30px;
-	margin: 50px auto;
+  margin: 50px auto;
+  font-family: Clinicapro, sans-serif;
+  font-size: 1.3rem;
   border: 1px solid #1d8a5b;
 }
 
-.form-style-9 ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-.form-style-9 ul li {
-	display: block;
-	margin-bottom: 10px;
-	min-height: 35px;
-}
-
-.form-style-9 ul li .field-style {
+form .field-style {
 	box-sizing: border-box; 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box; 
@@ -763,38 +757,54 @@ div.action {
   border-bottom: 1px solid #9CB0A4;
 }
 
-.form-style-9 ul li .field-style:focus,
-.form-style-9 ul li .field-style:-webkit-autofill,
-.form-style-9 ul li .field-style:-webkit-autofill:focus {
+form .field-style:focus,
+form .field-style:-webkit-autofill,
+form .field-style:-webkit-autofill:focus {
   border-bottom: 1px solid #9CB0A4;
   background-color: transparent !important;
   -webkit-box-shadow: 0 0 0 50px #fff inset;
   -webkit-text-fill-color: #333;
 }
 
-.form-style-9 ul li .field-split {
-	width: 49%;
+.mail_phone {
+  width: 100%;
+  margin: 1rem 0;
 }
 
-.form-style-9 ul li .field-full {
-	width: 100%;
+.mail_phone input {
+  width: 45%;
 }
 
-.form-style-9 ul li input.align-left {
-	float:left;
+.mail_phone input:nth-child(1) {
+  margin-right: 10%;
 }
 
-.form-style-9 ul li input.align-right {
-	float:right;
+.sros {
+  width: 100%;
+  color: #757575;
 }
 
-.form-style-9 ul li textarea {
-	width: 100%;
-	height: 100px;
+.copies_cont,
+.count_cont {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.form-style-9 ul li input[type="button"], 
-.form-style-9 ul li input[type="submit"] {
+.copies_cont div {
+  width: 45%;
+}
+
+.copies_cont div:nth-child(1) {
+  margin-right: 10%;
+}
+
+.copies_head {
+  padding-left: .5rem
+}
+
+form .submt input[type="button"], 
+form .submt input[type="submit"] {
   display: inline-block;
   padding: 8px 18px;
   border: 1px solid #1d8a5b;
@@ -803,6 +813,10 @@ div.action {
 	text-decoration: none;
 	font: 12px Arial, Helvetica, sans-serif;
 }
+
+
+
+
 
 @media (min-width: 1000px) {
 
