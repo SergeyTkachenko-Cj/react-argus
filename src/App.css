@@ -735,6 +735,7 @@ div.action {
 /* SRO Form */
 
 .form-style-9 {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -812,6 +813,25 @@ form .submt input[type="submit"] {
 	color: #000;
 	text-decoration: none;
 	font: 12px Arial, Helvetica, sans-serif;
+}
+
+.success,
+.valid {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 999;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.success h3,
+.valid h3 {
+  text-align: center;
+  color: #1d8a5b;
 }
 
 

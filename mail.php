@@ -4,14 +4,14 @@ header('Access-Control-Allow-Origin: *');
 $mail_head = 'argus.group';
 $email = $_POST['email'];
 $inn = $_POST['inn'];
-$stroy = $_POST['СРО Строителей'];
-$proekt = $_POST['СРО Проектировщиков'];
-$izisk = $_POST['СРО Изыскателей'];
+$stroy = $_POST['st'];
+$proekt = $_POST['pr'];
+$izisk = $_POST['iz'];
 
-$formcontent=" Email: $email \n\n ИНН: $inn \n\n СРО Строителей: $stroy \n\n СРО Проектировщиков: $proekt \n\n СРО Изыскателей: $izisk";
+$formcontent=" Email: $email \n\n ИНН: $inn \n\n Выписка из СРО Строителей: $stroy шт. \n\n Выписка из СРО Проектировщиков: $proekt шт. \n\n Выписка из СРО Изыскателей: $izisk шт.";
 // $recipient = "vkirillov.online@yandex.ru";
 $recipient = "tka4inni@gmail.com";
-$subject = "Контактная форма";
+$subject = "Заказ выписки из СРО с сайта";
 $mailheader = "From: $mail_head \r\n";
 
 mail($recipient, $subject, $formcontent, $mailheader);
