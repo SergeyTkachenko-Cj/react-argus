@@ -6,8 +6,9 @@ export class SroPageContent extends Component {
         Webflow.destroy();
         Webflow.ready();
     }
+
     render() {
-        const acf = this.props.acf;
+        const {acf, cat} = this.props;
         if (acf) {
             return (
                 <Fragment>
@@ -18,7 +19,7 @@ export class SroPageContent extends Component {
                             <div className="vertical-line-25">
                             </div>
                             <div className="row-3x w-row">
-                                {acf.map((block, index) => <div key={index} className="col-3x left w-clearfix w-col w-col-6" dangerouslySetInnerHTML={{ __html: block["blok_kontenta"] }}></div>)}
+                                {acf.map((block, index) => <div key={index} className={`col-3x left w-clearfix w-col w-col-6 ${cat === 'sro' ? 'under_sro_padding' : null}`} dangerouslySetInnerHTML={{ __html: block["blok_kontenta"] }}></div>)}
                             </div>
                         </div>
                         <div className="fon-greeer">

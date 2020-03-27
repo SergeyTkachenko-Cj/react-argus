@@ -20,9 +20,9 @@ const SroCopies = props => {
             <div className="copies_head">{props.name}</div>
             <div className="count_cont">
               <button onClick={event => props.handle(event, props)}>-</button>
-              <span>{props.copy}</span>
+              <span className="number">{props.copy}</span>
               <button onClick={event => props.handle(event, props)}>+</button>
-              <span>(копии)</span>
+              <span className="copii">(копии)</span>
             </div>
             <input type="hidden" name={post} defaultValue={props.copy} />
         </div>
