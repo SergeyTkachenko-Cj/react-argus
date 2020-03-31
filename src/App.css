@@ -677,6 +677,14 @@ div.action {
   border: none;
 }
 
+.lisa_carousel {
+  width: 100%;
+}
+
+.litsa_pops img {
+  filter: none;
+}
+
 .no-border {
   border-bottom: none;
 }
