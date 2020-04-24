@@ -3,18 +3,30 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export class SectionTwo extends Component {
+    _isMounted = false;
+
     state = {
         content: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/pages/2')
-            .then(res => this.setState({
-                content: res.data.content.rendered,
-                isLoaded: true
-            }))
+                .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        content: res.data.content.rendered,
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

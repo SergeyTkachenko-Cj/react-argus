@@ -6,18 +6,30 @@ import PostItem from '../../Blog/PostItem/PostItem';
 
 
 export class SectionEleven extends Component {
+    _isMounted = true;
+
     state = {
         news: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/posts')
-            .then(res => this.setState({
-                news: res.data.slice(0, 4),
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        news: res.data.slice(0, 4),
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

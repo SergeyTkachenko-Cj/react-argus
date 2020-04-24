@@ -5,19 +5,30 @@ import SlideItem from './SlideItem/SlideItem';
 import axios from 'axios';
 
 class ReSectionOne extends Component {
+    _isMounted = false;
+
     state = {
         services: [],
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/services?per_page=150')
-            .then(res => 
-                this.setState({
-                services: res.data.filter(item => item.acf ? item.acf["dovavit_v_karusel"] : null),
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        services: res.data.filter(item => item.acf ? item.acf["dovavit_v_karusel"] : null),
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

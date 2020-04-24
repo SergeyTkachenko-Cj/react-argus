@@ -6,18 +6,30 @@ import playarrow from '../../../img/play-arrow.svg';
 import ReviewItem from './ReviewItem/ReviewItem';
 
 export class SectionEight extends Component {
+    _isMounted = true;
+
     state = {
         reviews: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/reviews')
-            .then(res => this.setState({
-                reviews: res.data.filter(item => item.acf.kartinka),
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        reviews: res.data.filter(item => item.acf.kartinka),
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

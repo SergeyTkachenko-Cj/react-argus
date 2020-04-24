@@ -645,8 +645,17 @@ body {
   text-decoration: none;
 }
 
-#argus_video .wp-block-embed__wrapper iframe {
+#argus_video .wp-block-embed__wrapper iframe,
+.argus_video_tripple iframe {
   width: 100%;
+}
+
+.argus_video_tripple iframe {
+  height: 370px;
+}
+
+.margin-block {
+  margin: 0 .5rem;
 }
 
 div.faces,
@@ -1291,6 +1300,20 @@ form .submt input[type="submit"] {
     padding: 40px 20px;
   }
 
+}
+
+@media (max-width: 966px) {
+  .flex-block-youtube {
+    flex-direction: column;
+  }
+
+  .argus_video_tripple iframe {
+    width: 50vw;
+  }
+
+  .margin-block-2 {
+    margin: 3rem 0;
+  }
 }
 
 @media (max-width: 930px) {

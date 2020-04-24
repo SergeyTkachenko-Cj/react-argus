@@ -41,8 +41,16 @@ export class SinglePage extends Component {
     }
 
     render() {
-        const { service, cat, isLoaded } = this.state;
-        const back = this.props.location.pathname.match(/(\/.*\/)/)[0];
+        const { service, isLoaded } = this.state;
+        let back = this.props.location.pathname.match(/(\/.*\/)/)[0];
+
+        // DESTROY AFTER COVID-19
+            switch(service.slug) {
+                case 'tsentry-monitoringa-faq':
+                    back = "/"
+                break;
+            }
+        // 
 
         if (isLoaded && service.length != 0) {
             return (

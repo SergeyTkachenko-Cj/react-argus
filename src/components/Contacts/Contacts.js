@@ -68,7 +68,7 @@ export class Contacts extends Component {
                                     <div className="p-class">Наш адрес: {options.acf.adres}
                                         <br />‍
                                         <br />Телефон/факс: {options.acf.telefon} - многоканальный
-                                        <br />Телефон: <a href={`tel:${options.acf["telefon_2"]}`}>{options.acf["telefon_2"]}</a>
+                                        <br />Телефон: {options.acf["telefon_2"]}
                                         <br />Почта: <a href={`mailto:${options.acf.email}`}>{options.acf.email}</a>
                                         <br />
                                         <br />

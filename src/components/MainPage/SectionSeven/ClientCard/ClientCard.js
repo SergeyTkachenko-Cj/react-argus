@@ -3,18 +3,30 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export class ClientCard extends Component {
+    _isMounted = false;
+
     state = {
         img: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get(`https://admin.argus-eko.ru/wp-json/wp/v2/media/${this.props.image}`)
-            .then(res => this.setState({
-                img: res.data.source_url,
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        img: res.data.source_url,
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

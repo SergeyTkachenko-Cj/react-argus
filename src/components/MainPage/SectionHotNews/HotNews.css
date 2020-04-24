@@ -1,0 +1,41 @@
+.hotnews-block {
+    /* background-color: wheat; */
+    /* background-image: url('https://argus.group/funky-lines.png'); */
+}
+
+.hotnews-block .fon-greeer,
+.section-hotnews .fon-greeer {
+    background-color: transparent;
+}
+
+.card-news.w-clearfix.hotnews,
+.news.page-news .card-news.hotnews:nth-child(5) {
+    width: 20%;
+}
+
+.hotnews {
+    justify-content: space-between;
+}
+
+.news.page-news .card-news.hotnews:nth-child(5)>h3 {
+    font-size: 18px;
+}
+
+/* .virus-h1::after {
+    position: absolute;
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    background-image: url('https://argus.group/virus.png');
+    background-size: cover;
+    color: transparent;
+    font-size: 3rem;
+    margin-left: 2rem;
+} */
+
+@media (max-width: 1100px) {
+    .card-news.w-clearfix.hotnews,
+    .news.page-news .card-news.hotnews:nth-child(5) {
+        width: 50%;
+    }
+}

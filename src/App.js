@@ -20,18 +20,27 @@ import Footer from './components/Footer';
 import Studing from './components/Studing/Studing';
 
 export class App extends Component {
+  _isMounted = true;
+
   state = {
     options: [],
     isLoaded: false
   }
 
   componentDidMount() {
-    axios.get('https://admin.argus-eko.ru/wp-json/acf/v3/options/options')
-      .then(res => this.setState({
-        options: res.data,
-        isLoaded: true
-      }))
+    this._isMounted = true;
+
+      axios.get('https://admin.argus-eko.ru/wp-json/acf/v3/options/options')
+      .then(res => {
+        if (this._isMounted) {
+          this.setState({ options: res.data });
+        }
+      })
       .catch(err => console.log(err));
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   componentDidUpdate() {
@@ -40,7 +49,7 @@ export class App extends Component {
   }
 
   render() {
-    const { options } = this.state;
+    const { options, isLoaded } = this.state;
     return (
       <Router>
         <Fragment>

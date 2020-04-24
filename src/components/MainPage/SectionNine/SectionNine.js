@@ -5,18 +5,30 @@ import playarrow from '../../../img/play-arrow.svg';
 import SampleSlide from './SampleSlide/SampleSlide';
 
 export class SectionNine extends Component {
+    _isMounted = true;
+
     state = {
         samples: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/samples')
-            .then(res => this.setState({
-                samples: res.data.filter(item => item.acf),
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        samples: res.data.filter(item => item.acf),
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

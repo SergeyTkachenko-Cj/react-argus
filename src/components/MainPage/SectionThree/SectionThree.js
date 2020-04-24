@@ -5,6 +5,8 @@ import BigServices from './BigServices/BigServices';
 import SmallService from './SmallService/SmallService';
 
 export class SectionThree extends Component {
+  _isMounted = true;
+
   state = {
     taxonomy: {},
     services: [],
@@ -12,16 +14,26 @@ export class SectionThree extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
+
     const getTaxonomy = axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat/2');
     const getServices = axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=2');
 
     Promise.all([getTaxonomy, getServices])
-      .then(res => this.setState({
-        taxonomy: res[0].data,
-        services: res[1].data,
-        isLoaded: true
-      }))
+        .then(res => {
+          if (this._isMounted) {
+            this.setState({
+              taxonomy: res[0].data,
+              services: res[1].data,
+              isLoaded: true
+            })
+          }
+      })
       .catch(err => console.log(err))
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   componentDidUpdate() {

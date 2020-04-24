@@ -5,22 +5,34 @@ import playarrow from '../../../img/play-arrow.svg';
 import SixChildTax from './SixChildTax/SixChildTax';
 
 export class SectionSix extends Component {
+    _isMounted = true;
+
     state = {
         taxomomy: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         const getParent = axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat/5');
         const getChilds = axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services_cat');
 
         Promise.all([getParent, getChilds])
-            .then(res => this.setState({
-                taxomomy: res[0].data,
-                childs: res[1].data.filter(item => item.parent === 5),
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        taxomomy: res[0].data,
+                        childs: res[1].data.filter(item => item.parent === 5),
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

@@ -4,18 +4,30 @@ import axios from 'axios';
 import ClientCard from './ClientCard/ClientCard';
 
 export class SectionSeven extends Component {
+    _isMounted = false;
+
     state = {
         clients: '',
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/clients?per_page=11')
-            .then(res => this.setState({
-                clients: res.data,
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        clients: res.data,
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

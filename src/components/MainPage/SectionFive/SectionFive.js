@@ -5,18 +5,30 @@ import playarrow from '../../../img/play-arrow.svg';
 import axios from 'axios';
 
 export class SectionFive extends Component {
+    _isMounted = true;
+
     state = {
         service: [],
         isLoaded: false
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         axios.get('https://admin.argus-eko.ru/wp-json/wp/v2/services?services_cat=4')
-            .then(res => this.setState({
-                service: res.data.filter(item => item.acf["dovavit_v_karusel"] == false)[0],
-                isLoaded: true
-            }))
+                .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        service: res.data.filter(item => item.acf["dovavit_v_karusel"] == false)[0],
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {

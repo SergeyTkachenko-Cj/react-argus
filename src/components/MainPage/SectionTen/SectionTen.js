@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 export class SectionTen extends Component {
+    _isMounted = true;
+
     state = {
         title: '',
         sales: [],
@@ -10,16 +12,26 @@ export class SectionTen extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         const getTitle = axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/aktsii');
         const getSales = axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/sales');
 
         Promise.all([getTitle, getSales])
-            .then(res => this.setState({
-                title: res[0].data.title,
-                sales: res[1].data,
-                isLoaded: true
-            }))
+            .then(res => {
+                if (this._isMounted) {
+                    this.setState({
+                        title: res[0].data.title,
+                        sales: res[1].data,
+                        isLoaded: true
+                    })
+                }
+            })
             .catch(err => console.log(err))
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     componentDidUpdate() {
