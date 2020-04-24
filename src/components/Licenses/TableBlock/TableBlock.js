@@ -18,7 +18,9 @@ export class TableBlock extends Component {
                                 <h2 className="h2">{block["blok_s_tablitsey"]["zagolovok_bloka"]}</h2>
                             </div>
                             <div className="logos-clients">
-                                <div className="div-in-tab" style={{overflowX: 'auto'}} dangerouslySetInnerHTML={{__html: block["blok_s_tablitsey"]["tablitsa"]}}>
+                                <div className={`${block.blok_s_tablitsey.zagolovok_bloka === 'Реквизиты для оплаты' ? 'mchska div-in-tab' : 'div-in-tab'}`} 
+                                     style={{overflowX: 'auto'}} 
+                                     dangerouslySetInnerHTML={{__html: block["blok_s_tablitsey"]["tablitsa"]}}>
                                 </div>
                             </div>
                             <div className="vertical-line-25">

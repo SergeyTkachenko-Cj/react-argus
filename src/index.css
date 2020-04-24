@@ -4154,7 +4154,7 @@ blockquote {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 25%;
+  width: 24%;
   height: auto;
   min-height: 450px;
   margin-bottom: 0px;
@@ -4863,7 +4863,7 @@ html.w-mod-js *[data-ix="dop-navy"] {
   }
 
   .card-news {
-    width: 50%;
+    width: 49%;
     min-height: 320px;
     padding: 40px 20px;
   }
