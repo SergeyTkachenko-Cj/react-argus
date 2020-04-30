@@ -12,7 +12,7 @@ export class PostSection extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/posts?per_page=20')
+        axios.get('https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/posts?per_page=50')
             .then(res => this.setState({
                 posts: res.data,
                 isLoaded: true

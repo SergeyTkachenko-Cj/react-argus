@@ -7,10 +7,7 @@ const HotNewsSection = props => {
     return (
         <Fragment>
                 <div className="card-news w-clearfix hotnews">
-                <img style={{transform: 'rotateZ(120deg)'}} 
-                     className="hotnews-img" 
-                     src={props.prps.pic}>
-                </img>
+                <img className="hotnews-img" src={props.prps.pic}></img>
                 <div className="p-class"></div>
                 <h3>{props.prps.text}</h3>
                 <Link to={props.prps.link} 

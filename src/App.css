@@ -854,7 +854,8 @@ form .field-style:-webkit-autofill:focus {
   padding-left: .5rem
 }
  
-form .submt input[type="submit"] {
+form .submt input[type="submit"],
+form .webinar_inpts input[type="submit"] {
   display: inline-block;
   width: 10rem;
   height: 2.3rem;
@@ -867,6 +868,11 @@ form .submt input[type="submit"] {
 	cursor: pointer;
 	color: #000;
   background: none;
+}
+
+form .webinar_inpts input[type="submit"] {
+  margin-top: 2rem;
+  margin-left: 10%;
 }
 
 .success,
@@ -893,6 +899,26 @@ form .submt input[type="submit"] {
 }
 
 
+/* WEBINAR FORM */
+
+.webinar {
+  margin-bottom: 50px;
+}
+
+/* COVID ARTICLE */
+
+.points {
+  display: flex;
+  width: 100%;
+}
+
+.points .points-p {
+  width: 6rem;
+}
+
+.width-class {
+  width: 150%;
+}
 
 
 
@@ -932,6 +958,9 @@ form .submt input[type="submit"] {
     padding-left: 20%;
   }
 
+  .width-class {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -1468,6 +1497,12 @@ form .submt input[type="submit"] {
   }
 }
 
+@media (max-width: 745px) {
+  form .webinar_inpts input[type="submit"] {
+    width: 45%;
+  }
+}
+
 @media (max-width: 726px) {
   .dop_head {
     height: 3.5rem;
@@ -1521,6 +1556,10 @@ form .submt input[type="submit"] {
 @media (max-width: 519px) {
   .mail_phone input {
     width: 100%;
+  }
+
+  form .webinar_inpts input[type="submit"] {
+    margin-left: 0;
   }
 
   .copies_cont div {
@@ -1667,11 +1706,26 @@ form .submt input[type="submit"] {
   .dop_head {
     height: 4.5rem;
   }
+
+  form .webinar_inpts input[type="submit"] {
+    width: 110px;
+  }
 }
 
 @media (max-width: 345px) {
   .dop_head_II {
     height: 15rem;
+  }
+}
+
+@media (max-width: 295px) {
+  .points {
+    flex-direction: column;
+  }
+
+  .points .points-p {
+    margin: 0 auto;
+    width: 50%;
   }
 }
 

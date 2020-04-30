@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import playarrow from '../../img/play-arrow.svg';
 import NotFound from '../Error/NotFound';
+import WebinarForm from './WebinarForm';
 
 export class SinglePage extends Component {
     state = {
@@ -44,9 +45,26 @@ export class SinglePage extends Component {
         const { service, isLoaded } = this.state;
         let back = this.props.location.pathname.match(/(\/.*\/)/)[0];
 
+        console.log(service.slug);
+
         // DESTROY AFTER COVID-19
             switch(service.slug) {
-                case 'tsentry-monitoringa-faq':
+                case '13-luchshih-besplatnyh-resursov-dlya-biznesa-v-period-samoizolyatsii':
+                    back = "/"
+                break;
+                case 'mery-podderzhki-dlya-arendatorov':
+                    back = "/"
+                break;
+                case 'subsidiya-na-oplatu-truda-rabotnikam':
+                    back = "/"
+                break;
+                case 'mnogie-lgoty-i-subsidii-rasprostranyayutsya-lish-na-naibolee-postradavshie-otrasli-ekonomiki':
+                    back = "/"
+                break;
+                case 'stroitelnyj-kompleks-gotovitsya-k-vozobnovleniyu-stroitelnyh-rabot-posle-snyatiya-karantina':
+                    back = "/"
+                break;
+                case 'osobennosti-osushhestvleniya-zakupok-v-period-pandemii':
                     back = "/"
                 break;
             }
@@ -83,11 +101,12 @@ export class SinglePage extends Component {
                         <div className="vertical-line _50"></div>
                     </div>
                     <div className="section">
-                        <div className={`wrapper single w-clearfix ${service.title === "Рабочие специальности" ? 'extra-class' : ''}`}>
+                        <div className={`wrapper single w-clearfix ${service.title === "Рабочие специальности" ? 'extra-class' : ''} ${service.slug === 'osobennosti-osushhestvleniya-zakupok-v-period-pandemii' ? 'width-class' : ''}`}>
                             <div className="news page-news"></div>
                             <div className="vertical-line-25"></div>
                             <div className="vertical-line"></div>
                             <div className="p-class" dangerouslySetInnerHTML={{ __html: service.content }}></div>
+                            {service.slug === 'mery-podderzhki-dlya-arendatorov' ? <WebinarForm /> : null}
                         </div>
                         <div className="vertical-line _50"></div>
                         <div className="fon-green"></div>

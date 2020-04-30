@@ -10,12 +10,17 @@
 
 .card-news.w-clearfix.hotnews,
 .news.page-news .card-news.hotnews:nth-child(5) {
-    width: 19%;
+    width: 16%;
 }
 
-.hotnews {
-    justify-content: space-between;
+.card-news.w-clearfix.hotnews:hover {
+    background: none;
+    background-color: transparent;
 }
+
+/* .hotnews {
+    justify-content: space-between;
+} */
 
 .news.page-news .card-news.hotnews:nth-child(5)>h3 {
     font-size: 18px;
