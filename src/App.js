@@ -50,6 +50,7 @@ export class App extends Component {
 
   render() {
     const { options, isLoaded } = this.state;
+    console.log(options);
     return (
       <Router>
         <Fragment>

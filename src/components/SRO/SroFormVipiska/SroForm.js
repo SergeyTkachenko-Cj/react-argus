@@ -73,7 +73,7 @@ class SroForm extends React.Component {
     return (
       <form className="form-style-9" onSubmit={this.handleSubmit}>
         <div style={{display: `${this.state.success === '' ? 'none' : 'flex'}`}} className="success">
-          <h3>{this.state.success ? 'Спасибо! Ваша выписка уже готовится.' : 'О нет! Что-то пошло не так :('}</h3>
+          <h3>{this.state.success ? 'Спасибо! Ваша выписка будет готова в течение 1 рабочего дня.' : 'О нет! Что-то пошло не так :('}</h3>
         </div>
         <div style={{display: `${this.state.valid ? 'flex' : 'none'}`}} className="valid">
           <h3>Пожалуйста заполните всю форму</h3>

@@ -9,6 +9,12 @@ export class Footer extends Component {
 
     render() {
         const { options } = this.props;
+        const socialNet = [
+            {ssylka: "https://www.youtube.com/channel/UCki5LRGXPm2X1yrWoEQC6pA", nazvanie: "YouTube"},
+            {ssylka: "https://instagram.com/gk_argus?igshid=2yng5geom75p", nazvanie: "Instagram"},
+            {ssylka: "https://www.facebook.com/arguseko/", nazvanie: "Facebook"}
+        ];
+
         if (options.acf) {
             return (
                 <Fragment>
@@ -30,7 +36,11 @@ export class Footer extends Component {
                                 </div>
                                 <div className="fotter-clos w-clearfix w-col w-col-3 w-col-medium-6">
                                     <div className="p-class fotter-links">
-                                        {options.acf["sotsyalnie_seti"].map((link, index) => <Fragment key={index}><a href={link.ssylka} className="text-link">{link.nazvanie}</a><br /></Fragment>)}
+                                        {/* {options.acf["sotsyalnie_seti"].map((link, index) => <Fragment key={index}><a href={link.ssylka} className="text-link">{link.nazvanie}</a><br /></Fragment>)} */}
+
+                                        {/* Hardcoded contacts due to WP interface issues */}
+
+                                        {socialNet.map((link, index) => <Fragment key={index}><a href={link.ssylka} className="text-link" target="_blank">{link.nazvanie}</a><br /></Fragment>)}
                                     </div>
                                 </div>
                                 <div className="fotter-clos w-clearfix w-col w-col-3 w-col-medium-6">

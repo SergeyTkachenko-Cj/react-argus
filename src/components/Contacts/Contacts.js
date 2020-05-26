@@ -33,6 +33,12 @@ export class Contacts extends Component {
 
     render() {
         const { page, options, isLoaded } = this.state;
+        const socialNet = [
+            {ssylka: "https://www.youtube.com/channel/UCki5LRGXPm2X1yrWoEQC6pA", nazvanie: "YouTube"},
+            {ssylka: "https://instagram.com/gk_argus?igshid=2yng5geom75p", nazvanie: "Instagram"},
+            {ssylka: "https://www.facebook.com/arguseko/", nazvanie: "Facebook"}
+        ];
+
         if (isLoaded) {
             return (
                 <Fragment>
@@ -65,7 +71,7 @@ export class Contacts extends Component {
                         <div className="wrapper no-paddings">
                             <div className="row-3x w-row">
                                 <div className="col-3x left top-padding w-clearfix w-col w-col-6">
-                                    <div className="p-class">Наш адрес: {options.acf.adres}
+                                    {/* <div className="p-class">Наш адрес: {options.acf.adres}
                                         <br />‍
                                         <br />Телефон/факс: {options.acf.telefon} - многоканальный
                                         <br />Телефон: {options.acf["telefon_2"]}
@@ -73,6 +79,20 @@ export class Contacts extends Component {
                                         <br />
                                         <br />
                                         {options.acf["sotsyalnie_seti"].map((link, index) => <Fragment key={index}><a href={link.ssylka}>{link.nazvanie}</a><br /></Fragment>)}
+                                        <br />
+                                        <br />
+                                    </div> */}
+
+                                    {/* Hardcoded contacts due to WP interface issues */}
+
+                                    <div className="p-class">Наш адрес: Проспект Маршала Жукова, дом 2, офис 227 (2-й этаж)
+                                        <br />‍
+                                        <br />Телефон/факс: +7 (495) 585-09-82 - многоканальный
+                                        <br />Телефон: +7 (495) 506-38-27
+                                        <br />Почта: <a href={`mailto:argus@argus-eko.ru`}>argus@argus-eko.ru</a>
+                                        <br />
+                                        <br />
+                                        {socialNet.map((link, index) => <Fragment key={index}><a href={link.ssylka} target="_blank">{link.nazvanie}</a><br /></Fragment>)}
                                         <br />
                                         <br />
                                     </div>
