@@ -12,7 +12,7 @@ const SectionEight = lazy(() => import('./SectionEight/SectionEight'));
 const SectionNine = lazy(() => import('./SectionNine/SectionNine'));
 const SectionTen = lazy(() => import('./SectionTen/SectionTen'));
 const SectionEleven = lazy(() => import('./SectionEleven/SectionEleven'));
-const SectionHotNews = lazy(() => import('./SectionHotNews/HotNews'));
+// const SectionHotNews = lazy(() => import('./SectionHotNews/HotNews'));
 
 
 
@@ -22,7 +22,7 @@ export class MainPage extends Component {
         return (
             <Fragment>
                 <Suspense fallback={<NotFound />}>
-                    <SectionHotNews />
+                    {/* <SectionHotNews /> */}
                     <ReSectionOne />
                     <SectionTwo />
                     <SectionThree />

@@ -10,7 +10,6 @@ export class LitsaItem extends Component {
 
     render() {
         const { image, content } = this.props;
-        console.log(content);
         return (
             <Fragment>
             <div className="card-news w-clearfix face-cards">
