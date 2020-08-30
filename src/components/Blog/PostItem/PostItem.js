@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import playarrow from '../../../img/play-arrow.svg';
 

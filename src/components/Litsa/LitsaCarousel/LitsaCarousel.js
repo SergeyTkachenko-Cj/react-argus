@@ -1,18 +1,30 @@
 /* eslint-disable */
-import React, { Component, Fragment } from 'react';
+import React, {Fragment} from 'react';
 import playarrow from '../../../img/play-arrow.svg';
 import LitsaCarouselItem from './LitsaCarouselItem';
 
 const LitsaCarousel = props => {
 
     const services = props.serv;
+    const servThree = [];
+
+        // three items per carousel card
+        for (let i = 0; i < services.length; services.splice(0, 3)) {        
+            servThree.push(<LitsaCarouselItem 
+                                key={services[i].id} 
+                                servI={services[i]} 
+                                servII={services[i + 1]} 
+                                servIII={services[i + 2]} 
+                           />);
+        }
+
     return (
         <Fragment>
             <div className="section otzvs lisa_carousel">
                 <div className="wrapper no-paddings">
                     <div data-animation="slide" data-duration="500" data-infinite="1" className="slider-otzivi w-slider">
                         <div className="w-slider-mask">
-                            {services.map(service => <LitsaCarouselItem key={service.id} serv={service} />)}
+                            {servThree}
                         </div>
                         <div className="left-arrow otzivas w-slider-arrow-left" data-ix="line-arrow">
                             <div className="before-txt-link revers">

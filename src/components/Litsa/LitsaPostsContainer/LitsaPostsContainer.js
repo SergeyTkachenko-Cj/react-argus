@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import LitsaItem from '../LitsaItem/LitsaItem'
+// import LitsaItem from '../LitsaItem/LitsaItem'
 import NotFoundPosts from '../../Error/NotFoundPosts';
 import LitsaCarousel from '../LitsaCarousel/LitsaCarousel';
 
@@ -30,21 +30,21 @@ export class LitsaPostsContainer extends Component {
         if (isLoaded) {
             return (
                 <Fragment>
-                <div className="section">
-                    <div className="wrapper no-paddings">
-                        <div className="news page-news w-clearfix">
-                        <LitsaCarousel serv={services} />
+                    <div className="section">
+                        <div className="wrapper no-paddings">
+                            <div className="news page-news w-clearfix">
+                            <LitsaCarousel serv={services} />
+                            </div>
+                            <div className="vertical-line-25">
+                            </div>
+                            <div className="vertical-line">
+                            </div>
                         </div>
-                        <div className="vertical-line-25">
+                        <div className="vertical-line _50">
                         </div>
-                        <div className="vertical-line">
+                        <div className="fon-greeer">
                         </div>
                     </div>
-                    <div className="vertical-line _50">
-                    </div>
-                    <div className="fon-greeer">
-                    </div>
-                </div>
                 </Fragment>
             )
         }

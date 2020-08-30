@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import playarrow from '../../img/play-arrow.svg';
-import NotFound from '../Error/NotFound';
 import PostSection from './PostSection/PostSection';
 
 export class Blog extends Component {
