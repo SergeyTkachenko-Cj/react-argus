@@ -10,9 +10,8 @@ const SroCopies = props => {
         case 'СРО Проектировщиков':
             post = 'pr';
             break;
-        case 'СРО Изыскателей':
+        default:
             post = 'iz';
-            break;
     }
 
     return (

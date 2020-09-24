@@ -1,5 +1,5 @@
 // eslint-disable
-import React, { Component, Fragment, PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';
 import SroServices from './SroPageItems/SroServices';
@@ -7,7 +7,6 @@ import SroForm from './SroFormVipiska/SroForm';
 import SroPageContent from './SroPageContent/SroPageContent';
 import SroPageTable from './SroPageTable/SroPageTable';
 import SroFooter from './SroFooter/SroFooter';
-import NotFoundPosts from '../Error/NotFoundPosts';
 import NotFound from '../Error/NotFound';
 
 export class Sro extends PureComponent {
