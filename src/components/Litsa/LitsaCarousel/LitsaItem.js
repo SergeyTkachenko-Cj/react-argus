@@ -24,15 +24,15 @@ const LitsaItem = props => {
         if (litsa.acf) {
             return (
                 <div className="col-otzivas">
-                    <div className="img-people-otzivas in-home">
+                    <div className="img-people-otzivas in-home litsa-pic">
                         <a href="#" className="_4-imgis pops w-inline-block w-lightbox litsa_pops">
                             <img src={url} alt="" />
                             <script type="application/json" className="w-json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}></script>
                         </a>
                     </div>
-                    <div className="col-otzivas _50-proc paper-otzvs">
+                    <div className="col-otzivas _50-proc paper-otzvs litsa-text">
+                    <blockquote className="itatas" dangerouslySetInnerHTML={{ __html: litsa.content }}></blockquote>
                         <div className="small-h">{litsa.title}</div>
-                        <blockquote className="itatas" dangerouslySetInnerHTML={{ __html: litsa.content }}></blockquote>
                     </div>
                 </div>
             )
