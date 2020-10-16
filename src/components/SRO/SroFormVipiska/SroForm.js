@@ -7,6 +7,7 @@ class SroForm extends React.Component {
   state = {
     email: '',
     inn: '',
+    text: '',
     allSros: sro,
     submit: false,
     success: '',
@@ -37,13 +38,26 @@ class SroForm extends React.Component {
   }
 
   handleSubmitButton = () => {
-    this.setState(prev => {
-          return this.state.email !== '' && 
-                 this.state.inn !== '' &&
-                 this.state.allSros.find(i => i.copy) !== undefined ? 
-                 {submit: !prev.submit} : 
-                 {valid: !prev.valid}
-          })
+    
+    const validateEmail = email => {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email.trim());
+    }
+
+    const validateInn = inn => {
+      var re = /^[0-9]{12}$/;
+      return re.test(inn.trim());
+    }
+
+      this.setState(prev => {
+            return validateEmail(this.state.email) && 
+                   validateInn(this.state.inn) &&
+                   this.state.text === '' &&
+                   this.state.allSros.find(i => i.copy) !== undefined ? 
+                   {submit: !prev.submit} : 
+                   {valid: !prev.valid}
+            })
+
     setTimeout(() => this.setState({valid: false}), 1000);
   }
 
@@ -82,6 +96,11 @@ class SroForm extends React.Component {
         <div className="mail_phone">
             <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} className="field-style field-split" placeholder="Email" />
             <input type="tel" name="inn" value={this.state.inn} onChange={this.handleInputChange} className="field-style field-split" placeholder="ИНН" />
+            
+            {/* Anti-robots trick */}
+            <input type="text" name="hidden-captcha" value={this.state.text} onChange={this.handleInputChange} className="field-style field-split" hidden />
+            {/* ----------------- */}
+
         </div>
         <div className="sros">
           {copyArr}
