@@ -152,6 +152,14 @@ h1 {
   filter: hue-rotate(322deg) brightness(110%) grayscale(80%);
 }
 
+img.wp-image-967,
+img.wp-image-968, 
+img.wp-image-969,
+img.wp-image-970 {
+  height: auto;
+  filter: none;
+}
+
 .html-embed {
   width: 100%;
   -webkit-filter: hue-rotate(322deg) contrast(100%);
@@ -431,8 +439,10 @@ h3 {
   background-color: rgba(20, 147, 115, 0.15) !important;
 }
 
-.news.page-news .card-news:nth-child(5) {
-  width: 49%;
+.news.page-news .card-news:nth-child(5),
+.news.page-news .card-news:nth-child(18),
+.news.page-news .card-news:nth-child(27) {
+  width: 50%;
 }
 
 .news.page-news .card-news.face-cards:nth-child(5),
@@ -447,7 +457,9 @@ h3 {
   padding: 10%;
 }
 
-.news.page-news .card-news:nth-child(5)>h3 {
+.news.page-news .card-news:nth-child(5)>h3,
+.news.page-news .card-news:nth-child(18)>h3,
+.news.page-news .card-news:nth-child(27)>h3 {
   font-size: 38px;
 }
 
@@ -920,6 +932,10 @@ form .webinar_inpts input[type="submit"] {
   width: 150%;
 }
 
+.margin-block-2 {
+  margin-left: 2rem;
+}
+
 
 
 @media (min-width: 1000px) {
@@ -1350,7 +1366,8 @@ form .webinar_inpts input[type="submit"] {
   }
 
   .margin-block-2 {
-    margin: 3rem 0;
+    margin-top: 3rem;
+    margin-left: 0;
   }
 }
 
@@ -1699,6 +1716,10 @@ form .webinar_inpts input[type="submit"] {
   .sm-pic-blck,
   .sm-pic {
     height: 100%;
+  }
+
+  .argus_video_tripple iframe {
+    width: 100%;
   }
 }
 
