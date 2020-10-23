@@ -352,10 +352,10 @@ td {
   left: -20px;
   top: 100%;
   position: absolute;
-  border-right: 1px solid rgba(0, 148, 115, 0.15);
-  border-left: 1px solid rgba(0, 148, 115, 0.15);
+  /* border-right: 1px solid rgba(0, 148, 115, 0.15); */
+  /* border-left: 1px solid rgba(0, 148, 115, 0.15); */
   background-color: #fff;
-  border-bottom-color: rgba(0, 148, 115, 0.15);
+  /* border-bottom-color: rgba(0, 148, 115, 0.15); */
   transition: all .5s ease-in-out;
 }
 

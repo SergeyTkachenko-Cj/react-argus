@@ -30,6 +30,8 @@ export class About extends Component {
 
     render() {
         const { page, isLoaded } = this.state;
+
+        console.log(page.slug);
         if (isLoaded) {
             return (
                 <Fragment>
