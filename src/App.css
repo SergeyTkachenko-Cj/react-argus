@@ -770,6 +770,14 @@ div.action {
   padding: 85px 0 0;
 }
 
+.disp-off {
+  display: none;
+}
+
+.disp-on {
+  display: block;
+}
+
 /* SRO Form */
 
 .form-style-9 {

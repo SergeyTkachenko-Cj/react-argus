@@ -9,7 +9,7 @@ export class ReviewOneItem extends Component {
 
     render() {
         const video = this.props.video;
-        const { url, type, filesize, id, width, height, filename } = this.props.image;
+        const {url, type, filesize, id, width, height, filename} = this.props.image;
         let data = {
             "items": [
                 {

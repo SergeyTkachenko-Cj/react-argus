@@ -68,7 +68,7 @@ export class App extends Component {
             <Route exact path={["/sro/:slug", "/certifications/:slug", "/legal-services/:slug", "/work-safety/:slug"]} component={SingleSro} />
             <Route exact path="/licenses/:slug" component={SingleLicenses} />
             <Route exact path="/training-and-seminars/:slug" component={Seminars} />
-            <Route exact path={["/training-and-seminars/seminars/:slug", "/training-and-seminars/learning-programs/:slug", "/blog/:slug"]} component={SinglePage} />
+            <Route exact path={["/training-and-seminars/seminars/:slug", "/training-and-seminars/learning-programs/:slug", "/training-and-seminars/exclusive-materials/:slug", "/blog/:slug"]} component={SinglePage} />
             <Route component={NotFound} />
           </Switch>
           <Footer options={options} />

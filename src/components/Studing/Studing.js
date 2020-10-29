@@ -28,7 +28,7 @@ export class Studing extends Component {
     }
 
     render() {
-        const { cat, isLoaded } = this.state;
+        const {cat, isLoaded} = this.state;
         if (isLoaded) {
             return (
                 <Fragment>
