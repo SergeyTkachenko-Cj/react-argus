@@ -748,10 +748,10 @@ div.action {
   max-width: 100%;
 }
 
-.news-edits {
+/* .news-edits {
   width: 50%;
   padding: 60px 150px 60px 150px;
-}
+} */
 
 .wp-block-table-cvr {
   width: 100%;
@@ -810,7 +810,7 @@ form .field-style:-webkit-autofill:focus {
   border-bottom: 1px solid #9CB0A4;
   background-color: transparent !important;
   -webkit-box-shadow: 0 0 0 50px #fff inset;
-  -webkit-text-fill-color: #333;
+  /* -webkit-text-fill-color: #333; */
 }
 
 .mail_phone {
@@ -944,6 +944,24 @@ form .webinar_inpts input[type="submit"] {
   margin-left: 2rem;
 }
 
+/* SECRET PAGE */
+
+.secret-page {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.secret-page iframe {
+  width: 600px;
+  height: 315px;
+}
+
+/* MAIN PAGE */
+
+.card-ico .ico-in-card {
+  filter: grayscale(100%)
+}
 
 
 @media (min-width: 1000px) {
@@ -1002,6 +1020,10 @@ form .webinar_inpts input[type="submit"] {
 
   .glitch__img.otziv {
     height: 100%
+  }
+
+  .secret-page iframe {
+    width: 100%;
   }
 }
 
@@ -1519,6 +1541,10 @@ form .webinar_inpts input[type="submit"] {
   .under_sro_padding {
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .secret-page {
+    width: 100%;
   }
 }
 

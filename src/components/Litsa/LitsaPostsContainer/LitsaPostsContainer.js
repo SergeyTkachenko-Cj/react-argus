@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-// import LitsaItem from '../LitsaItem/LitsaItem'
 import NotFoundPosts from '../../Error/NotFoundPosts';
 import LitsaCarousel from '../LitsaCarousel/LitsaCarousel';
 

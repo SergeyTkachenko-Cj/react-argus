@@ -18,6 +18,8 @@ import Contacts from './components/Contacts/Contacts';
 import NotFound from './components/Error/NotFound';
 import Footer from './components/Footer';
 import Studing from './components/Studing/Studing';
+import SecretPage from './components/Studing/SecretPage';
+import AboutUsPage from './components/AboutUsPage/AboutUsPage';
 
 export class App extends Component {
   _isMounted = true;
@@ -61,14 +63,16 @@ export class App extends Component {
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/aktsii" component={Sales} />
             <Route exact path="/litsa" component={Litsa} />
+            <Route exact path="/about-us-page" component={AboutUsPage} />
             <Route exact path="/otzyvy" component={Reviews} />
             <Route exact path="/kontakty" component={Contacts} />
-            <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
+            <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety", "/about-us"]} component={Sro} />
             <Route exact path="/training-and-seminars" component={Studing} />
             <Route exact path={["/sro/:slug", "/certifications/:slug", "/legal-services/:slug", "/work-safety/:slug"]} component={SingleSro} />
             <Route exact path="/licenses/:slug" component={SingleLicenses} />
             <Route exact path="/training-and-seminars/:slug" component={Seminars} />
-            <Route exact path={["/training-and-seminars/seminars/:slug", "/training-and-seminars/learning-programs/:slug", "/training-and-seminars/exclusive-materials/:slug", "/blog/:slug"]} component={SinglePage} />
+            <Route exact path={["/training-and-seminars/seminars/:slug", "/training-and-seminars/learning-programs/:slug", "/blog/:slug"]} component={SinglePage} />
+            <Route exact path="/exclusive-materials" component={SecretPage} />
             <Route component={NotFound} />
           </Switch>
           <Footer options={options} />

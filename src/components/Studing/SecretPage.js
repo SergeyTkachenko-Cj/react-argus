@@ -1,11 +1,9 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import playarrow from '../../img/play-arrow.svg';
 import NotFound from '../Error/NotFound';
-import LitsaPostsContainer from './LitsaPostsContainer/LitsaPostsContainer';
 
-export class Litsa extends Component {
+export class SecretPage extends Component {
     state = {
         page: {},
         isLoaded: false
@@ -13,7 +11,8 @@ export class Litsa extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        let getSlug = this.props.location.pathname.replace('/', '');
+        
+        let getSlug = 'exclusive-materials';
         axios.get(`https://admin.argus-eko.ru/wp-json/better-rest-endpoints/v1/page/${getSlug}`)
             .then(res => this.setState({
                 page: res.data,
@@ -29,22 +28,23 @@ export class Litsa extends Component {
 
     render() {
         const { page, isLoaded } = this.state;
+
+        console.log(page);
+
         if (isLoaded) {
             return (
                 <Fragment>
                     <div className="paddinger">
                     </div>
                     <div className="section">
-                        <div className="wrapper paddings-all">
-                            <div className="top-for-brads">
-                                <div className="small-h">{page.title}</div>
-                                <div className="brads">
-                                    <div className="small-h brads">главная</div>
-                                    <img src={playarrow} alt="" className="brads-arrow" />
-                                    <div className="small-h brads">{page.title}</div>
+                        <div className="wrapper head-wrapper">
+                            <div className="row-3x w-row">
+                                <div className="col-3x left w-clearfix w-col w-col-6">
+                                    <div className="small-h">{page.title}</div>
+                                    <h1>Эксклюзивные образовательные материалы</h1>
                                 </div>
+                                <div className="p-class _100 secret-page" dangerouslySetInnerHTML={{ __html: page.content }}></div>
                             </div>
-                            <h1>{page.title}</h1>
                             <div className="vertical-line">
                             </div>
                             <div className="vertical-line-25">
@@ -55,12 +55,11 @@ export class Litsa extends Component {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    <LitsaPostsContainer />
                 </Fragment>
             )
         }
-        return <NotFound />
+        return <NotFound />;
     }
 }
 
-export default Litsa
+export default SecretPage

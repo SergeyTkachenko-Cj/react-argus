@@ -26,13 +26,15 @@ export class StudingChild extends Component {
 
     render() {
         const { cats, isLoaded } = this.state;
+        console.log(cats);
+
         if (isLoaded) {
             return (
                 <Fragment>
                     <div className="section">
                         <div className="wrapper no-paddings">
                             <div className="news w-clearfix">
-                                {cats.map(cat => <StudingChildItem key={cat.id} title={cat.name} excerpt={cat.description} slug={cat.slug} />)}
+                                {cats.map(cat => <StudingChildItem key={cat.id} title={cat.name} excerpt={cat.description} slug={cat.slug} izob={cat.acf.icon} />)}
                             </div>
                             <div className="vertical-line">
                             </div>

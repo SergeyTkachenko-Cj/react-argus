@@ -10,7 +10,11 @@ export class DropdownMenu extends Component {
 
     render() {
         let link = `/${this.props.slug}`;
+
         if (this.props.slug === 'https://admin.argus-eko.ru/' || this.props.slug === 'o-kompanii') {
+            link = '/about-us-page';
+        }
+        if (this.props.slug === 'ispitaniya') {
             link = '';
         }
         return (
@@ -30,7 +34,9 @@ export class DropdownMenu extends Component {
                                 return <Link key={item.ID} to={`/blog`} className="link drop-link">{item.title}</Link>
                             }
                             else {
-                                return <Link key={item.ID} to={`${link}/${item.slug}`} className="link drop-link">{item.title}</Link>
+                                return link === '/about-us-page' ? 
+                                       <Link key={item.ID} to={`/${item.slug}`} className="link drop-link">{item.title}</Link> : 
+                                       <Link key={item.ID} to={`${link}/${item.slug}`} className="link drop-link">{item.title}</Link>
                             }
                         })}
                 </nav>

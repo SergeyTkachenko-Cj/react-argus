@@ -53,6 +53,7 @@ export class SingleSro extends Component {
 
     render() {
         const {service, acf, img, isLoaded} = this.state;
+
         if (isLoaded) {
             return (
                 <Fragment>

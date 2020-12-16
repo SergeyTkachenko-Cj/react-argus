@@ -49,6 +49,7 @@ export class Sro extends PureComponent {
 
     render() {
         const { cat, isLoaded } = this.state;
+
         if (isLoaded) {
             return (
                 <Fragment>
@@ -75,8 +76,8 @@ export class Sro extends PureComponent {
                         <div className="vertical-line _50">
                         </div>
                     </div>
-                    <SroServices key={cat.id} catid={cat.id} catslug={cat.slug} />
                     {cat.slug === 'sro' ? <SroForm /> : null}
+                    <SroServices key={cat.id} catid={cat.id} catslug={cat.slug} />
                     {(cat.acf && cat.acf["bloki_s_kontentom"]) ? <SroPageContent acf={cat.acf["bloki_s_kontentom"]} cat={cat.slug} /> : null}
                     {(cat.acf && cat.acf["bloki_s_tablitsey"]) ? <SroPageTable acf={cat.acf["bloki_s_tablitsey"]} /> : null}
                     {(cat.acf && cat.acf["blok_v_podvale"]) ? <SroFooter acf={cat.acf["blok_v_podvale"]} /> : null}

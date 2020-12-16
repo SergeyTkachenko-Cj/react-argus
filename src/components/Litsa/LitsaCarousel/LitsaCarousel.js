@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, {Fragment} from 'react';
-import playarrow from '../../../img/play-arrow.svg';
 import LitsaCarouselDiffLength from './LitsaCarouselDiffLength';
 
 const LitsaCarousel = props => {

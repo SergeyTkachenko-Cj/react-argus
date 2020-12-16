@@ -8,7 +8,8 @@ import SroPageTable from '../../../SRO/SroPageTable/SroPageTable';
 import SroFooter from '../../../SRO/SroFooter/SroFooter';
 
 const PasswordPageContent = props => {
-    const {cat, parentSlug} = props.param;
+    const {cat, parentSlug} = props.param.param;
+    window.scrollTo(0, 0);
 
         return (
             <Fragment>

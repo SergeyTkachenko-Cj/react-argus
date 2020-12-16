@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import PasswordPage from './PasswordPage/PasswordPage';
+import SecretPage from '../SecretPage';
 import NoPasswordPage from './NoPasswordPage';
 import NotFound from '../../Error/NotFound';
 

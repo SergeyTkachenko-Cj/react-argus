@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import playarrow from '../../../../img/play-arrow.svg'
+import Icon from './StudingChildItemIcon';
 
 export class StudingChildItem extends Component {
     componentDidUpdate() {
@@ -13,6 +14,7 @@ export class StudingChildItem extends Component {
         return (
             <Fragment>
                 <div className="card-news news-edits">
+                    {this.props.izob ? <Icon url={this.props.izob.url} /> : null}
                     <h3>{this.props.title}</h3>
                     <div className="p-class">{this.props.excerpt}</div>
                     <Link to={`/training-and-seminars/${this.props.slug}`} className="link w-inline-block" data-ix="line-arrow" >
