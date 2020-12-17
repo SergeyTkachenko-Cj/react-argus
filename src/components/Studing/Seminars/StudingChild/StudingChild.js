@@ -26,7 +26,6 @@ export class StudingChild extends Component {
 
     render() {
         const { cats, isLoaded } = this.state;
-        console.log(cats);
 
         if (isLoaded) {
             return (

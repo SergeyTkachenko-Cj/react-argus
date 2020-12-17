@@ -963,7 +963,6 @@ form .webinar_inpts input[type="submit"] {
   filter: grayscale(100%)
 }
 
-
 @media (min-width: 1000px) {
 
   .d-down>.dropdown-list {
@@ -1321,6 +1320,10 @@ form .webinar_inpts input[type="submit"] {
 
   .col-3x.right._4-img-right {
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg) !important;
+  }
+
+  .dropdown-list a {
+    display: none;
   }
 
   .dropdown-list {

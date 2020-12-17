@@ -1,9 +1,8 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';
-import ReviewItem from '../MainPage/SectionEight/ReviewItem/ReviewItem';
-import ReviewOneItem from './ReviewItem/ReviewOneItem';
 import NotFound from '../Error/NotFound';
 import ReviewItemContainer from './ReviewItemContainer/ReviewItemContainer';
 
@@ -37,24 +36,33 @@ export class Reviews extends Component {
                     <div className="paddinger">
                     </div>
                     <div className="section">
-                        <div className="wrapper head-wrapper">
+                        <div className="wrapper paddings-all">
+                            <div className="top-for-brads">
+                                <Link to={`/about-us-page`} className="link w-inline-block" data-ix="line-arrow">
+                                    <div className="before-txt-link revers">
+                                        <div className="fon-arrow">
+                                            <img src={playarrow} alt="" className="arrow-line" />
+                                            <div className="line-arrow">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>назад</div>
+                                </Link>
+                                <div className="brads">
+                                    <div className="small-h brads">главная</div>
+                                    <img src={playarrow} alt="" className="brads-arrow" />
+                                    <div className="small-h brads">о нас</div>
+                                    <img src={playarrow} alt="" className="brads-arrow" />
+                                    <div className="small-h brads">{page.title}</div>
+                                </div>
+                            </div>
                             <div className="row-3x w-row">
                                 <div className="col-3x left w-clearfix w-col w-col-6">
-                                    <div className="small-h">{page.title}</div>
+                                    {/* <div className="small-h">{page.title}</div> */}
                                     <h1>Вот что о нас говорят</h1>
                                     <div className="p-class _100" dangerouslySetInnerHTML={{ __html: page.content }}></div>
                                 </div>
-                                <div className="col-3x right _4-img-right w-col w-col-6">
-                                    <div className="top-for-brads lefts">
-                                        <div className="brads">
-                                            <div className="small-h brads">главная</div>
-                                            <img src={playarrow} alt="" className="brads-arrow" />
-                                            <div className="small-h brads">о нас</div>
-                                            <img src={playarrow} alt="" className="brads-arrow" />
-                                            <div className="small-h brads">{page.title}</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div className="col-3x right _4-img-right w-col w-col-6"></div>
                             </div>
                             <div className="vertical-line">
                             </div>

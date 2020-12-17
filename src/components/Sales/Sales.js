@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import playarrow from '../../img/play-arrow.svg';
 import NotFound from '../Error/NotFound';
@@ -37,8 +38,20 @@ export class Sales extends Component {
                     <div className="section">
                         <div className="wrapper paddings-all">
                             <div className="top-for-brads">
+                                <Link to={`/about-us-page`} className="link w-inline-block" data-ix="line-arrow">
+                                    <div className="before-txt-link revers">
+                                        <div className="fon-arrow">
+                                            <img src={playarrow} alt="" className="arrow-line" />
+                                            <div className="line-arrow">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>назад</div>
+                                </Link>
                                 <div className="brads">
                                     <div className="small-h brads">главная</div>
+                                    <img src={playarrow} alt="" className="brads-arrow" />
+                                    <div className="small-h brads">о нас</div>
                                     <img src={playarrow} alt="" className="brads-arrow" />
                                     <div className="small-h brads">{page.title}</div>
                                 </div>

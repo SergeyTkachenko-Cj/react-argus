@@ -58,7 +58,7 @@ export class AboutUsPage extends Component {
                     </div>
                     <div className="section">
                         <div className="wrapper no-paddings">
-                            <div class="news w-clearfix">
+                            <div className="news w-clearfix">
                                 {info.map(item => <AboutUsSection key={item.id} serv={item} />)}
                             </div>
                         </div>
