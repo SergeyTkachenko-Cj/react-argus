@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Fragment } from 'react';
 import PasswordForm from './PasswordForm';
-// import PasswordPageContent from './PasswordPageContent';
 import SecretPage from '../../SecretPage';
 
 class PasswordPage extends React.Component {
@@ -33,7 +32,7 @@ class PasswordPage extends React.Component {
     const data = new FormData(event.target);
     
     if (this.state.submit) {
-      fetch('https://cdpo-argus.ru/password.php', 
+      fetch('https://argus.group/password.php', 
       {
         method: 'POST',
         body: data,
