@@ -9,18 +9,22 @@ export class DropdownMenu extends Component {
     }
 
     render() {
-        let link = `/${this.props.slug}`;
+        let link = <Link to={`/${this.props.slug}`}>{this.props.parenttitle}</Link>;
+        let shortLink = `/${this.props.slug}`;
 
         if (this.props.slug === 'https://admin.argus-eko.ru/' || this.props.slug === 'o-kompanii') {
-            link = '/about-us-page';
+            link = <Link to={'/about-us-page'}>{this.props.parenttitle}</Link>;
+            shortLink = '/about-us-page';
         }
         if (this.props.slug === 'ispitaniya') {
-            link = '';
+            link = <a href={'https://el.argus-eko.ru/'} target="_blank">{this.props.parenttitle}</a>;
+            shortLink = '';
         }
+
         return (
             <div tabIndex="0" className="d-down">
                 <div className="dropdown-toggle">
-                    {link ? <Link to={link}>{this.props.parenttitle}</Link> : <a href="#">{this.props.parenttitle}</a>}
+                    {link || <a href="#">{this.props.parenttitle}</a>}
                     <div className="ico w-icon-dropdown-toggle"></div>
                 </div>
                 <nav className="dropdown-list">
@@ -34,9 +38,10 @@ export class DropdownMenu extends Component {
                                 return <Link key={item.ID} to={`/blog`} className="link drop-link">{item.title}</Link>
                             }
                             else {
-                                return link === '/about-us-page' ? 
+                                return shortLink === '/about-us-page' ? 
                                        <Link key={item.ID} to={`/${item.slug}`} className="link drop-link">{item.title}</Link> : 
-                                       <Link key={item.ID} to={`${link}/${item.slug}`} className="link drop-link">{item.title}</Link>
+                                       <Link key={item.ID} to={`${shortLink}/${item.slug}`} className="link drop-link">{item.title}</Link>
+
                             }
                         })}
                 </nav>
