@@ -802,6 +802,7 @@ form .field-style {
 	outline: none;
   border: none;
   border-bottom: 1px solid #9CB0A4;
+  transition: .3s;
 }
 
 form .field-style:focus,
@@ -810,7 +811,10 @@ form .field-style:-webkit-autofill:focus {
   border-bottom: 1px solid #9CB0A4;
   background-color: transparent !important;
   -webkit-box-shadow: 0 0 0 50px #fff inset;
-  /* -webkit-text-fill-color: #333; */
+}
+
+form .error-on {
+  background-color: tomato;
 }
 
 .mail_phone {
@@ -961,6 +965,12 @@ form .webinar_inpts input[type="submit"] {
 
 .card-ico .ico-in-card {
   filter: grayscale(100%)
+}
+
+/* AKCIA PAGE */
+
+.col-otzivas._50-proc.aciya-page {
+  padding: 60px 25px 60px 100px;
 }
 
 @media (min-width: 1000px) {

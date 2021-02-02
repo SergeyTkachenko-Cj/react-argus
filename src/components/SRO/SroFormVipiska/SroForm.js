@@ -11,7 +11,10 @@ class SroForm extends React.Component {
     allSros: sro,
     submit: false,
     success: '',
-    valid: false
+    valid: false,
+    valEmail: false,
+    valInn: false,
+    valSros: true
   }
 
   handleInputChange = event => {
@@ -45,17 +48,20 @@ class SroForm extends React.Component {
     }
 
     const validateInn = inn => {
-      var re = /^[0-9]{12}$/;
+      var re = /^[0-9]{10,12}$/;
       return re.test(inn.trim());
     }
 
       this.setState(prev => {
-            return validateEmail(this.state.email) && 
-                   validateInn(this.state.inn) &&
-                   this.state.text === '' &&
-                   this.state.allSros.find(i => i.copy) !== undefined ? 
+            const valemail = validateEmail(this.state.email);
+            const valinn = validateInn(this.state.inn);
+            const valsros = this.state.allSros.find(i => i.copy) !== undefined;
+            return valemail && valinn && this.state.text === '' && valsros ? 
                    {submit: !prev.submit} : 
-                   {valid: !prev.valid}
+                   {valid: !prev.valid, 
+                    valEmail: valemail, 
+                    valInn: valinn, 
+                    valSros: valsros}
             })
 
     setTimeout(() => this.setState({valid: false}), 1000);
@@ -90,12 +96,36 @@ class SroForm extends React.Component {
           <h3>{this.state.success ? 'Спасибо! Ваша выписка будет готова в течение 1 рабочего дня.' : 'О нет! Что-то пошло не так :('}</h3>
         </div>
         <div style={{display: `${this.state.valid ? 'flex' : 'none'}`}} className="valid">
-          <h3>Пожалуйста заполните всю форму</h3>
+          <h3>{this.state.valEmail && this.state.valInn ? 
+                  'Пожалуйста укажите количество копий' : 
+                  this.state.email === '' || this.state.inn === '' ? 
+                        'Пожалуйста заполните всю форму' : 'Пожалуйста заполните форму корректно'
+              }</h3>
         </div>
         <h3 className='h2'>Получите выписку из СРО</h3>
         <div className="mail_phone">
-            <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} className="field-style field-split" placeholder="Email" />
-            <input type="tel" name="inn" value={this.state.inn} onChange={this.handleInputChange} className="field-style field-split" placeholder="ИНН" />
+            <input type="email" 
+                   name="email" 
+                   value={this.state.email} 
+                   onChange={this.handleInputChange} 
+                   className={/\S+@\S+\.\S+/.test(this.state.email.trim()) || !this.state.email ? 
+                                                                        'field-style field-split' : 
+                                                                        'field-style field-split error-on'
+                              } 
+                   placeholder="Email" 
+                   autoComplete="off"
+            />
+            <input type="tel" 
+                   name="inn" 
+                   value={this.state.inn} 
+                   onChange={this.handleInputChange} 
+                   className={/^[0-9]{10,12}$/.test(this.state.inn.trim()) || !this.state.inn ? 
+                                                                      'field-style field-split' : 
+                                                                      'field-style field-split error-on'
+                             } 
+                   placeholder="ИНН" 
+                   autoComplete="off"
+            />
             
             {/* Anti-robots trick */}
             <input type="text" name="hidden-captcha" value={this.state.text} onChange={this.handleInputChange} className="field-style field-split" hidden />

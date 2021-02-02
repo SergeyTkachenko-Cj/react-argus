@@ -2485,17 +2485,18 @@ html.w-mod-js *[data-ix="dop-navy"] {
     height: 80px;
   }
 
-  .top-for-brads.lefts {
+  /* .top-for-brads.lefts {
     display: none;
     padding-right: 0px;
-  }
+  } */
 
   .brads {
-    display: none;
+    /* display: none;
     -webkit-box-flex: 0;
     -webkit-flex: 0 auto;
     -ms-flex: 0 auto;
-    flex: 0 auto;
+    flex: 0 auto; */
+    visibility: hidden;
   }
 
   .h1-single {
@@ -2718,6 +2719,19 @@ html.w-mod-js *[data-ix="dop-navy"] {
   ._4-imgis {
     margin-top: 40px;
     padding-bottom: 6vw;
+  }
+
+  .top-for-brads.lefts {
+    display: none;
+    padding-right: 0px;
+  }
+
+  .brads {
+    display: none;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 auto;
+    -ms-flex: 0 auto;
+    flex: 0 auto;
   }
 }
 

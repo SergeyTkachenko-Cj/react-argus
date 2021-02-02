@@ -39,7 +39,7 @@ export class SectionTwo extends Component {
             return (
                 <div className="section">
                     <div className="wrapper paddings">
-                        <div className="small-h">приветствие</div>
+                        <div className="small-h">приветствуем</div>
                         <blockquote dangerouslySetInnerHTML={{ __html: this.state.content }}></blockquote>
                     </div>
                     <div className="fon-green">

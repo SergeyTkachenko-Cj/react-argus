@@ -31,7 +31,7 @@ try {
     //Recipients
     $mail->From='argus@argus.group';
     $mail->FromName="Заказ выписки из СРО с сайта";
-    $mail->addAddress("115@argus-eko.ru", "АРГУС.ГРУП");     // Add a recipient
+    $mail->addAddress("tka4inni@gmail.com", "АРГУС.ГРУП");     // Add a recipient
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
