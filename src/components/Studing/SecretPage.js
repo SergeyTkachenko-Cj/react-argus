@@ -29,8 +29,6 @@ export class SecretPage extends Component {
     render() {
         const { page, isLoaded } = this.state;
 
-        console.log(page);
-
         if (isLoaded) {
             return (
                 <Fragment>
