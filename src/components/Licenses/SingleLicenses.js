@@ -8,7 +8,8 @@ import LicensesContentBlocks from './LicensesContentBlocks/LicensesContentBlocks
 import TableBlock from './TableBlock/TableBlock';
 import LicensesSamples from './LicensesSamples/LicensesSamples';
 import LIcensesBottomContent from './LIcensesBottomContent/LIcensesBottomContent';
-import NotFound from '../Error/NotFound'
+import NotFound from '../Error/NotFound';
+import Meta from '../SRO/Meta/Meta';
 
 export class SingleLicenses extends Component {
     state = {
@@ -56,9 +57,11 @@ export class SingleLicenses extends Component {
 
     render() {
         const { service, img, isLoaded } = this.state;
+
         if (isLoaded) {
             return (
                 <Fragment>
+                    <Meta data={service.slug} />
                     <div className="paddinger">
                     </div>
                     <div className="section">

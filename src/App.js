@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 import Studing from './components/Studing/Studing';
 import SecretPage from './components/Studing/SecretPage';
 import AboutUsPage from './components/AboutUsPage/AboutUsPage';
+import Meta from './components/SRO/Meta/Meta';
 
 export class App extends Component {
   _isMounted = true;
@@ -56,6 +57,7 @@ export class App extends Component {
     return (
       <Router>
         <Fragment>
+          <Meta data="main" />
           <Header tel={options.acf} />
           <Switch>
             <Route exact path="/" component={MainPage} />
@@ -66,7 +68,7 @@ export class App extends Component {
             <Route exact path="/about-us-page" component={AboutUsPage} />
             <Route exact path="/otzyvy" component={Reviews} />
             <Route exact path="/kontakty" component={Contacts} />
-            <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety", "/about-us"]} component={Sro} />
+            <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
             <Route exact path="/training-and-seminars" component={Studing} />
             <Route exact path={["/sro/:slug", "/certifications/:slug", "/legal-services/:slug", "/work-safety/:slug"]} component={SingleSro} />
             <Route exact path="/licenses/:slug" component={SingleLicenses} />

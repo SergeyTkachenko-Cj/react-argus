@@ -8,6 +8,7 @@ import SroPageContent from './SroPageContent/SroPageContent';
 import SroPageTable from './SroPageTable/SroPageTable';
 import SroFooter from './SroFooter/SroFooter';
 import NotFound from '../Error/NotFound';
+import Meta from './Meta/Meta';
 
 export class Sro extends PureComponent {
     state = {
@@ -53,6 +54,7 @@ export class Sro extends PureComponent {
         if (isLoaded) {
             return (
                 <Fragment>
+                    <Meta data={cat.slug} />
                     <div className="paddinger">
                     </div>
                     <div className="section">

@@ -6,7 +6,8 @@ import playarrow from '../../img/play-arrow.svg';
 import SroContent from './SroContent/SroContent';
 import SroСontributions from './SroСontributions/SroСontributions';
 import SroQuote from './SroQuote/SroQuote';
-import NotFound from '../Error/NotFound'
+import NotFound from '../Error/NotFound';
+import Meta from './Meta/Meta';
 
 export class SingleSro extends Component {
     state = {
@@ -57,6 +58,7 @@ export class SingleSro extends Component {
         if (isLoaded) {
             return (
                 <Fragment>
+                    <Meta data={service.terms[0].slug} />
                     <div className="paddinger"></div>
                     <div className="section">
                         <div className="wrapper head-wrapper">
