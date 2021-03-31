@@ -1017,7 +1017,7 @@ blockquote {
   height: 15px;
   margin-top: 0px;
   margin-right: 0px;
-  background-image: url("/img/5d2447d460878d7ea056eb6f_down-arrow.svg");
+  background-image: url("./img/5d2447d460878d7ea056eb6f_down-arrow.svg");
   background-position: 40% 50%;
   background-size: 7px;
   background-repeat: no-repeat;
@@ -1098,18 +1098,18 @@ blockquote {
   right: 0%;
   bottom: 0%;
   z-index: 2;
-  background-image: url("/img/5d2453ba1a002338317a43a9_carpenter.svg");
+  background-image: url("./img/5d2453ba1a002338317a43a9_carpenter.svg");
   background-position: 50% 50%;
   background-size: 60%;
   background-repeat: no-repeat;
 }
 
 .ico-in-card.seminar {
-  background-image: url("/img/5d2de02b2be6babc16e2fdc5_boss.svg");
+  background-image: url("./img/5d2de02b2be6babc16e2fdc5_boss.svg");
 }
 
 .ico-in-card.training {
-  background-image: url("/img/5d2de068b1d78930a24f7d5b_training.svg");
+  background-image: url("./img/5d2de068b1d78930a24f7d5b_training.svg");
 }
 
 .slider {
@@ -1608,7 +1608,7 @@ blockquote {
 
 .img-people-otzivas {
   height: 500px;
-  background-image: url("/img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg");
+  background-image: url("./img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg");
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -1867,7 +1867,7 @@ blockquote {
   display: none;
   width: 50%;
   height: 100%;
-  background-image: url("/img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg");
+  /* background-image: url("./img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg"); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2184,7 +2184,7 @@ blockquote {
   right: 0%;
   bottom: 0%;
   z-index: 2;
-  background-image: url("/img/5d551948ed71c943f3abb58a_Beach_Condo_3D_2.png");
+  /* background-image: url("./img/5d551948ed71c943f3abb58a_Beach_Condo_3D_2.png"); */
   background-position: 50% 0%;
   background-size: auto 130%;
   background-repeat: no-repeat;

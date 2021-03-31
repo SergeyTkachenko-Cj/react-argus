@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Fragment } from 'react';
+import playarrow from '../../img/play-arrow.svg';
 
 const AboutUsSection = props => {
 
@@ -30,7 +31,7 @@ const AboutUsSection = props => {
                                     <div>Узнать подробнее</div>
                                     <div className="before-txt-link">
                                         <div className="fon-arrow">
-                                            <img src="/static/media/play-arrow.c0f19ea7.svg" alt="" className="arrow-line" />
+                                            <img src={playarrow} alt="" className="arrow-line" />
                                             <div className="line-arrow"></div>
                                         </div>
                                     </div>

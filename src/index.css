@@ -2588,7 +2588,7 @@ blockquote {
   border-style: solid;
   border-width: 1px;
   border-color: #4a59ff;
-  background-image: url("./img/5d10da5e8b1b91bed0b0b3aa_blondes-women-models-heidi-klum-wink.jpg");
+  /* background-image: url("./img/5d10da5e8b1b91bed0b0b3aa_blondes-women-models-heidi-klum-wink.jpg"); */
   background-position: 50% 50%;
   background-size: 125px;
   background-repeat: no-repeat;
@@ -4090,7 +4090,7 @@ blockquote {
 
 .img-people-otzivas {
   height: 100%;
-  background-image: url("./img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg");
+  /* background-image: url("./img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg"); */
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -4349,7 +4349,7 @@ blockquote {
   display: none;
   width: 50%;
   height: 100%;
-  background-image: url("./img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg");
+  /* background-image: url("./img/5d248b77a5dbec77d7577ba7_K6uCtOXJwBk.jpg"); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
