@@ -14,6 +14,7 @@ import Blog from './components/Blog/Blog';
 import Sales from './components/Sales/Sales';
 import Litsa from './components/Litsa/Litsa';
 import Reviews from './components/Reviews/Reviews';
+import Certifs from './components/OurCertificates/Certificates';
 import Contacts from './components/Contacts/Contacts';
 import NotFound from './components/Error/NotFound';
 import Footer from './components/Footer';
@@ -67,6 +68,7 @@ export class App extends Component {
             <Route exact path="/litsa" component={Litsa} />
             <Route exact path="/about-us-page" component={AboutUsPage} />
             <Route exact path="/otzyvy" component={Reviews} />
+            <Route exact path="/certificates" component={Certifs} />
             <Route exact path="/kontakty" component={Contacts} />
             <Route exact path={["/sro", "/licenses", "/certifications", "/legal-services", "/work-safety"]} component={Sro} />
             <Route exact path="/training-and-seminars" component={Studing} />
