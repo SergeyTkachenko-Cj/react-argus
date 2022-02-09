@@ -14,6 +14,8 @@ const SectionTen = lazy(() => import('./SectionTen/SectionTen'));
 const SectionEleven = lazy(() => import('./SectionEleven/SectionEleven'));
 // const SectionHotNews = lazy(() => import('./SectionHotNews/HotNews'));
 
+const SectionFireNews = lazy(() => import('./SectionFireNews/FireNews.js'));
+
 
 
 
@@ -22,6 +24,8 @@ export class MainPage extends Component {
         return (
             <Fragment>
                 <Suspense fallback={<NotFound />}>
+                    <SectionFireNews />
+
                     {/* <SectionHotNews /> */}
                     <ReSectionOne />
                     <SectionTwo />
