@@ -47,7 +47,7 @@ export class Footer extends Component {
                                     {options.acf["rejimi_raboty"].map((item, index) => <div key={index} className="p-class fotter-links">{item.rejim_raboty}</div>)}
                                 </div>
                                 <div className="fotter-clos w-clearfix w-col w-col-3 w-col-medium-6">
-                                    <div className="p-class fotter-links">{options.acf.kopirajt}
+                                    <div className="p-class fotter-links">© Аргус-Эко 1993 - 2022
                                         <br />{options.acf.adres}</div>
                                 </div>
                             </div>

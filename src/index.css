@@ -4205,6 +4205,14 @@ blockquote {
   transition: all 500ms ease;
 }
 
+.card-news-click-area {
+  color: black;
+}
+
+.card-news-click-area:hover {
+  color: #009473;
+}
+
 .card-news:hover {
   background-color: #fff;
 }

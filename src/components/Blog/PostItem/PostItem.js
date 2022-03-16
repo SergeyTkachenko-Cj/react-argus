@@ -24,21 +24,24 @@ export class PostItem extends Component {
 
         return (
             <Fragment>
-                <div className="card-news w-clearfix">
+                <Link to={`/blog/${slug}`} className="card-news card-news-click-area" data-ix="line-arrow">
+                {/* <div className="card-news w-clearfix"> */}
                     <div className="small-h">{cat[0]} - {normalDateDay}/{normalDateMonth}/{normalDateYear}</div>
                     <h3>{title}</h3>
                     <div className="p-class" dangerouslySetInnerHTML={{ __html: excerpt }}></div>
-                    <Link to={`/blog/${slug}`} className="link w-inline-block" data-ix="line-arrow">
-                        <div>читать полностью</div>
-                        <div className="before-txt-link">
-                            <div className="fon-arrow">
-                                <img src={playarrow} alt="" className="arrow-line" />
-                                <div className="line-arrow">
+                    {/* <Link to={`/blog/${slug}`} className="link w-inline-block" data-ix="line-arrow"> */}
+                        <div className="link w-inline-block">
+                            <div>читать полностью</div>
+                            <div className="before-txt-link">
+                                <div className="fon-arrow">
+                                    <img src={playarrow} alt="" className="arrow-line" />
+                                    <div className="line-arrow">
+                                    </div>
                                 </div>
-                            </div>
+                                </div>
                         </div>
-                    </Link>
-                </div>
+                {/* </div> */}
+                </Link>
             </Fragment>
         )
     }
